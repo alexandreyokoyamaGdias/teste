@@ -37,7 +37,21 @@ namespace SGPPC.Views.Cadastros
 
         private void FrmCadastroProduto_Load(object sender, EventArgs e)
         {
+            // TODO: This line of code loads data into the 'sGPPCDataSet2.Produto' table. You can move, or remove it, as needed.
+            this.produtoTableAdapter1.Fill(this.sGPPCDataSet2.Produto);
+            // TODO: This line of code loads data into the 'sGPPCDataSet.Produto' table. You can move, or remove it, as needed.
+            this.produtoTableAdapter.Fill(this.sGPPCDataSet.Produto);
 
+        }
+
+        private void AtualizarDataGridView()
+        {
+            
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            AtualizarDataGridView();
         }
     }
 }

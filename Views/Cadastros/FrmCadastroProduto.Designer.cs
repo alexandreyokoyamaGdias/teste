@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmCadastroProduto));
             this.label1 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
@@ -45,8 +46,27 @@
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.listViewProduto = new System.Windows.Forms.ListView();
+            this.sGPPCDataSet = new SGPPC.SGPPCDataSet();
+            this.produtoBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.produtoTableAdapter = new SGPPC.SGPPCDataSetTableAdapters.ProdutoTableAdapter();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.sGPPCDataSet2 = new SGPPC.SGPPCDataSet2();
+            this.produtoBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+            this.produtoTableAdapter1 = new SGPPC.SGPPCDataSet2TableAdapters.ProdutoTableAdapter();
+            this.idDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.valorDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.frmVendaBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.button1 = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.sGPPCDataSet)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.produtoBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.sGPPCDataSet2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.produtoBindingSource1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.frmVendaBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -63,6 +83,8 @@
             // panel1
             // 
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.panel1.Controls.Add(this.button1);
+            this.panel1.Controls.Add(this.dataGridView1);
             this.panel1.Controls.Add(this.txtDataValidadePro);
             this.panel1.Controls.Add(this.button5);
             this.panel1.Controls.Add(this.button4);
@@ -77,7 +99,6 @@
             this.panel1.Controls.Add(this.label4);
             this.panel1.Controls.Add(this.label3);
             this.panel1.Controls.Add(this.label2);
-            this.panel1.Controls.Add(this.listViewProduto);
             this.panel1.Location = new System.Drawing.Point(12, 52);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1020, 435);
@@ -226,9 +247,9 @@
             this.label4.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.Location = new System.Drawing.Point(817, 13);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(56, 21);
+            this.label4.Size = new System.Drawing.Size(52, 21);
             this.label4.TabIndex = 3;
-            this.label4.Text = "Preço:";
+            this.label4.Text = "Valor:";
             // 
             // label3
             // 
@@ -254,15 +275,109 @@
             this.label2.TabIndex = 1;
             this.label2.Text = "Nome:";
             // 
-            // listViewProduto
+            // sGPPCDataSet
             // 
-            this.listViewProduto.BackColor = System.Drawing.Color.LightGray;
-            this.listViewProduto.HideSelection = false;
-            this.listViewProduto.Location = new System.Drawing.Point(16, 150);
-            this.listViewProduto.Name = "listViewProduto";
-            this.listViewProduto.Size = new System.Drawing.Size(983, 267);
-            this.listViewProduto.TabIndex = 0;
-            this.listViewProduto.UseCompatibleStateImageBehavior = false;
+            this.sGPPCDataSet.DataSetName = "SGPPCDataSet";
+            this.sGPPCDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // produtoBindingSource
+            // 
+            this.produtoBindingSource.DataMember = "Produto";
+            this.produtoBindingSource.DataSource = this.sGPPCDataSet;
+            // 
+            // produtoTableAdapter
+            // 
+            this.produtoTableAdapter.ClearBeforeFill = true;
+            // 
+            // dataGridView1
+            // 
+            this.dataGridView1.AllowUserToAddRows = false;
+            this.dataGridView1.AllowUserToDeleteRows = false;
+            this.dataGridView1.AutoGenerateColumns = false;
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.idDataGridViewTextBoxColumn,
+            this.dataGridViewTextBoxColumn1,
+            this.dataGridViewTextBoxColumn2,
+            this.valorDataGridViewTextBoxColumn,
+            this.dataGridViewTextBoxColumn3});
+            this.dataGridView1.DataSource = this.produtoBindingSource1;
+            this.dataGridView1.Location = new System.Drawing.Point(17, 151);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.ReadOnly = true;
+            this.dataGridView1.Size = new System.Drawing.Size(981, 277);
+            this.dataGridView1.TabIndex = 18;
+            // 
+            // sGPPCDataSet2
+            // 
+            this.sGPPCDataSet2.DataSetName = "SGPPCDataSet2";
+            this.sGPPCDataSet2.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // produtoBindingSource1
+            // 
+            this.produtoBindingSource1.DataMember = "Produto";
+            this.produtoBindingSource1.DataSource = this.sGPPCDataSet2;
+            // 
+            // produtoTableAdapter1
+            // 
+            this.produtoTableAdapter1.ClearBeforeFill = true;
+            // 
+            // idDataGridViewTextBoxColumn
+            // 
+            this.idDataGridViewTextBoxColumn.DataPropertyName = "Id";
+            this.idDataGridViewTextBoxColumn.HeaderText = "Id";
+            this.idDataGridViewTextBoxColumn.Name = "idDataGridViewTextBoxColumn";
+            this.idDataGridViewTextBoxColumn.ReadOnly = true;
+            this.idDataGridViewTextBoxColumn.Width = 68;
+            // 
+            // dataGridViewTextBoxColumn1
+            // 
+            this.dataGridViewTextBoxColumn1.DataPropertyName = "Nome_Produto";
+            this.dataGridViewTextBoxColumn1.HeaderText = "Produto";
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            this.dataGridViewTextBoxColumn1.ReadOnly = true;
+            this.dataGridViewTextBoxColumn1.Width = 280;
+            // 
+            // dataGridViewTextBoxColumn2
+            // 
+            this.dataGridViewTextBoxColumn2.DataPropertyName = "Descricao";
+            this.dataGridViewTextBoxColumn2.HeaderText = "Descrição";
+            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
+            this.dataGridViewTextBoxColumn2.ReadOnly = true;
+            this.dataGridViewTextBoxColumn2.Width = 280;
+            // 
+            // valorDataGridViewTextBoxColumn
+            // 
+            this.valorDataGridViewTextBoxColumn.DataPropertyName = "Valor";
+            this.valorDataGridViewTextBoxColumn.HeaderText = "Valor";
+            this.valorDataGridViewTextBoxColumn.Name = "valorDataGridViewTextBoxColumn";
+            this.valorDataGridViewTextBoxColumn.ReadOnly = true;
+            this.valorDataGridViewTextBoxColumn.Width = 150;
+            // 
+            // dataGridViewTextBoxColumn3
+            // 
+            this.dataGridViewTextBoxColumn3.DataPropertyName = "Data_Validade";
+            this.dataGridViewTextBoxColumn3.HeaderText = "Data de Validade";
+            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
+            this.dataGridViewTextBoxColumn3.ReadOnly = true;
+            this.dataGridViewTextBoxColumn3.Width = 160;
+            // 
+            // frmVendaBindingSource
+            // 
+            this.frmVendaBindingSource.DataSource = typeof(SGPPC.Views.Vendas.FrmVenda);
+            // 
+            // button1
+            // 
+            this.button1.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold);
+            this.button1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button1.Location = new System.Drawing.Point(343, 106);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(85, 30);
+            this.button1.TabIndex = 19;
+            this.button1.Text = "Atualizar";
+            this.button1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // FrmCadastroProduto
             // 
@@ -283,6 +398,12 @@
             this.Load += new System.EventHandler(this.FrmCadastroProduto_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.sGPPCDataSet)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.produtoBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.sGPPCDataSet2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.produtoBindingSource1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.frmVendaBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -291,7 +412,6 @@
         #endregion
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.ListView listViewProduto;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.ComboBox comboBox1;
@@ -306,5 +426,24 @@
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.TextBox txtDataValidadePro;
+        private System.Windows.Forms.BindingSource frmVendaBindingSource;
+        private SGPPCDataSet sGPPCDataSet;
+        private System.Windows.Forms.BindingSource produtoBindingSource;
+        private SGPPCDataSetTableAdapters.ProdutoTableAdapter produtoTableAdapter;
+        private System.Windows.Forms.DataGridViewTextBoxColumn nomeProdutoDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn descricaoDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataValidadeDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn idFornecedorDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn idSaborDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridView dataGridView1;
+        private SGPPCDataSet2 sGPPCDataSet2;
+        private System.Windows.Forms.BindingSource produtoBindingSource1;
+        private SGPPCDataSet2TableAdapters.ProdutoTableAdapter produtoTableAdapter1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn idDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn valorDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
+        private System.Windows.Forms.Button button1;
     }
 }

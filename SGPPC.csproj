@@ -57,6 +57,21 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Include="SGPPCDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SGPPCDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="SGPPCDataSet1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SGPPCDataSet1.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="SGPPCDataSet2.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SGPPCDataSet2.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Views\Cadastros\FrmCadastroFuncionario.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -137,6 +152,20 @@
       <DependentUpon>FrmVenda.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
+    <None Include="Properties\DataSources\Conexao.datasource" />
+    <None Include="Properties\DataSources\FrmPrincipal.datasource" />
+    <None Include="Properties\DataSources\Program.datasource" />
+    <None Include="Properties\DataSources\SGPPC.Model.CadastroFornecedor.datasource" />
+    <None Include="Properties\DataSources\SGPPC.Model.CadastroProduto.datasource" />
+    <None Include="Properties\DataSources\SGPPC.Properties.Resources.datasource" />
+    <None Include="Properties\DataSources\SGPPC.Properties.Settings.datasource" />
+    <None Include="Properties\DataSources\SGPPC.Views.Cadastros.FrmCadastroFuncionario.datasource" />
+    <None Include="Properties\DataSources\SGPPC.Views.Cadastros.FrmCadastroPedido.datasource" />
+    <None Include="Properties\DataSources\SGPPC.Views.Cadastros.FrmCadastroProduto.datasource" />
+    <None Include="Properties\DataSources\SGPPC.Views.Cadastros.FrmFornecedor.datasource" />
+    <None Include="Properties\DataSources\SGPPC.Views.Consultas.FrmConsultaProduto.datasource" />
+    <None Include="Properties\DataSources\SGPPC.Views.Relatorios.FrmGerarRelatorio.datasource" />
+    <None Include="Properties\DataSources\SGPPC.Views.Vendas.FrmVenda.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -146,6 +175,39 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <None Include="SGPPCDataSet.xsc">
+      <DependentUpon>SGPPCDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="SGPPCDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>SGPPCDataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="SGPPCDataSet.xss">
+      <DependentUpon>SGPPCDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="SGPPCDataSet1.xsc">
+      <DependentUpon>SGPPCDataSet1.xsd</DependentUpon>
+    </None>
+    <None Include="SGPPCDataSet1.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>SGPPCDataSet1.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="SGPPCDataSet1.xss">
+      <DependentUpon>SGPPCDataSet1.xsd</DependentUpon>
+    </None>
+    <None Include="SGPPCDataSet2.xsc">
+      <DependentUpon>SGPPCDataSet2.xsd</DependentUpon>
+    </None>
+    <None Include="SGPPCDataSet2.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>SGPPCDataSet2.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="SGPPCDataSet2.xss">
+      <DependentUpon>SGPPCDataSet2.xsd</DependentUpon>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
