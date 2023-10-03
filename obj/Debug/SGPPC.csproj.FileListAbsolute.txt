@@ -71,7 +71,11 @@ C:\Users\aydias\Downloads\teste\bin\Debug\System.Data.SqlClient.xml
 C:\Users\aydias\Downloads\teste\obj\Debug\SGPPC.csproj.AssemblyReference.cache
 C:\Users\aydias\Downloads\teste\obj\Debug\SGPPC.csproj.SuggestedBindingRedirects.cache
 C:\Users\aydias\Downloads\teste\obj\Debug\SGPPC.Views.Cadastros.FrmCadastroFuncionario.resources
-C:\Users\aydias\Downloads\teste\obj\Debug\SGPPC.Views.Cadastros.FrmCadastroProduto.resources
+C:\Users\aydias\Downloads\teste\obj\Debug\SGPPC.Views.Fornecedor.FrmAlterarFornecedor.resources
+C:\Users\aydias\Downloads\teste\obj\Debug\SGPPC.Views.Fornecedor.FrmCadastroFornecedor.resources
+C:\Users\aydias\Downloads\teste\obj\Debug\SGPPC.Views.Fornecedor.FrmConsultaFornecedor.resources
+C:\Users\aydias\Downloads\teste\obj\Debug\SGPPC.Views.Produto.FrmCadastroProduto.resources
+C:\Users\aydias\Downloads\teste\obj\Debug\SGPPC.Views.Cadastros.FrmCadastroProdutos.resources
 C:\Users\aydias\Downloads\teste\obj\Debug\SGPPC.Views.Cadastros.FrmFornecedor.resources
 C:\Users\aydias\Downloads\teste\obj\Debug\SGPPC.Views.Consultas.FrmConsultaProduto.resources
 C:\Users\aydias\Downloads\teste\obj\Debug\SGPPC.FrmPrincipal.resources
@@ -84,3 +88,7 @@ C:\Users\aydias\Downloads\teste\obj\Debug\SGPPC.csproj.CoreCompileInputs.cache
 C:\Users\aydias\Downloads\teste\obj\Debug\SGPPC.csproj.CopyComplete
 C:\Users\aydias\Downloads\teste\obj\Debug\SGPPC.exe
 C:\Users\aydias\Downloads\teste\obj\Debug\SGPPC.pdb
+C:\Users\aydias\Downloads\teste\obj\Debug\SGPPC.Views.Usuarios.FrmCadastro.resources
+C:\Users\aydias\Downloads\teste\obj\Debug\SGPPC.Views.Usuarios.FrmLogin.resources
+C:\Users\aydias\Downloads\teste\obj\Debug\SGPPC.Views.Produto.FrmAlterarProduto.resources
+C:\Users\aydias\Downloads\teste\obj\Debug\SGPPC.Views.Sabores.FrmConsultaSabores.resources

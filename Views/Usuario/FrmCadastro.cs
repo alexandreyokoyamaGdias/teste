@@ -8,13 +8,18 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace SGPPC.Views.Consultas
+namespace SGPPC.Views.Usuario
 {
-    public partial class FrmConsultaProduto : Form
+    public partial class FrmCadastro : Form
     {
-        public FrmConsultaProduto()
+        public FrmCadastro()
         {
             InitializeComponent();
+        }
+
+        private void btnCancelar_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
         }
     }
 }

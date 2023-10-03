@@ -30,7 +30,7 @@ namespace SGPPC
 
         private void CadastroProdutos_Click(object sender, EventArgs e)
         {
-            Views.Cadastros.FrmCadastroProduto frmCadastroProduto = new Views.Cadastros.FrmCadastroProduto();
+            Views.Cadastros.FrmCadastroProdutos frmCadastroProduto = new Views.Cadastros.FrmCadastroProdutos();
             frmCadastroProduto.ShowDialog();
         }
 
@@ -60,7 +60,7 @@ namespace SGPPC
 
         private void produtoToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Views.Cadastros.FrmCadastroProduto frmCadastroProduto = new Views.Cadastros.FrmCadastroProduto();
+            Views.Cadastros.FrmCadastroProdutos frmCadastroProduto = new Views.Cadastros.FrmCadastroProdutos();
             frmCadastroProduto.ShowDialog(); // ShowDialog();
         }
 
@@ -73,6 +73,24 @@ namespace SGPPC
         {
             lblHora.Text = DateTime.Now.ToLongTimeString();
             lblData.Text = DateTime.Now.ToLongDateString();
+        }
+
+        private void consultaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Views.Fornecedor.FrmConsultaFornecedor frmConsultaFornecedor = new Views.Fornecedor.FrmConsultaFornecedor();
+            frmConsultaFornecedor.ShowDialog();
+        }
+
+        private void produtoToolStripMenuItem2_Click(object sender, EventArgs e)
+        {
+            Views.Consultas.FrmConsultaProduto frmConsultaProduto = new Views.Consultas.FrmConsultaProduto();
+            frmConsultaProduto.ShowDialog();
+        }
+
+        private void saboresToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Views.Sabores.FrmConsultaSabores frmConsultaSabores = new Views.Sabores.FrmConsultaSabores();
+            frmConsultaSabores.ShowDialog();
         }
     }
 }

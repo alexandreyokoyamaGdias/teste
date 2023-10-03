@@ -48,6 +48,10 @@
             this.alterarToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
             this.excluirToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
             this.MenuSair = new System.Windows.Forms.ToolStripMenuItem();
+            this.produtoToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.consultaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.produtoToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
+            this.saboresToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pnlCabecalhoSistema = new System.Windows.Forms.Panel();
             this.lblData = new System.Windows.Forms.Label();
             this.lblHora = new System.Windows.Forms.Label();
@@ -72,10 +76,10 @@
             this.MenuCadastros,
             this.MenuRelatórios,
             this.usuárioToolStripMenuItem,
-            this.MenuSair});
+            this.MenuSair,
+            this.produtoToolStripMenuItem1});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Padding = new System.Windows.Forms.Padding(6, 2, 0, 2);
             this.menuStrip1.Size = new System.Drawing.Size(1742, 33);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
@@ -208,6 +212,37 @@
             this.MenuSair.Size = new System.Drawing.Size(57, 29);
             this.MenuSair.Text = "Sair";
             this.MenuSair.Click += new System.EventHandler(this.MenuSair_Click);
+            // 
+            // produtoToolStripMenuItem1
+            // 
+            this.produtoToolStripMenuItem1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.consultaToolStripMenuItem,
+            this.produtoToolStripMenuItem2,
+            this.saboresToolStripMenuItem});
+            this.produtoToolStripMenuItem1.Name = "produtoToolStripMenuItem1";
+            this.produtoToolStripMenuItem1.Size = new System.Drawing.Size(97, 29);
+            this.produtoToolStripMenuItem1.Text = "Consulta";
+            // 
+            // consultaToolStripMenuItem
+            // 
+            this.consultaToolStripMenuItem.Name = "consultaToolStripMenuItem";
+            this.consultaToolStripMenuItem.Size = new System.Drawing.Size(270, 34);
+            this.consultaToolStripMenuItem.Text = "Fornecedor";
+            this.consultaToolStripMenuItem.Click += new System.EventHandler(this.consultaToolStripMenuItem_Click);
+            // 
+            // produtoToolStripMenuItem2
+            // 
+            this.produtoToolStripMenuItem2.Name = "produtoToolStripMenuItem2";
+            this.produtoToolStripMenuItem2.Size = new System.Drawing.Size(270, 34);
+            this.produtoToolStripMenuItem2.Text = "Produto";
+            this.produtoToolStripMenuItem2.Click += new System.EventHandler(this.produtoToolStripMenuItem2_Click);
+            // 
+            // saboresToolStripMenuItem
+            // 
+            this.saboresToolStripMenuItem.Name = "saboresToolStripMenuItem";
+            this.saboresToolStripMenuItem.Size = new System.Drawing.Size(270, 34);
+            this.saboresToolStripMenuItem.Text = "Sabor";
+            this.saboresToolStripMenuItem.Click += new System.EventHandler(this.saboresToolStripMenuItem_Click);
             // 
             // pnlCabecalhoSistema
             // 
@@ -401,6 +436,10 @@
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.ToolStripMenuItem produtoToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem consultaToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem produtoToolStripMenuItem2;
+        private System.Windows.Forms.ToolStripMenuItem saboresToolStripMenuItem;
     }
 }
 

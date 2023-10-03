@@ -4,9 +4,9 @@ using System.Windows.Forms;
 
 namespace SGPPC.Views.Cadastros
 {
-    public partial class FrmCadastroProduto : Form
+    public partial class FrmCadastroProdutos : Form
     {
-        public FrmCadastroProduto()
+        public FrmCadastroProdutos()
         {
             InitializeComponent();
         }

@@ -58,14 +58,14 @@ namespace SGPPC.Views.Cadastros
                 return;
             }
 
-            CadastroFornecedor cad = new CadastroFornecedor(
-                txtNome.Text,
-                txtCNPJ.Text,
-                txtPais.Text,
-                txtCidade.Text,
-                txtEstado.Text);
+            //CadastroFornecedor cad = new CadastroFornecedor(
+            //    txtNome.Text,
+            //    txtCNPJ.Text,
+            //    txtPais.Text,
+            //    txtCidade.Text,
+            //    txtEstado.Text);
 
-            MessageBox.Show(cad.mensagem);
+            //MessageBox.Show(cad.mensagem);
         }
 
         private void listViewFornecedor_SelectedIndexChanged(object sender, EventArgs e)

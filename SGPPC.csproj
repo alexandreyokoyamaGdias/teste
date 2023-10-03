@@ -38,6 +38,7 @@
     <Reference Include="System.Data.SqlClient, Version=4.6.1.5, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>packages\System.Data.SqlClient.4.8.5\lib\net461\System.Data.SqlClient.dll</HintPath>
     </Reference>
+    <Reference Include="System.DirectoryServices" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -49,14 +50,29 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Class\LimparFormulario.cs" />
+    <Compile Include="Data\FornecedorComands.cs" />
+    <Compile Include="Data\ProdutoComands.cs" />
+    <Compile Include="Data\SaborComands.cs" />
+    <Compile Include="Modelo\Controle.cs" />
+    <Compile Include="Modelo\FornecedorControle.cs" />
+    <Compile Include="Modelo\ProdutoControle.cs" />
+    <Compile Include="Modelo\SaborControlee.cs" />
     <Compile Include="Model\CadastroProduto.cs" />
-    <Compile Include="Model\Conexao.cs" />
+    <Compile Include="Model\ColsultaFornecedor.cs" />
+    <Compile Include="Data\Conexao.cs" />
     <Compile Include="Model\CadastroFornecedor.cs" />
+    <Compile Include="Model\ConsulltarSabor.cs" />
+    <Compile Include="Model\ConsultaFornecedor.cs" />
+    <Compile Include="Model\ConsultaProduto.cs" />
+    <Compile Include="Model\ProjetaLogs.cs" />
+    <Compile Include="Model\ValidaController.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Include="Data\LoginDalComands.cs" />
     <Compile Include="SGPPCDataSet.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -78,22 +94,52 @@
     <Compile Include="Views\Cadastros\FrmCadastroFuncionario.Designer.cs">
       <DependentUpon>FrmCadastroFuncionario.cs</DependentUpon>
     </Compile>
-    <Compile Include="Views\Cadastros\FrmCadastroProduto.cs">
+    <Compile Include="Views\Fornecedor\FrmAlterarFornecedor.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Views\Cadastros\FrmCadastroProduto.Designer.cs">
+    <Compile Include="Views\Fornecedor\FrmAlterarFornecedor.Designer.cs">
+      <DependentUpon>FrmAlterarFornecedor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Fornecedor\FrmCadastroFornecedor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Fornecedor\FrmCadastroFornecedor.Designer.cs">
+      <DependentUpon>FrmCadastroFornecedor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Fornecedor\FrmConsultaFornecedor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Fornecedor\FrmConsultaFornecedor.Designer.cs">
+      <DependentUpon>FrmConsultaFornecedor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Produto\FrmAlterarProduto.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Produto\FrmAlterarProduto.Designer.cs">
+      <DependentUpon>FrmAlterarProduto.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Produto\FrmCadastroProduto.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Produto\FrmCadastroProduto.Designer.cs">
       <DependentUpon>FrmCadastroProduto.cs</DependentUpon>
     </Compile>
-    <Compile Include="Views\Cadastros\FrmFornecedor.cs">
+    <Compile Include="Views\Produto\FrmCadastroProdutos.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Views\Cadastros\FrmFornecedor.Designer.cs">
+    <Compile Include="Views\Produto\FrmCadastroProdutos.Designer.cs">
+      <DependentUpon>FrmCadastroProdutos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Fornecedor\FrmFornecedor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Fornecedor\FrmFornecedor.Designer.cs">
       <DependentUpon>FrmFornecedor.cs</DependentUpon>
     </Compile>
-    <Compile Include="Views\Consultas\FrmConsultaProduto.cs">
+    <Compile Include="Views\Produto\FrmConsultaProduto.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Views\Consultas\FrmConsultaProduto.Designer.cs">
+    <Compile Include="Views\Produto\FrmConsultaProduto.Designer.cs">
       <DependentUpon>FrmConsultaProduto.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\FrmPrincipal.cs">
@@ -116,6 +162,36 @@
     <Compile Include="Views\Relatorios\FrmGerarRelatorio.Designer.cs">
       <DependentUpon>FrmGerarRelatorio.cs</DependentUpon>
     </Compile>
+    <Compile Include="Views\Sabores\FrmAlterarSabores.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Sabores\FrmAlterarSabores.Designer.cs">
+      <DependentUpon>FrmAlterarSabores.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Sabores\FrmCadastroSabores.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Sabores\FrmCadastroSabores.Designer.cs">
+      <DependentUpon>FrmCadastroSabores.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Sabores\FrmConsultaSabores.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Sabores\FrmConsultaSabores.Designer.cs">
+      <DependentUpon>FrmConsultaSabores.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Usuarios\FrmCadastro.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Usuarios\FrmCadastro.Designer.cs">
+      <DependentUpon>FrmCadastro.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Usuarios\FrmLogin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Usuarios\FrmLogin.Designer.cs">
+      <DependentUpon>FrmLogin.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\Vendas\FrmVenda.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -125,13 +201,28 @@
     <EmbeddedResource Include="Views\Cadastros\FrmCadastroFuncionario.resx">
       <DependentUpon>FrmCadastroFuncionario.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\Cadastros\FrmCadastroProduto.resx">
+    <EmbeddedResource Include="Views\Fornecedor\FrmAlterarFornecedor.resx">
+      <DependentUpon>FrmAlterarFornecedor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Fornecedor\FrmCadastroFornecedor.resx">
+      <DependentUpon>FrmCadastroFornecedor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Fornecedor\FrmConsultaFornecedor.resx">
+      <DependentUpon>FrmConsultaFornecedor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Produto\FrmAlterarProduto.resx">
+      <DependentUpon>FrmAlterarProduto.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Produto\FrmCadastroProduto.resx">
       <DependentUpon>FrmCadastroProduto.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\Cadastros\FrmFornecedor.resx">
+    <EmbeddedResource Include="Views\Produto\FrmCadastroProdutos.resx">
+      <DependentUpon>FrmCadastroProdutos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Fornecedor\FrmFornecedor.resx">
       <DependentUpon>FrmFornecedor.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\Consultas\FrmConsultaProduto.resx">
+    <EmbeddedResource Include="Views\Produto\FrmConsultaProduto.resx">
       <DependentUpon>FrmConsultaProduto.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\FrmPrincipal.resx">
@@ -147,6 +238,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Relatorios\FrmGerarRelatorio.resx">
       <DependentUpon>FrmGerarRelatorio.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Sabores\FrmConsultaSabores.resx">
+      <DependentUpon>FrmConsultaSabores.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Usuarios\FrmCadastro.resx">
+      <DependentUpon>FrmCadastro.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Usuarios\FrmLogin.resx">
+      <DependentUpon>FrmLogin.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Vendas\FrmVenda.resx">
       <DependentUpon>FrmVenda.cs</DependentUpon>
@@ -254,5 +354,6 @@
   <ItemGroup>
     <None Include="Resources\iconCancelar.png" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
