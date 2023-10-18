@@ -15,7 +15,6 @@ namespace SGPPC
         //Construtor
         public Conexao() 
         {
-            //con.ConnectionString = "Data Source=MININT-0LFO6EI\\SQLEXPRESS;Initial Catalog=SGPPC;User Id=sa;Password=123456";
             con.ConnectionString = "Data Source=ACF014\\SQLEXPRESS;Initial Catalog=SGPPC;Integrated Security=True";
         }
 

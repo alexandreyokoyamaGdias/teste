@@ -30,13 +30,13 @@
         {
             this.panel2 = new System.Windows.Forms.Panel();
             this.lblSabores = new System.Windows.Forms.Label();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
+            this.comboBoxPesquisaSabor = new System.Windows.Forms.ComboBox();
             this.btnAtualizarSabor = new System.Windows.Forms.Button();
-            this.txbPesquisa = new System.Windows.Forms.TextBox();
+            this.txbPesquisaSabor = new System.Windows.Forms.TextBox();
             this.btnCancelarSabor = new System.Windows.Forms.Button();
-            this.btnEditarSabor = new System.Windows.Forms.Button();
             this.btnSalvarSabor = new System.Windows.Forms.Button();
             this.dgSabor = new System.Windows.Forms.DataGridView();
+            this.lblPesquisar = new System.Windows.Forms.Label();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgSabor)).BeginInit();
             this.SuspendLayout();
@@ -57,7 +57,7 @@
             this.lblSabores.AutoSize = true;
             this.lblSabores.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblSabores.ForeColor = System.Drawing.Color.White;
-            this.lblSabores.Location = new System.Drawing.Point(5, 8);
+            this.lblSabores.Location = new System.Drawing.Point(4, 8);
             this.lblSabores.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblSabores.Name = "lblSabores";
             this.lblSabores.Size = new System.Drawing.Size(80, 32);
@@ -65,31 +65,36 @@
             this.lblSabores.Text = "Sabor";
             this.lblSabores.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // comboBox2
+            // comboBoxPesquisaSabor
             // 
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(854, 77);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(176, 28);
-            this.comboBox2.TabIndex = 24;
+            this.comboBoxPesquisaSabor.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.comboBoxPesquisaSabor.FormattingEnabled = true;
+            this.comboBoxPesquisaSabor.Items.AddRange(new object[] {
+            "Descricao"});
+            this.comboBoxPesquisaSabor.Location = new System.Drawing.Point(748, 88);
+            this.comboBoxPesquisaSabor.Name = "comboBoxPesquisaSabor";
+            this.comboBoxPesquisaSabor.Size = new System.Drawing.Size(342, 37);
+            this.comboBoxPesquisaSabor.TabIndex = 24;
             // 
             // btnAtualizarSabor
             // 
-            this.btnAtualizarSabor.Location = new System.Drawing.Point(422, 578);
+            this.btnAtualizarSabor.Location = new System.Drawing.Point(146, 578);
             this.btnAtualizarSabor.Name = "btnAtualizarSabor";
-            this.btnAtualizarSabor.Size = new System.Drawing.Size(118, 41);
+            this.btnAtualizarSabor.Size = new System.Drawing.Size(118, 42);
             this.btnAtualizarSabor.TabIndex = 23;
             this.btnAtualizarSabor.Text = "Consultar";
             this.btnAtualizarSabor.UseVisualStyleBackColor = true;
             this.btnAtualizarSabor.Click += new System.EventHandler(this.btnAtualizarSabor_Click);
             // 
-            // txbPesquisa
+            // txbPesquisaSabor
             // 
-            this.txbPesquisa.Location = new System.Drawing.Point(11, 77);
-            this.txbPesquisa.Multiline = true;
-            this.txbPesquisa.Name = "txbPesquisa";
-            this.txbPesquisa.Size = new System.Drawing.Size(818, 42);
-            this.txbPesquisa.TabIndex = 22;
+            this.txbPesquisaSabor.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txbPesquisaSabor.Location = new System.Drawing.Point(10, 88);
+            this.txbPesquisaSabor.Multiline = true;
+            this.txbPesquisaSabor.Name = "txbPesquisaSabor";
+            this.txbPesquisaSabor.Size = new System.Drawing.Size(730, 38);
+            this.txbPesquisaSabor.TabIndex = 22;
+            this.txbPesquisaSabor.TextChanged += new System.EventHandler(this.txbPesquisaSabor_TextChanged);
             // 
             // btnCancelarSabor
             // 
@@ -101,18 +106,9 @@
             this.btnCancelarSabor.UseVisualStyleBackColor = true;
             this.btnCancelarSabor.Click += new System.EventHandler(this.btnCancelarSabor_Click);
             // 
-            // btnEditarSabor
-            // 
-            this.btnEditarSabor.Location = new System.Drawing.Point(147, 578);
-            this.btnEditarSabor.Name = "btnEditarSabor";
-            this.btnEditarSabor.Size = new System.Drawing.Size(118, 42);
-            this.btnEditarSabor.TabIndex = 20;
-            this.btnEditarSabor.Text = "Alterar";
-            this.btnEditarSabor.UseVisualStyleBackColor = true;
-            // 
             // btnSalvarSabor
             // 
-            this.btnSalvarSabor.Location = new System.Drawing.Point(11, 578);
+            this.btnSalvarSabor.Location = new System.Drawing.Point(10, 578);
             this.btnSalvarSabor.Name = "btnSalvarSabor";
             this.btnSalvarSabor.Size = new System.Drawing.Size(118, 42);
             this.btnSalvarSabor.TabIndex = 19;
@@ -125,7 +121,7 @@
             this.dgSabor.AllowUserToAddRows = false;
             this.dgSabor.AllowUserToDeleteRows = false;
             this.dgSabor.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgSabor.Location = new System.Drawing.Point(11, 153);
+            this.dgSabor.Location = new System.Drawing.Point(10, 152);
             this.dgSabor.Name = "dgSabor";
             this.dgSabor.ReadOnly = true;
             this.dgSabor.RowHeadersWidth = 62;
@@ -133,17 +129,28 @@
             this.dgSabor.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgSabor.Size = new System.Drawing.Size(1086, 409);
             this.dgSabor.TabIndex = 18;
+            this.dgSabor.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgSabor_CellContentClick);
+            // 
+            // lblPesquisar
+            // 
+            this.lblPesquisar.AutoSize = true;
+            this.lblPesquisar.Location = new System.Drawing.Point(8, 65);
+            this.lblPesquisar.Name = "lblPesquisar";
+            this.lblPesquisar.Size = new System.Drawing.Size(79, 20);
+            this.lblPesquisar.TabIndex = 25;
+            this.lblPesquisar.Text = "Pesquisar";
             // 
             // FrmConsultaSabores
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1109, 635);
-            this.Controls.Add(this.comboBox2);
+            this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.ClientSize = new System.Drawing.Size(1108, 635);
+            this.Controls.Add(this.lblPesquisar);
+            this.Controls.Add(this.comboBoxPesquisaSabor);
             this.Controls.Add(this.btnAtualizarSabor);
-            this.Controls.Add(this.txbPesquisa);
+            this.Controls.Add(this.txbPesquisaSabor);
             this.Controls.Add(this.btnCancelarSabor);
-            this.Controls.Add(this.btnEditarSabor);
             this.Controls.Add(this.btnSalvarSabor);
             this.Controls.Add(this.dgSabor);
             this.Controls.Add(this.panel2);
@@ -151,6 +158,7 @@
             this.Name = "FrmConsultaSabores";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FrmConsultaSabores";
+            this.Load += new System.EventHandler(this.FrmConsultaSabores_Load);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgSabor)).EndInit();
@@ -163,12 +171,12 @@
 
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Label lblSabores;
-        private System.Windows.Forms.ComboBox comboBox2;
+        private System.Windows.Forms.ComboBox comboBoxPesquisaSabor;
         private System.Windows.Forms.Button btnAtualizarSabor;
-        private System.Windows.Forms.TextBox txbPesquisa;
+        private System.Windows.Forms.TextBox txbPesquisaSabor;
         private System.Windows.Forms.Button btnCancelarSabor;
-        private System.Windows.Forms.Button btnEditarSabor;
         private System.Windows.Forms.Button btnSalvarSabor;
         private System.Windows.Forms.DataGridView dgSabor;
+        private System.Windows.Forms.Label lblPesquisar;
     }
 }

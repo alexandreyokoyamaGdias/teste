@@ -41,7 +41,7 @@
             this.lblNome = new System.Windows.Forms.Label();
             this.lblCNPJ = new System.Windows.Forms.Label();
             this.btnCancelar = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnAlterar = new System.Windows.Forms.Button();
             this.lblId = new System.Windows.Forms.Label();
             this.txbId = new System.Windows.Forms.TextBox();
             this.lblStatus = new System.Windows.Forms.Label();
@@ -170,15 +170,15 @@
             this.btnCancelar.UseVisualStyleBackColor = true;
             this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
             // 
-            // button1
+            // btnAlterar
             // 
-            this.button1.Location = new System.Drawing.Point(13, 480);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(118, 42);
-            this.button1.TabIndex = 43;
-            this.button1.Text = "Salvar";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.btnAlterar.Location = new System.Drawing.Point(13, 480);
+            this.btnAlterar.Name = "btnAlterar";
+            this.btnAlterar.Size = new System.Drawing.Size(118, 42);
+            this.btnAlterar.TabIndex = 43;
+            this.btnAlterar.Text = "Alterar";
+            this.btnAlterar.UseVisualStyleBackColor = true;
+            this.btnAlterar.Click += new System.EventHandler(this.button1_Click);
             // 
             // lblId
             // 
@@ -238,7 +238,7 @@
             this.Controls.Add(this.radioAtivo);
             this.Controls.Add(this.txbId);
             this.Controls.Add(this.lblId);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.btnAlterar);
             this.Controls.Add(this.btnCancelar);
             this.Controls.Add(this.lblEstado);
             this.Controls.Add(this.lblCidade);
@@ -279,7 +279,7 @@
         private System.Windows.Forms.Label lblNome;
         private System.Windows.Forms.Label lblCNPJ;
         private System.Windows.Forms.Button btnCancelar;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnAlterar;
         private System.Windows.Forms.Label lblId;
         private System.Windows.Forms.TextBox txbId;
         private System.Windows.Forms.Label lblStatus;

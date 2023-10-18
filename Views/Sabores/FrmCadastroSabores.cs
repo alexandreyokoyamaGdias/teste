@@ -36,17 +36,27 @@ namespace SGPPC.Views.Sabores
 
         private void btnCadastrar_Click(object sender, EventArgs e)
         {
-            SaborControlee saborControle = new SaborControlee();
-            String mensagem = saborControle.CadastrarSabor(txbDescricao.Text);
-
-            if (saborControle.tem)
+            if (txbDescricao.Text.ToString().Trim() == "")
             {
-                MessageBox.Show(mensagem, "Cadastro", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                LimparFormulario.LimparForm(this);
+                MessageBox.Show("Preencha o campo Descrição", "Cadastro produto", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                txbDescricao.Text = "";
+                txbDescricao.Focus();
+                return;
             }
             else
             {
-                MessageBox.Show(saborControle.mensagem);
+                SaborControlee saborControle = new SaborControlee();
+                String mensagem = saborControle.CadastrarSabor(txbDescricao.Text.Trim());
+
+                if (saborControle.tem)
+                {
+                    MessageBox.Show(mensagem, "Cadastro", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    LimparFormulario.LimparForm(this);
+                }
+                else
+                {
+                    MessageBox.Show(saborControle.mensagem);
+                }
             }
         }
     }

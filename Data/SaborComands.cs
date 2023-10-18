@@ -19,22 +19,38 @@ namespace SGPPC.Data
 
         SqlDataReader dr;
 
-
         public String CadastrarSabor(String descricao)
         {
             tem = false;
 
-            cmd.CommandText = "INSERT INTO Sabor (Descricao) VALUES (@Descricao);";
-
-            cmd.Parameters.AddWithValue("@Descricao", descricao);
+            // Primeiro, verifique se o sabor já existe
+            string consultaSaborExistente = "SELECT COUNT(*) FROM Sabor WHERE Descricao = @Descricao";
 
             try
             {
                 cmd.Connection = con.conectar();
-                cmd.ExecuteNonQuery();
+                cmd.CommandText = consultaSaborExistente;
+                cmd.Parameters.AddWithValue("@Descricao", descricao);
+
+                int count = (int)cmd.ExecuteScalar();
+
+                if (count > 0)
+                {
+                    // Sabor já existe, você pode exibir uma mensagem de erro aqui
+                    this.mensagem = "Sabor já cadastrado!";
+                }
+                else
+                {
+                    // Sabor não existe, proceda com a inserção
+                    cmd.Parameters.Clear();
+                    cmd.CommandText = "INSERT INTO Sabor (Descricao) VALUES (@Descricao)";
+                    cmd.Parameters.AddWithValue("@Descricao", descricao);
+                    cmd.ExecuteNonQuery();
+                    this.mensagem = "Cadastrado com sucesso!";
+                    tem = true;
+                }
+
                 con.desconectar();
-                this.mensagem = "Cadastrado com sucesso!";
-                tem = true;
             }
             catch (SqlException ex)
             {

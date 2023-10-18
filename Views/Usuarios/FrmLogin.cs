@@ -23,12 +23,6 @@ namespace SGPPC.Views.Usuarios
             Application.Exit();
         }
 
-        private void btnCadastrarse_Click(object sender, EventArgs e)
-        {
-            Views.Usuarios.FrmCadastro frmCadastro = new Views.Usuarios.FrmCadastro();
-            frmCadastro.ShowDialog();
-        }
-
         private void btnEntrar_Click(object sender, EventArgs e)
         {
             Controle controle = new Controle();

@@ -52,9 +52,9 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panelProduto.BackColor = System.Drawing.Color.Orange;
             this.panelProduto.Controls.Add(this.lblProduto);
-            this.panelProduto.Location = new System.Drawing.Point(1, 1);
+            this.panelProduto.Location = new System.Drawing.Point(2, 2);
             this.panelProduto.Name = "panelProduto";
-            this.panelProduto.Size = new System.Drawing.Size(631, 48);
+            this.panelProduto.Size = new System.Drawing.Size(632, 48);
             this.panelProduto.TabIndex = 17;
             // 
             // lblProduto
@@ -62,7 +62,7 @@
             this.lblProduto.AutoSize = true;
             this.lblProduto.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblProduto.ForeColor = System.Drawing.Color.White;
-            this.lblProduto.Location = new System.Drawing.Point(5, 8);
+            this.lblProduto.Location = new System.Drawing.Point(4, 8);
             this.lblProduto.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblProduto.Name = "lblProduto";
             this.lblProduto.Size = new System.Drawing.Size(119, 32);
@@ -88,7 +88,7 @@
             // 
             // txbValorProd
             // 
-            this.txbValorProd.Location = new System.Drawing.Point(12, 156);
+            this.txbValorProd.Location = new System.Drawing.Point(12, 155);
             this.txbValorProd.Multiline = true;
             this.txbValorProd.Name = "txbValorProd";
             this.txbValorProd.Size = new System.Drawing.Size(288, 26);
@@ -96,7 +96,7 @@
             // 
             // maskTxbDataProd
             // 
-            this.maskTxbDataProd.Location = new System.Drawing.Point(332, 156);
+            this.maskTxbDataProd.Location = new System.Drawing.Point(332, 155);
             this.maskTxbDataProd.Mask = "00/00/0000";
             this.maskTxbDataProd.Name = "maskTxbDataProd";
             this.maskTxbDataProd.Size = new System.Drawing.Size(288, 26);
@@ -110,6 +110,7 @@
             this.cbFornecedorProd.Name = "cbFornecedorProd";
             this.cbFornecedorProd.Size = new System.Drawing.Size(288, 28);
             this.cbFornecedorProd.TabIndex = 22;
+            this.cbFornecedorProd.SelectedIndexChanged += new System.EventHandler(this.cbFornecedorProd_SelectedIndexChanged);
             // 
             // button1
             // 
@@ -123,7 +124,7 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(145, 485);
+            this.button2.Location = new System.Drawing.Point(146, 485);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(118, 42);
             this.button2.TabIndex = 24;
@@ -144,52 +145,53 @@
             // lblNome
             // 
             this.lblNome.AutoSize = true;
-            this.lblNome.Location = new System.Drawing.Point(12, 59);
+            this.lblNome.Location = new System.Drawing.Point(12, 58);
             this.lblNome.Name = "lblNome";
-            this.lblNome.Size = new System.Drawing.Size(51, 20);
+            this.lblNome.Size = new System.Drawing.Size(57, 20);
             this.lblNome.TabIndex = 26;
-            this.lblNome.Text = "Nome";
+            this.lblNome.Text = "*Nome";
             // 
             // lblDescricao
             // 
             this.lblDescricao.AutoSize = true;
-            this.lblDescricao.Location = new System.Drawing.Point(328, 59);
+            this.lblDescricao.Location = new System.Drawing.Point(328, 58);
             this.lblDescricao.Name = "lblDescricao";
-            this.lblDescricao.Size = new System.Drawing.Size(80, 20);
+            this.lblDescricao.Size = new System.Drawing.Size(86, 20);
             this.lblDescricao.TabIndex = 27;
-            this.lblDescricao.Text = "Descrição";
+            this.lblDescricao.Text = "*Descrição";
             // 
             // lblValor
             // 
             this.lblValor.AutoSize = true;
-            this.lblValor.Location = new System.Drawing.Point(12, 133);
+            this.lblValor.Location = new System.Drawing.Point(12, 132);
             this.lblValor.Name = "lblValor";
-            this.lblValor.Size = new System.Drawing.Size(46, 20);
+            this.lblValor.Size = new System.Drawing.Size(52, 20);
             this.lblValor.TabIndex = 28;
-            this.lblValor.Text = "Valor";
+            this.lblValor.Text = "*Valor";
             // 
             // lblData
             // 
             this.lblData.AutoSize = true;
-            this.lblData.Location = new System.Drawing.Point(328, 133);
+            this.lblData.Location = new System.Drawing.Point(328, 132);
             this.lblData.Name = "lblData";
-            this.lblData.Size = new System.Drawing.Size(44, 20);
+            this.lblData.Size = new System.Drawing.Size(138, 20);
             this.lblData.TabIndex = 29;
-            this.lblData.Text = "Data";
+            this.lblData.Text = "*Data de Validade";
             // 
             // lblFornecedor
             // 
             this.lblFornecedor.AutoSize = true;
             this.lblFornecedor.Location = new System.Drawing.Point(12, 212);
             this.lblFornecedor.Name = "lblFornecedor";
-            this.lblFornecedor.Size = new System.Drawing.Size(91, 20);
+            this.lblFornecedor.Size = new System.Drawing.Size(97, 20);
             this.lblFornecedor.TabIndex = 30;
-            this.lblFornecedor.Text = "Fornecedor";
+            this.lblFornecedor.Text = "*Fornecedor";
             // 
             // FrmCadastroProduto
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.ClientSize = new System.Drawing.Size(632, 534);
             this.Controls.Add(this.lblFornecedor);
             this.Controls.Add(this.lblData);
@@ -205,9 +207,11 @@
             this.Controls.Add(this.txbDescricaoProd);
             this.Controls.Add(this.txbNomeProd);
             this.Controls.Add(this.panelProduto);
+            this.MaximizeBox = false;
             this.Name = "FrmCadastroProduto";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FrmCadastroProduto";
+            this.Load += new System.EventHandler(this.FrmCadastroProduto_Load);
             this.panelProduto.ResumeLayout(false);
             this.panelProduto.PerformLayout();
             this.ResumeLayout(false);

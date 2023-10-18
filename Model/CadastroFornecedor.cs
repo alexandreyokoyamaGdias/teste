@@ -30,8 +30,6 @@ namespace SGPPC.Model
                 cmd.Parameters.AddWithValue("@Estado", Estado);
                 cmd.ExecuteNonQuery();
 
-                //Executar o comando
-
                 //Desconectar
                 conexao.desconectar();
 

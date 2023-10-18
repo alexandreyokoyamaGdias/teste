@@ -51,20 +51,33 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Class\LimparFormulario.cs" />
+    <Compile Include="Data\CaixaComands.cs" />
+    <Compile Include="Data\FornecedorAlterarComands.cs" />
     <Compile Include="Data\FornecedorComands.cs" />
+    <Compile Include="Data\PagamentoComands.cs" />
+    <Compile Include="Data\ProdutoAlterarComands.cs" />
     <Compile Include="Data\ProdutoComands.cs" />
     <Compile Include="Data\SaborComands.cs" />
+    <Compile Include="Data\UsuarioEditarComands.cs" />
+    <Compile Include="Modelo\CaixaControle.cs" />
     <Compile Include="Modelo\Controle.cs" />
+    <Compile Include="Modelo\FormaPagamentoControle.cs" />
     <Compile Include="Modelo\FornecedorControle.cs" />
+    <Compile Include="Modelo\FornecedorEditarControle.cs" />
+    <Compile Include="Modelo\ProdutoAlterarControle.cs" />
     <Compile Include="Modelo\ProdutoControle.cs" />
     <Compile Include="Modelo\SaborControlee.cs" />
+    <Compile Include="Modelo\UsuarioEditarControle.cs" />
     <Compile Include="Model\CadastroProduto.cs" />
     <Compile Include="Model\ColsultaFornecedor.cs" />
     <Compile Include="Data\Conexao.cs" />
     <Compile Include="Model\CadastroFornecedor.cs" />
     <Compile Include="Model\ConsulltarSabor.cs" />
+    <Compile Include="Model\ConsultaControleCaixa.cs" />
     <Compile Include="Model\ConsultaFornecedor.cs" />
     <Compile Include="Model\ConsultaProduto.cs" />
+    <Compile Include="Model\ConsultarPagamento.cs" />
+    <Compile Include="Model\ConsultaUsuario.cs" />
     <Compile Include="Model\ProjetaLogs.cs" />
     <Compile Include="Model\ValidaController.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
@@ -94,6 +107,24 @@
     <Compile Include="Views\Cadastros\FrmCadastroFuncionario.Designer.cs">
       <DependentUpon>FrmCadastroFuncionario.cs</DependentUpon>
     </Compile>
+    <Compile Include="Views\ControleCaixa\FrmConsultaControleCaixa.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\ControleCaixa\FrmConsultaControleCaixa.Designer.cs">
+      <DependentUpon>FrmConsultaControleCaixa.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ControleCaixa\FrmControleCaixa.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\ControleCaixa\FrmControleCaixa.Designer.cs">
+      <DependentUpon>FrmControleCaixa.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ControleCaixa\FrmEditarControleCaixa.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\ControleCaixa\FrmEditarControleCaixa.Designer.cs">
+      <DependentUpon>FrmEditarControleCaixa.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\Fornecedor\FrmAlterarFornecedor.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -111,6 +142,30 @@
     </Compile>
     <Compile Include="Views\Fornecedor\FrmConsultaFornecedor.Designer.cs">
       <DependentUpon>FrmConsultaFornecedor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Pagamento\FrmAlterarFormasPagamento.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Pagamento\FrmAlterarFormasPagamento.Designer.cs">
+      <DependentUpon>FrmAlterarFormasPagamento.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Pagamento\FrmCadastrarFormasPagamento.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Pagamento\FrmCadastrarFormasPagamento.Designer.cs">
+      <DependentUpon>FrmCadastrarFormasPagamento.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Pagamento\FrmConsultaFormasPagamento.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Pagamento\FrmConsultaFormasPagamento.Designer.cs">
+      <DependentUpon>FrmConsultaFormasPagamento.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Pedidos\FrmPedido.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Pedidos\FrmPedido.Designer.cs">
+      <DependentUpon>FrmPedido.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\Produto\FrmAlterarProduto.cs">
       <SubType>Form</SubType>
@@ -186,20 +241,35 @@
     <Compile Include="Views\Usuarios\FrmCadastro.Designer.cs">
       <DependentUpon>FrmCadastro.cs</DependentUpon>
     </Compile>
+    <Compile Include="Views\Usuarios\FrmConsultaUsuario.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Usuarios\FrmConsultaUsuario.Designer.cs">
+      <DependentUpon>FrmConsultaUsuario.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Usuarios\FrmEditarUsuario.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Usuarios\FrmEditarUsuario.Designer.cs">
+      <DependentUpon>FrmEditarUsuario.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\Usuarios\FrmLogin.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Views\Usuarios\FrmLogin.Designer.cs">
       <DependentUpon>FrmLogin.cs</DependentUpon>
     </Compile>
-    <Compile Include="Views\Vendas\FrmVenda.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Views\Vendas\FrmVenda.Designer.cs">
-      <DependentUpon>FrmVenda.cs</DependentUpon>
-    </Compile>
     <EmbeddedResource Include="Views\Cadastros\FrmCadastroFuncionario.resx">
       <DependentUpon>FrmCadastroFuncionario.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\ControleCaixa\FrmConsultaControleCaixa.resx">
+      <DependentUpon>FrmConsultaControleCaixa.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\ControleCaixa\FrmControleCaixa.resx">
+      <DependentUpon>FrmControleCaixa.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\ControleCaixa\FrmEditarControleCaixa.resx">
+      <DependentUpon>FrmEditarControleCaixa.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Fornecedor\FrmAlterarFornecedor.resx">
       <DependentUpon>FrmAlterarFornecedor.cs</DependentUpon>
@@ -209,6 +279,18 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Fornecedor\FrmConsultaFornecedor.resx">
       <DependentUpon>FrmConsultaFornecedor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Pagamento\FrmAlterarFormasPagamento.resx">
+      <DependentUpon>FrmAlterarFormasPagamento.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Pagamento\FrmCadastrarFormasPagamento.resx">
+      <DependentUpon>FrmCadastrarFormasPagamento.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Pagamento\FrmConsultaFormasPagamento.resx">
+      <DependentUpon>FrmConsultaFormasPagamento.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Pedidos\FrmPedido.resx">
+      <DependentUpon>FrmPedido.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Produto\FrmAlterarProduto.resx">
       <DependentUpon>FrmAlterarProduto.cs</DependentUpon>
@@ -239,17 +321,26 @@
     <EmbeddedResource Include="Views\Relatorios\FrmGerarRelatorio.resx">
       <DependentUpon>FrmGerarRelatorio.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Views\Sabores\FrmAlterarSabores.resx">
+      <DependentUpon>FrmAlterarSabores.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Sabores\FrmCadastroSabores.resx">
+      <DependentUpon>FrmCadastroSabores.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Views\Sabores\FrmConsultaSabores.resx">
       <DependentUpon>FrmConsultaSabores.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Usuarios\FrmCadastro.resx">
       <DependentUpon>FrmCadastro.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Views\Usuarios\FrmConsultaUsuario.resx">
+      <DependentUpon>FrmConsultaUsuario.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Usuarios\FrmEditarUsuario.resx">
+      <DependentUpon>FrmEditarUsuario.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Views\Usuarios\FrmLogin.resx">
       <DependentUpon>FrmLogin.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Views\Vendas\FrmVenda.resx">
-      <DependentUpon>FrmVenda.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\DataSources\Conexao.datasource" />

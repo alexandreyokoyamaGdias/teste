@@ -24,10 +24,10 @@ namespace SGPPC.Controllerss
             return tem;
         }
 
-        public String Cadastrar(String email, String senha, String confSenha)
+        public String Cadastrar(String nome, String email, String funcao, String cpf, String senha, String dataAd )
         {
             LoginDalComands loginDal = new LoginDalComands();
-            this.mensagem = loginDal.Cadastrar(email, senha, confSenha);
+            this.mensagem = loginDal.Cadastrar(nome, email, funcao, cpf, senha, dataAd);
 
             if (loginDal.tem)
             {

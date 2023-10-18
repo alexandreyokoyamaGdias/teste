@@ -42,8 +42,6 @@ namespace SGPPC
 
         private void btnVendas_Click(object sender, EventArgs e)
         {
-            Views.Vendas.FrmVenda frmVenda = new Views.Vendas.FrmVenda();
-            frmVenda.ShowDialog();
         }
 
         private void btnCadastroFuncionario_Click(object sender, EventArgs e)
@@ -91,6 +89,36 @@ namespace SGPPC
         {
             Views.Sabores.FrmConsultaSabores frmConsultaSabores = new Views.Sabores.FrmConsultaSabores();
             frmConsultaSabores.ShowDialog();
+        }
+
+        private void formasDePagamentoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Views.Pagamento.FrmConsultaFormasPagamento frmConsultaFormasPagamento = new Views.Pagamento.FrmConsultaFormasPagamento();
+            frmConsultaFormasPagamento.ShowDialog();
+        }
+
+        private void consultarToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Views.Usuarios.FrmConsultaUsuario frmConsultaUsuario = new Views.Usuarios.FrmConsultaUsuario();
+            frmConsultaUsuario.ShowDialog();
+        }
+
+        private void cadastrarToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Views.Usuarios.FrmCadastro frmCadastro = new Views.Usuarios.FrmCadastro();
+            frmCadastro.ShowDialog();
+        }
+
+        private void pedidoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Views.Pedidos.FrmPedido frmPedido = new Views.Pedidos.FrmPedido();
+            frmPedido.ShowDialog();
+        }
+
+        private void controleDeCaixaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Views.ControleCaixa.FrmConsultaControleCaixa frmConsultaControleCaixa = new Views.ControleCaixa.FrmConsultaControleCaixa();
+            frmConsultaControleCaixa.ShowDialog();
         }
     }
 }

@@ -20,6 +20,11 @@ namespace SGPPC.Repository
 
         SqlDataReader dr;
 
+        private string RemoverCaracteresNaoNumericos(string input)
+        {
+            return new string(input.Where(char.IsDigit).ToArray());
+        }
+
         public bool VerificarLogin(String login, String senha)
         {
             cmd.CommandText = "select * from Usuario where Email = @login and Senha = @senha";
@@ -46,34 +51,34 @@ namespace SGPPC.Repository
             return tem;
         }
 
-        public String Cadastrar(String email, String senha, String confSenha)
+        public String Cadastrar(String nome, String email, String funcao, String cpf, String senha, String dataAd)
         {
             tem = false;
-            if (senha.Equals(confSenha))
-            {
-                //cmd.CommandText = "insert into Usuario values (@Email, @Senha);";
-                cmd.CommandText = "INSERT INTO Usuario (Email, Senha) VALUES (@Email, @Senha);";
 
-                cmd.Parameters.AddWithValue("@Email", email);
-                cmd.Parameters.AddWithValue("@Senha", senha);
+            cpf = RemoverCaracteresNaoNumericos(cpf);
 
-                try
-                {
-                    cmd.Connection = con.conectar();
-                    cmd.ExecuteNonQuery();
-                    con.desconectar();
-                    this.mensagem = "Cadastrado com sucesso!";
-                    tem = true;
-                }
-                catch (SqlException ex)
-                {
-                    this.mensagem = "Erro com Banco de Dados!" + ex.Message;
-                }
-            }
-            else
+            cmd.CommandText = "INSERT INTO Usuario (Nome, Email, Funcao, CPF, Senha, Data_Admissao) VALUES (@Nome, @Email, @Funcao, @CPF, @Senha, @Data_Admissao);";
+
+            cmd.Parameters.AddWithValue("@Nome", nome);
+            cmd.Parameters.AddWithValue("@Email", email);
+            cmd.Parameters.AddWithValue("@Funcao", funcao);
+            cmd.Parameters.AddWithValue("@CPF", cpf);
+            cmd.Parameters.AddWithValue("@Senha", senha);
+            cmd.Parameters.AddWithValue("@Data_Admissao", dataAd);
+
+            try
             {
-                this.mensagem = "Senhas não correspondem!";
+                cmd.Connection = con.conectar();
+                cmd.ExecuteNonQuery();
+                con.desconectar();
+                this.mensagem = "Cadastrado com sucesso!";
+                tem = true;
             }
+            catch (SqlException ex)
+            {
+                this.mensagem = "Erro com Banco de Dados!" + ex.Message;
+            }
+
             return mensagem;
         }
     }

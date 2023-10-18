@@ -364,7 +364,6 @@
             // 
             // frmVendaBindingSource
             // 
-            this.frmVendaBindingSource.DataSource = typeof(SGPPC.Views.Vendas.FrmVenda);
             // 
             // button1
             // 

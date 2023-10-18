@@ -1,5 +1,6 @@
 ﻿using SGPPC.Class;
 using SGPPC.Model;
+using SGPPC.Views.Produto;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -14,6 +15,8 @@ namespace SGPPC.Views.Fornecedor
 {
     public partial class FrmConsultaFornecedor : Form
     {
+        private BindingSource bindingSource = new BindingSource();
+
         public FrmConsultaFornecedor()
         {
             InitializeComponent();
@@ -31,7 +34,7 @@ namespace SGPPC.Views.Fornecedor
 
             ColsultaFornecedor colsulta = new ColsultaFornecedor(cx);
 
-            dgFornecedor.DataSource = colsulta.LocalizarAtivos(textBox1.Text);
+            dgFornecedor.DataSource = colsulta.LocalizarAtivos(txtPesquisaFornecedor.Text);
         }
 
         private void dgFornecedor_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -40,34 +43,21 @@ namespace SGPPC.Views.Fornecedor
             {
                 DataGridViewRow row = dgFornecedor.Rows[e.RowIndex];
 
-                string id = row.Cells["Id"].Value.ToString();
                 string nome = row.Cells["Nome"].Value.ToString();
                 string cnpj = row.Cells["CNPJ"].Value.ToString();
                 string pais = row.Cells["Pais"].Value.ToString();
-                string cidade = row.Cells["Cidade"].ToString();
-                string estado = row.Cells["Estado"].ToString();
-                string status = row.Cells["Status"].ToString();
+                string cidade = row.Cells["Cidade"].Value.ToString();
+                string estado = row.Cells["Estado"].Value.ToString();
+                string id = row.Cells["Id"].Value.ToString();
 
-                
-                //txbCNPJ.Text = cnpj;
-                //txbNome.Text = nome;
-                //txbPais.Text = pais;
-                //txbCidade.Text = cidade;
-                //txbEstado.Text = estado;
-                //if(status == "Ativo")
-                //{radioativo.checked = true;
-                //else{
-                //radioinativo.checked = true;
+                FrmAlterarFornecedor telaEdicao = new FrmAlterarFornecedor(cnpj, nome, pais, cidade, estado, id);
+                telaEdicao.ShowDialog();
             }
         }
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
 
-        }
-
-        private void btnEditar_Click(object sender, EventArgs e)
-        {
         }
 
         private void button4_Click(object sender, EventArgs e)
@@ -77,16 +67,43 @@ namespace SGPPC.Views.Fornecedor
 
         private void FrmConsultaFornecedor_Load(object sender, EventArgs e)
         {
-
+            comboBoxPesquisarFornecedor.SelectedIndex = 0;
         }
 
         private void btnAtualizar_Click(object sender, EventArgs e)
         {
             Conexao cx = new Conexao();
 
-            ColsultaFornecedor colsulta = new ColsultaFornecedor(cx);
+            ColsultaFornecedor consulta = new ColsultaFornecedor(cx);
 
-            dgFornecedor.DataSource = colsulta.LocalizarAtivos(textBox1.Text);
+            bindingSource.DataSource = consulta.LocalizarAtivos(txtPesquisaFornecedor.Text);
+
+            dgFornecedor.DataSource = bindingSource;
+        }
+
+        private void txtPesquisaFornecedor_TextChanged(object sender, EventArgs e)
+        {
+            string filterColumn = comboBoxPesquisarFornecedor.Text;
+            string filterValue = txtPesquisaFornecedor.Text;
+
+            if (string.IsNullOrEmpty(filterValue))
+            {
+                bindingSource.RemoveFilter();
+            }
+            else
+            {
+                bindingSource.Filter = string.Format("{0} LIKE '%{1}%'", filterColumn, filterValue);
+            }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+           
+        }
+
+        private void comboBoxPesquisarFornecedor_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

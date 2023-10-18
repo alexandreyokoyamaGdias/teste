@@ -30,6 +30,11 @@
         {
             this.panel2 = new System.Windows.Forms.Panel();
             this.lblSabor = new System.Windows.Forms.Label();
+            this.lblDescricao = new System.Windows.Forms.Label();
+            this.txbAlterarDescricao = new System.Windows.Forms.TextBox();
+            this.btnCancelarSabor = new System.Windows.Forms.Button();
+            this.btnLimparSabor = new System.Windows.Forms.Button();
+            this.btnAlterarSabor = new System.Windows.Forms.Button();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -57,18 +62,72 @@
             this.lblSabor.Text = "Sabor";
             this.lblSabor.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // lblDescricao
+            // 
+            this.lblDescricao.AutoSize = true;
+            this.lblDescricao.Location = new System.Drawing.Point(8, 63);
+            this.lblDescricao.Name = "lblDescricao";
+            this.lblDescricao.Size = new System.Drawing.Size(86, 20);
+            this.lblDescricao.TabIndex = 30;
+            this.lblDescricao.Text = "*Descrição";
+            // 
+            // txbAlterarDescricao
+            // 
+            this.txbAlterarDescricao.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txbAlterarDescricao.Location = new System.Drawing.Point(12, 86);
+            this.txbAlterarDescricao.Name = "txbAlterarDescricao";
+            this.txbAlterarDescricao.Size = new System.Drawing.Size(604, 30);
+            this.txbAlterarDescricao.TabIndex = 29;
+            // 
+            // btnCancelarSabor
+            // 
+            this.btnCancelarSabor.Location = new System.Drawing.Point(280, 480);
+            this.btnCancelarSabor.Name = "btnCancelarSabor";
+            this.btnCancelarSabor.Size = new System.Drawing.Size(118, 42);
+            this.btnCancelarSabor.TabIndex = 41;
+            this.btnCancelarSabor.Text = "Cancelar";
+            this.btnCancelarSabor.UseVisualStyleBackColor = true;
+            this.btnCancelarSabor.Click += new System.EventHandler(this.btnCancelarSabor_Click);
+            // 
+            // btnLimparSabor
+            // 
+            this.btnLimparSabor.Location = new System.Drawing.Point(147, 480);
+            this.btnLimparSabor.Name = "btnLimparSabor";
+            this.btnLimparSabor.Size = new System.Drawing.Size(118, 42);
+            this.btnLimparSabor.TabIndex = 40;
+            this.btnLimparSabor.Text = "Limpar";
+            this.btnLimparSabor.UseVisualStyleBackColor = true;
+            this.btnLimparSabor.Click += new System.EventHandler(this.btnLimparSabor_Click);
+            // 
+            // btnAlterarSabor
+            // 
+            this.btnAlterarSabor.Location = new System.Drawing.Point(15, 480);
+            this.btnAlterarSabor.Name = "btnAlterarSabor";
+            this.btnAlterarSabor.Size = new System.Drawing.Size(118, 42);
+            this.btnAlterarSabor.TabIndex = 39;
+            this.btnAlterarSabor.Text = "Alterar";
+            this.btnAlterarSabor.UseVisualStyleBackColor = true;
+            // 
             // FrmAlterarSabores
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.ClientSize = new System.Drawing.Size(632, 534);
+            this.Controls.Add(this.btnCancelarSabor);
+            this.Controls.Add(this.btnLimparSabor);
+            this.Controls.Add(this.btnAlterarSabor);
+            this.Controls.Add(this.lblDescricao);
+            this.Controls.Add(this.txbAlterarDescricao);
             this.Controls.Add(this.panel2);
             this.MaximizeBox = false;
             this.Name = "FrmAlterarSabores";
             this.Text = "FrmAlterarSabores";
+            this.Load += new System.EventHandler(this.FrmAlterarSabores_Load);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -76,5 +135,10 @@
 
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Label lblSabor;
+        private System.Windows.Forms.Label lblDescricao;
+        private System.Windows.Forms.TextBox txbAlterarDescricao;
+        private System.Windows.Forms.Button btnCancelarSabor;
+        private System.Windows.Forms.Button btnLimparSabor;
+        private System.Windows.Forms.Button btnAlterarSabor;
     }
 }
