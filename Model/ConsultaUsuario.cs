@@ -17,12 +17,12 @@ namespace SGPPC.Model
             objConexao = conexao;
         }
 
-        public DataTable LocalizarUsuario(string Nome, string CPF)
+        public DataTable LocalizarUsuario(string Nome, string CPF, string Funcao)
         {
             DataTable dtt = new DataTable();
 
             dtt.Clear();
-            SqlDataAdapter das = new SqlDataAdapter("SELECT * FROM Usuario WHERE Nome LIKE '%" + Nome + "%' OR CPF LIKE '%" + CPF + "%'", objConexao.conectar());
+            SqlDataAdapter das = new SqlDataAdapter("SELECT Id, Nome, Email as 'E-mail', CPF, Funcao as 'Função', Senha, Data_Admissao as 'Data Admissão' FROM Usuario WHERE Nome LIKE '%" + Nome + "%' OR CPF LIKE '%" + CPF + "%' OR Funcao LIKE '%" + Funcao + "%'", objConexao.conectar());
             das.Fill(dtt);
             return dtt;
         }

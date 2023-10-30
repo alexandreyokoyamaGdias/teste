@@ -24,5 +24,17 @@ namespace SGPPC.Modelo
             }
             return mensagem;
         }
+
+        public String AlterarSabor(Int32 id, string descricao)
+        {
+            SaborComands loginDal = new SaborComands();
+            this.mensagem = loginDal.AlterarSabor(id, descricao);
+
+            if (loginDal.tem)
+            {
+                this.tem = true;
+            }
+            return mensagem;
+        }
     }
 }

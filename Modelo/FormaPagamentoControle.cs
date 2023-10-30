@@ -13,10 +13,10 @@ namespace SGPPC.Modelo
 
         public String mensagem = "";
 
-        public String CadastrarPagamento(String nome, String descricao)
+        public String CadastrarPagamento(string nome, string descricao, string status)
         {
             PagamentoComands loginDal = new PagamentoComands();
-            this.mensagem = loginDal.CadastrarPagamento(nome, descricao);
+            this.mensagem = loginDal.CadastrarPagamento(nome, descricao, status);
 
             if (loginDal.tem)
             {

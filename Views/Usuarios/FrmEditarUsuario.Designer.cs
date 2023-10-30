@@ -44,7 +44,8 @@
             this.lblEmail = new System.Windows.Forms.Label();
             this.lblNome = new System.Windows.Forms.Label();
             this.btnCancelar = new System.Windows.Forms.Button();
-            this.btnCadastrar = new System.Windows.Forms.Button();
+            this.btnAlterar = new System.Windows.Forms.Button();
+            this.txbIdUser = new System.Windows.Forms.TextBox();
             this.panelProduto.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -109,15 +110,16 @@
             this.lblDataHoraAdmissao.AutoSize = true;
             this.lblDataHoraAdmissao.Location = new System.Drawing.Point(212, 132);
             this.lblDataHoraAdmissao.Name = "lblDataHoraAdmissao";
-            this.lblDataHoraAdmissao.Size = new System.Drawing.Size(110, 13);
+            this.lblDataHoraAdmissao.Size = new System.Drawing.Size(106, 13);
             this.lblDataHoraAdmissao.TabIndex = 45;
-            this.lblDataHoraAdmissao.Text = "*Data/Hora Admissão";
+            this.lblDataHoraAdmissao.Text = "Data/Hora Admissão";
             // 
             // maskDataHoraAdmissaoEdit
             // 
             this.maskDataHoraAdmissaoEdit.Location = new System.Drawing.Point(215, 148);
             this.maskDataHoraAdmissaoEdit.Mask = "00/00/0000 90:00";
             this.maskDataHoraAdmissaoEdit.Name = "maskDataHoraAdmissaoEdit";
+            this.maskDataHoraAdmissaoEdit.ReadOnly = true;
             this.maskDataHoraAdmissaoEdit.Size = new System.Drawing.Size(193, 20);
             this.maskDataHoraAdmissaoEdit.TabIndex = 44;
             this.maskDataHoraAdmissaoEdit.ValidatingType = typeof(System.DateTime);
@@ -149,9 +151,9 @@
             this.lblProduto.ForeColor = System.Drawing.Color.White;
             this.lblProduto.Location = new System.Drawing.Point(3, 5);
             this.lblProduto.Name = "lblProduto";
-            this.lblProduto.Size = new System.Drawing.Size(163, 21);
+            this.lblProduto.Size = new System.Drawing.Size(69, 21);
             this.lblProduto.TabIndex = 1;
-            this.lblProduto.Text = "Cadastro de Usuário";
+            this.lblProduto.Text = "Usuário";
             this.lblProduto.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // txbNomeEdit
@@ -202,20 +204,31 @@
             this.btnCancelar.UseVisualStyleBackColor = false;
             this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
             // 
-            // btnCadastrar
+            // btnAlterar
             // 
-            this.btnCadastrar.Location = new System.Drawing.Point(7, 317);
-            this.btnCadastrar.Name = "btnCadastrar";
-            this.btnCadastrar.Size = new System.Drawing.Size(79, 27);
-            this.btnCadastrar.TabIndex = 36;
-            this.btnCadastrar.Text = "Cadastrar";
-            this.btnCadastrar.UseVisualStyleBackColor = false;
+            this.btnAlterar.Location = new System.Drawing.Point(7, 317);
+            this.btnAlterar.Name = "btnAlterar";
+            this.btnAlterar.Size = new System.Drawing.Size(79, 27);
+            this.btnAlterar.TabIndex = 36;
+            this.btnAlterar.Text = "Alterar";
+            this.btnAlterar.UseVisualStyleBackColor = false;
+            this.btnAlterar.Click += new System.EventHandler(this.btnAlterar_Click);
+            // 
+            // txbIdUser
+            // 
+            this.txbIdUser.Location = new System.Drawing.Point(366, 324);
+            this.txbIdUser.Name = "txbIdUser";
+            this.txbIdUser.ReadOnly = true;
+            this.txbIdUser.Size = new System.Drawing.Size(43, 20);
+            this.txbIdUser.TabIndex = 52;
+            this.txbIdUser.Visible = false;
             // 
             // FrmEditarUsuario
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(421, 347);
+            this.Controls.Add(this.txbIdUser);
             this.Controls.Add(this.txbEmailEdit);
             this.Controls.Add(this.btnLimpar);
             this.Controls.Add(this.lblSenha);
@@ -231,12 +244,13 @@
             this.Controls.Add(this.lblEmail);
             this.Controls.Add(this.lblNome);
             this.Controls.Add(this.btnCancelar);
-            this.Controls.Add(this.btnCadastrar);
+            this.Controls.Add(this.btnAlterar);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.Name = "FrmEditarUsuario";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FrmEditarUsuario";
+            this.Load += new System.EventHandler(this.FrmEditarUsuario_Load);
             this.panelProduto.ResumeLayout(false);
             this.panelProduto.PerformLayout();
             this.ResumeLayout(false);
@@ -262,6 +276,7 @@
         private System.Windows.Forms.Label lblEmail;
         private System.Windows.Forms.Label lblNome;
         private System.Windows.Forms.Button btnCancelar;
-        private System.Windows.Forms.Button btnCadastrar;
+        private System.Windows.Forms.Button btnAlterar;
+        private System.Windows.Forms.TextBox txbIdUser;
     }
 }

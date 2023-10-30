@@ -42,15 +42,16 @@ namespace SGPPC.Views.Fornecedor
             if (e.RowIndex >= 0 && e.ColumnIndex >= 0)
             {
                 DataGridViewRow row = dgFornecedor.Rows[e.RowIndex];
-
-                string nome = row.Cells["Nome"].Value.ToString();
+               
                 string cnpj = row.Cells["CNPJ"].Value.ToString();
+                string nome = row.Cells["Nome"].Value.ToString();
                 string pais = row.Cells["Pais"].Value.ToString();
                 string cidade = row.Cells["Cidade"].Value.ToString();
                 string estado = row.Cells["Estado"].Value.ToString();
+                string status = row.Cells["Status"].Value.ToString();
                 string id = row.Cells["Id"].Value.ToString();
 
-                FrmAlterarFornecedor telaEdicao = new FrmAlterarFornecedor(cnpj, nome, pais, cidade, estado, id);
+                FrmAlterarFornecedor telaEdicao = new FrmAlterarFornecedor(cnpj, nome, pais, cidade, estado, status, id);
                 telaEdicao.ShowDialog();
             }
         }
@@ -94,16 +95,6 @@ namespace SGPPC.Views.Fornecedor
             {
                 bindingSource.Filter = string.Format("{0} LIKE '%{1}%'", filterColumn, filterValue);
             }
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-           
-        }
-
-        private void comboBoxPesquisarFornecedor_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
         }
     }
 }

@@ -130,7 +130,8 @@
             this.comboBoxPesquisarPagamento.FormattingEnabled = true;
             this.comboBoxPesquisarPagamento.Items.AddRange(new object[] {
             "Nome",
-            "Descricao"});
+            "Descricao",
+            "Status"});
             this.comboBoxPesquisarPagamento.Location = new System.Drawing.Point(500, 57);
             this.comboBoxPesquisarPagamento.Margin = new System.Windows.Forms.Padding(2);
             this.comboBoxPesquisarPagamento.Name = "comboBoxPesquisarPagamento";

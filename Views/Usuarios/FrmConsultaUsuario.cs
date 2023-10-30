@@ -39,7 +39,7 @@ namespace SGPPC.Views.Usuarios
 
             string pesquisa = txbPesquisaUsuario.Text;
 
-            bindingSource.DataSource = consulta.LocalizarUsuario(pesquisa, pesquisa);
+            bindingSource.DataSource = consulta.LocalizarUsuario(pesquisa, pesquisa, pesquisa);
 
             dtgViewUsuarios.DataSource = bindingSource;
         }
@@ -72,13 +72,14 @@ namespace SGPPC.Views.Usuarios
             {
                 DataGridViewRow selectedRow = dtgViewUsuarios.Rows[e.RowIndex];
                 string nome = selectedRow.Cells["Nome"].Value.ToString();
-                string email = selectedRow.Cells["Email"].Value.ToString();
+                string email = selectedRow.Cells["E-mail"].Value.ToString();
                 string cpf = selectedRow.Cells["CPF"].Value.ToString();
-                string funcao = selectedRow.Cells["Funcao"].Value.ToString();
+                string funcao = selectedRow.Cells["Função"].Value.ToString();
                 string senha = selectedRow.Cells["Senha"].Value.ToString();
-                string dataAd = selectedRow.Cells["Data_Admissao"].Value.ToString();
+                string dataAd = selectedRow.Cells["Data Admissão"].Value.ToString();
+                string id = selectedRow.Cells["Id"].Value.ToString();
 
-                FrmEditarUsuario frmEditarUsuario = new FrmEditarUsuario(nome, email, cpf, funcao, senha, dataAd);
+                FrmEditarUsuario frmEditarUsuario = new FrmEditarUsuario(nome, email, cpf, funcao, senha, dataAd, id);
                 frmEditarUsuario.ShowDialog();
             }
         }

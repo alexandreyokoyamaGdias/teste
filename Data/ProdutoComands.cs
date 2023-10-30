@@ -24,19 +24,21 @@ namespace SGPPC.Data
             return new string(input.Where(char.IsDigit).ToArray());
         }
 
-        public String CadastrarProd(String nome, String descricao, String valor, String data)
+        public String CadastrarProd(string nome, string descricao, string valor, string data, string idFornecedor, string idSabor)
         {
             tem = false;
 
-            // Remove caracteres não numéricos da Data
             data = RemoverCaracteresNaoNumericos(data);
 
-            cmd.CommandText = "INSERT INTO Produto (Nome_Produto, Descricao, Valor, Data_Validade) VALUES (@Nome, @Descricao, @Valor, @Data);";
-
+            cmd.CommandText = "INSERT INTO Produto (Nome_Produto, Descricao, Valor, Data_Validade, Id_Fornecedor, Id_Sabor) " +
+                              "VALUES (@Nome, @Descricao, @Valor, @Data, @IdFornecedor, @IdSabor);";
+            
             cmd.Parameters.AddWithValue("@Nome", nome);
             cmd.Parameters.AddWithValue("@Descricao", descricao);
             cmd.Parameters.AddWithValue("@Valor", valor);
             cmd.Parameters.AddWithValue("@Data", data);
+            cmd.Parameters.AddWithValue("@IdFornecedor", idFornecedor);
+            cmd.Parameters.AddWithValue("@IdSabor", idSabor);
 
             try
             {

@@ -33,6 +33,33 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="BCrypt.Net, Version=0.1.4141.31969, Culture=neutral, PublicKeyToken=f3bc8f8c31beeb49, processorArchitecture=MSIL">
+      <HintPath>packages\BCrypt.Net.0.1.0\lib\net35\BCrypt.Net.dll</HintPath>
+    </Reference>
+    <Reference Include="BouncyCastle.Crypto, Version=1.8.9.0, Culture=neutral, PublicKeyToken=0e99375e54769942">
+      <HintPath>packages\BouncyCastle.1.8.9\lib\BouncyCastle.Crypto.dll</HintPath>
+    </Reference>
+    <Reference Include="itextsharp, Version=5.5.13.3, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
+      <HintPath>packages\iTextSharp.5.5.13.3\lib\itextsharp.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.Common, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.140.1000.523\lib\net40\Microsoft.ReportViewer.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.DataVisualization, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.140.1000.523\lib\net40\Microsoft.ReportViewer.DataVisualization.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.Design, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.140.1000.523\lib\net40\Microsoft.ReportViewer.Design.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.ProcessingObjectModel, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.140.1000.523\lib\net40\Microsoft.ReportViewer.ProcessingObjectModel.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.WinForms, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.140.1000.523\lib\net40\Microsoft.ReportViewer.WinForms.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.SqlServer.Types, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.SqlServer.Types.14.0.314.76\lib\net40\Microsoft.SqlServer.Types.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data.SqlClient, Version=4.6.1.5, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
@@ -51,9 +78,17 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Class\LimparFormulario.cs" />
+    <Compile Include="DataEstoque.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DataEstoque.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Data\CaixaComands.cs" />
+    <Compile Include="Data\EntradaProdutoComands.cs" />
     <Compile Include="Data\FornecedorAlterarComands.cs" />
     <Compile Include="Data\FornecedorComands.cs" />
+    <Compile Include="Data\InserirLogsComands.cs" />
+    <Compile Include="Data\PagamentoAlterarComands.cs" />
     <Compile Include="Data\PagamentoComands.cs" />
     <Compile Include="Data\ProdutoAlterarComands.cs" />
     <Compile Include="Data\ProdutoComands.cs" />
@@ -61,9 +96,11 @@
     <Compile Include="Data\UsuarioEditarComands.cs" />
     <Compile Include="Modelo\CaixaControle.cs" />
     <Compile Include="Modelo\Controle.cs" />
+    <Compile Include="Modelo\EntadaProdutoControle.cs" />
     <Compile Include="Modelo\FormaPagamentoControle.cs" />
     <Compile Include="Modelo\FornecedorControle.cs" />
     <Compile Include="Modelo\FornecedorEditarControle.cs" />
+    <Compile Include="Modelo\PagamentoAlterarControle.cs" />
     <Compile Include="Modelo\ProdutoAlterarControle.cs" />
     <Compile Include="Modelo\ProdutoControle.cs" />
     <Compile Include="Modelo\SaborControlee.cs" />
@@ -74,10 +111,12 @@
     <Compile Include="Model\CadastroFornecedor.cs" />
     <Compile Include="Model\ConsulltarSabor.cs" />
     <Compile Include="Model\ConsultaControleCaixa.cs" />
+    <Compile Include="Model\ConsultaEntradaProduto.cs" />
     <Compile Include="Model\ConsultaFornecedor.cs" />
     <Compile Include="Model\ConsultaProduto.cs" />
     <Compile Include="Model\ConsultarPagamento.cs" />
     <Compile Include="Model\ConsultaUsuario.cs" />
+    <Compile Include="Model\FlucoCaixaClass.cs" />
     <Compile Include="Model\ProjetaLogs.cs" />
     <Compile Include="Model\ValidaController.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
@@ -101,6 +140,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>SGPPCDataSet2.xsd</DependentUpon>
     </Compile>
+    <Compile Include="SqlServerTypes\Loader.cs" />
     <Compile Include="Views\Cadastros\FrmCadastroFuncionario.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -124,6 +164,24 @@
     </Compile>
     <Compile Include="Views\ControleCaixa\FrmEditarControleCaixa.Designer.cs">
       <DependentUpon>FrmEditarControleCaixa.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\EntradaProduto\FrmCadastrarEntradaProduto.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\EntradaProduto\FrmCadastrarEntradaProduto.Designer.cs">
+      <DependentUpon>FrmCadastrarEntradaProduto.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\EntradaProduto\FrmConsultaEntradaProduto.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\EntradaProduto\FrmConsultaEntradaProduto.Designer.cs">
+      <DependentUpon>FrmConsultaEntradaProduto.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\EntradaProduto\FrmEditarEntradaProduto.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\EntradaProduto\FrmEditarEntradaProduto.Designer.cs">
+      <DependentUpon>FrmEditarEntradaProduto.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\Fornecedor\FrmAlterarFornecedor.cs">
       <SubType>Form</SubType>
@@ -211,11 +269,47 @@
     <Compile Include="Views\Cadastros\FrmCadastroPedido.Designer.cs">
       <DependentUpon>FrmCadastroPedido.cs</DependentUpon>
     </Compile>
-    <Compile Include="Views\Relatorios\FrmGerarRelatorio.cs">
+    <Compile Include="Views\Relatorios\Form1.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Views\Relatorios\FrmGerarRelatorio.Designer.cs">
-      <DependentUpon>FrmGerarRelatorio.cs</DependentUpon>
+    <Compile Include="Views\Relatorios\Form1.Designer.cs">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Relatorios\FrmEstoque.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Relatorios\FrmEstoque.Designer.cs">
+      <DependentUpon>FrmEstoque.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Relatorios\FrmFluxoCaixa.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Relatorios\FrmFluxoCaixa.Designer.cs">
+      <DependentUpon>FrmFluxoCaixa.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Relatorios\FrmRelatorioEstoque.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Relatorios\FrmRelatorioEstoque.Designer.cs">
+      <DependentUpon>FrmRelatorioEstoque.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Relatorios\FrmRelatorioFluxoCaixa.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Relatorios\FrmRelatorioFluxoCaixa.Designer.cs">
+      <DependentUpon>FrmRelatorioFluxoCaixa.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Relatorios\FrmRelatorioVendas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Relatorios\FrmRelatorioVendas.Designer.cs">
+      <DependentUpon>FrmRelatorioVendas.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Relatorios\FrmVendas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Relatorios\FrmVendas.Designer.cs">
+      <DependentUpon>FrmVendas.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\Sabores\FrmAlterarSabores.cs">
       <SubType>Form</SubType>
@@ -271,6 +365,15 @@
     <EmbeddedResource Include="Views\ControleCaixa\FrmEditarControleCaixa.resx">
       <DependentUpon>FrmEditarControleCaixa.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Views\EntradaProduto\FrmCadastrarEntradaProduto.resx">
+      <DependentUpon>FrmCadastrarEntradaProduto.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\EntradaProduto\FrmConsultaEntradaProduto.resx">
+      <DependentUpon>FrmConsultaEntradaProduto.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\EntradaProduto\FrmEditarEntradaProduto.resx">
+      <DependentUpon>FrmEditarEntradaProduto.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Views\Fornecedor\FrmAlterarFornecedor.resx">
       <DependentUpon>FrmAlterarFornecedor.cs</DependentUpon>
     </EmbeddedResource>
@@ -318,9 +421,24 @@
     <EmbeddedResource Include="Views\Cadastros\FrmCadastroPedido.resx">
       <DependentUpon>FrmCadastroPedido.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\Relatorios\FrmGerarRelatorio.resx">
-      <DependentUpon>FrmGerarRelatorio.cs</DependentUpon>
+    <EmbeddedResource Include="Views\Relatorios\Form1.resx">
+      <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Views\Relatorios\FrmFluxoCaixa.resx">
+      <DependentUpon>FrmFluxoCaixa.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Relatorios\FrmRelatorioEstoque.resx">
+      <DependentUpon>FrmRelatorioEstoque.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Relatorios\FrmRelatorioFluxoCaixa.resx">
+      <DependentUpon>FrmRelatorioFluxoCaixa.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Relatorios\FrmRelatorioVendas.resx">
+      <DependentUpon>FrmRelatorioVendas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Relatorios\Modelos\RelatorioEstoque.rdlc" />
+    <EmbeddedResource Include="Views\Relatorios\Modelos\RelatorioFluxoCaixa.rdlc" />
+    <EmbeddedResource Include="Views\Relatorios\Modelos\RelatorioVendas.rdlc" />
     <EmbeddedResource Include="Views\Sabores\FrmAlterarSabores.resx">
       <DependentUpon>FrmAlterarSabores.cs</DependentUpon>
     </EmbeddedResource>
@@ -342,12 +460,24 @@
     <EmbeddedResource Include="Views\Usuarios\FrmLogin.resx">
       <DependentUpon>FrmLogin.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="DataEstoque.xsc">
+      <DependentUpon>DataEstoque.xsd</DependentUpon>
+    </None>
+    <None Include="DataEstoque.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DataEstoque.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="DataEstoque.xss">
+      <DependentUpon>DataEstoque.xsd</DependentUpon>
+    </None>
     <None Include="packages.config" />
     <None Include="Properties\DataSources\Conexao.datasource" />
     <None Include="Properties\DataSources\FrmPrincipal.datasource" />
     <None Include="Properties\DataSources\Program.datasource" />
     <None Include="Properties\DataSources\SGPPC.Model.CadastroFornecedor.datasource" />
     <None Include="Properties\DataSources\SGPPC.Model.CadastroProduto.datasource" />
+    <None Include="Properties\DataSources\SGPPC.Model.FlucoCaixaClass.datasource" />
     <None Include="Properties\DataSources\SGPPC.Properties.Resources.datasource" />
     <None Include="Properties\DataSources\SGPPC.Properties.Settings.datasource" />
     <None Include="Properties\DataSources\SGPPC.Views.Cadastros.FrmCadastroFuncionario.datasource" />
@@ -445,6 +575,20 @@
   <ItemGroup>
     <None Include="Resources\iconCancelar.png" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Content Include="SqlServerTypes\readme.htm" />
+    <Content Include="SqlServerTypes\x64\msvcr120.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SqlServerTypes\x64\SqlServerSpatial140.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SqlServerTypes\x86\msvcr120.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SqlServerTypes\x86\SqlServerSpatial140.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

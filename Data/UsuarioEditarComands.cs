@@ -25,20 +25,20 @@ namespace SGPPC.Data
             return new string(input.Where(char.IsDigit).ToArray());
         }
 
-        public String EditarUsuario(string nome, string email, string funcao, string cpf, string senha, string dataAd)
+        public String EditarUsuario(string nome, string email, string cpf, string funcao, string senha, Int32 id)
         {
             tem = false;
 
             cpf = RemoverCaracteresNaoNumericos(cpf);
 
-            cmd.CommandText = "UPDATE Usuario SET Nome = @Nome, Email = @Email, Funcao = @Funcao, CPF = @CPF, Senha = @Senha, Data_Admissao = @Data_Admissao";
+            cmd.CommandText = "UPDATE Usuario SET Nome = @Nome, Email = @Email, CPF = @CPF, Funcao = @Funcao, Senha = @Senha WHERE Id = @Id";
 
             cmd.Parameters.AddWithValue("@Nome", nome);
             cmd.Parameters.AddWithValue("@Email", email);
-            cmd.Parameters.AddWithValue("@Funcao", funcao);
             cmd.Parameters.AddWithValue("@CPF", cpf);
+            cmd.Parameters.AddWithValue("@Funcao", funcao);
             cmd.Parameters.AddWithValue("@Senha", senha);
-            cmd.Parameters.AddWithValue("@Data_Admissao", dataAd);
+            cmd.Parameters.AddWithValue("@Id", id);
 
             try
             {

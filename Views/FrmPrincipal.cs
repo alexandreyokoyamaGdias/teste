@@ -19,7 +19,7 @@ namespace SGPPC
         }
         private void MenuSair_Click(object sender, EventArgs e)
         {
-            this.Close();
+            Close();
         }
 
         private void CadastroPedidos_Click(object sender, EventArgs e)
@@ -119,6 +119,53 @@ namespace SGPPC
         {
             Views.ControleCaixa.FrmConsultaControleCaixa frmConsultaControleCaixa = new Views.ControleCaixa.FrmConsultaControleCaixa();
             frmConsultaControleCaixa.ShowDialog();
+        }
+
+        private void testeToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Views.Relatorios.Form1 form1 = new Views.Relatorios.Form1();
+            form1.ShowDialog();
+        }
+
+        private void RelatórioFluxoDeCaixa_Click(object sender, EventArgs e)
+        {
+            Views.Relatorios.FrmRelatorioFluxoCaixa frmRelatorioFluxoCaixa = new Views.Relatorios.FrmRelatorioFluxoCaixa();
+            frmRelatorioFluxoCaixa.ShowDialog();
+        }
+
+        private void RelatórioVenda_Click(object sender, EventArgs e)
+        {
+            Views.Relatorios.FrmRelatorioVendas frmRelatorioVendas = new Views.Relatorios.FrmRelatorioVendas();
+            frmRelatorioVendas.ShowDialog();
+        }
+
+        private void RelatórioEstoque_Click(object sender, EventArgs e)
+        {
+            Views.Relatorios.FrmRelatorioEstoque frmRelatorioEstoque = new Views.Relatorios.FrmRelatorioEstoque();
+            frmRelatorioEstoque.ShowDialog();
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            Views.Usuarios.FrmCadastro frmCadastro = new Views.Usuarios.FrmCadastro();
+            frmCadastro.ShowDialog();
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            Views.Pedidos.FrmPedido frmPedido = new Views.Pedidos.FrmPedido();
+            frmPedido.ShowDialog();
+        }
+
+        private void entradaDeProdutoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Views.EntradaProduto.FrmConsultaEntradaProduto frmConsultaEntradaProduto = new Views.EntradaProduto.FrmConsultaEntradaProduto();
+            frmConsultaEntradaProduto.ShowDialog();
         }
     }
 }

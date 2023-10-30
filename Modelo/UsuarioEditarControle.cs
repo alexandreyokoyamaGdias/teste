@@ -14,10 +14,10 @@ namespace SGPPC.Modelo
 
         public String mensagem = "";
 
-        public String EditarUsuario(String nome, String email, String funcao, String cpf, String senha, String dataAd)
+        public String EditarUsuario(string nome, string email, string cpf, string funcao, string senha, Int32 id)
         {
             UsuarioEditarComands loginDal = new UsuarioEditarComands();
-            this.mensagem = loginDal.EditarUsuario(nome, email, funcao, cpf, senha, dataAd);
+            this.mensagem = loginDal.EditarUsuario(nome, email, cpf, funcao, senha, id);
 
             if (loginDal.tem)
             {

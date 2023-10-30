@@ -42,20 +42,20 @@
             // ptbLogin
             // 
             this.ptbLogin.Image = ((System.Drawing.Image)(resources.GetObject("ptbLogin.Image")));
-            this.ptbLogin.Location = new System.Drawing.Point(214, 18);
+            this.ptbLogin.Location = new System.Drawing.Point(52, 101);
             this.ptbLogin.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.ptbLogin.Name = "ptbLogin";
-            this.ptbLogin.Size = new System.Drawing.Size(176, 174);
+            this.ptbLogin.Size = new System.Drawing.Size(119, 126);
             this.ptbLogin.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.ptbLogin.TabIndex = 0;
             this.ptbLogin.TabStop = false;
             // 
             // btnEntrar
             // 
-            this.btnEntrar.Location = new System.Drawing.Point(135, 629);
+            this.btnEntrar.Location = new System.Drawing.Point(131, 287);
             this.btnEntrar.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnEntrar.Name = "btnEntrar";
-            this.btnEntrar.Size = new System.Drawing.Size(159, 60);
+            this.btnEntrar.Size = new System.Drawing.Size(156, 55);
             this.btnEntrar.TabIndex = 1;
             this.btnEntrar.Text = "Entrar";
             this.btnEntrar.UseVisualStyleBackColor = false;
@@ -63,10 +63,10 @@
             // 
             // btnCancelar
             // 
-            this.btnCancelar.Location = new System.Drawing.Point(311, 629);
+            this.btnCancelar.Location = new System.Drawing.Point(307, 287);
             this.btnCancelar.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnCancelar.Name = "btnCancelar";
-            this.btnCancelar.Size = new System.Drawing.Size(159, 60);
+            this.btnCancelar.Size = new System.Drawing.Size(156, 55);
             this.btnCancelar.TabIndex = 3;
             this.btnCancelar.Text = "Cancelar";
             this.btnCancelar.UseVisualStyleBackColor = false;
@@ -74,7 +74,7 @@
             // 
             // txbLogin
             // 
-            this.txbLogin.Location = new System.Drawing.Point(144, 297);
+            this.txbLogin.Location = new System.Drawing.Point(245, 101);
             this.txbLogin.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txbLogin.Multiline = true;
             this.txbLogin.Name = "txbLogin";
@@ -83,7 +83,7 @@
             // 
             // txbSenha
             // 
-            this.txbSenha.Location = new System.Drawing.Point(144, 385);
+            this.txbSenha.Location = new System.Drawing.Point(245, 189);
             this.txbSenha.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txbSenha.Multiline = true;
             this.txbSenha.Name = "txbSenha";
@@ -95,7 +95,7 @@
             // 
             this.lblLogin.AutoSize = true;
             this.lblLogin.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblLogin.Location = new System.Drawing.Point(140, 269);
+            this.lblLogin.Location = new System.Drawing.Point(241, 73);
             this.lblLogin.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblLogin.Name = "lblLogin";
             this.lblLogin.Size = new System.Drawing.Size(54, 24);
@@ -106,7 +106,7 @@
             // 
             this.lblSenha.AutoSize = true;
             this.lblSenha.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblSenha.Location = new System.Drawing.Point(140, 357);
+            this.lblSenha.Location = new System.Drawing.Point(241, 161);
             this.lblSenha.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblSenha.Name = "lblSenha";
             this.lblSenha.Size = new System.Drawing.Size(61, 24);
@@ -118,7 +118,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.ClientSize = new System.Drawing.Size(618, 708);
+            this.ClientSize = new System.Drawing.Size(618, 363);
             this.Controls.Add(this.lblSenha);
             this.Controls.Add(this.lblLogin);
             this.Controls.Add(this.txbSenha);

@@ -75,7 +75,8 @@
             this.comboBoxPesquisaUsuario.FormattingEnabled = true;
             this.comboBoxPesquisaUsuario.Items.AddRange(new object[] {
             "Nome",
-            "CPF"});
+            "CPF",
+            "Funcao"});
             this.comboBoxPesquisaUsuario.Location = new System.Drawing.Point(499, 58);
             this.comboBoxPesquisaUsuario.Margin = new System.Windows.Forms.Padding(2);
             this.comboBoxPesquisaUsuario.Name = "comboBoxPesquisaUsuario";

@@ -13,7 +13,7 @@ namespace SGPPC.Modelo
 
         public String mensagem = "";
 
-        public String AlterarForn(Int32 id, string cnpj, string nome, string pais, string cidade, string estado, string status, string v)
+        public String AlterarForn(Int32 id, string cnpj, string nome, string pais, string cidade, string estado, string status)
         {
             FornecedorAlterarComands loginDal = new FornecedorAlterarComands();
             this.mensagem = loginDal.AlterarForn(id, cnpj, nome, pais, cidade, estado, status);

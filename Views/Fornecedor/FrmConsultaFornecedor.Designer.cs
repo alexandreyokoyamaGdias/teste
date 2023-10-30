@@ -168,7 +168,6 @@
             this.comboBoxPesquisarFornecedor.Name = "comboBoxPesquisarFornecedor";
             this.comboBoxPesquisarFornecedor.Size = new System.Drawing.Size(232, 26);
             this.comboBoxPesquisarFornecedor.TabIndex = 13;
-            this.comboBoxPesquisarFornecedor.SelectedIndexChanged += new System.EventHandler(this.comboBoxPesquisarFornecedor_SelectedIndexChanged);
             // 
             // lblPesquisar
             // 

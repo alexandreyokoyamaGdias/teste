@@ -1,5 +1,6 @@
 ﻿using SGPPC.Class;
 using SGPPC.Controllerss;
+using SGPPC.Data;
 using SGPPC.Modelo;
 using System;
 using System.Collections.Generic;
@@ -33,7 +34,9 @@ namespace SGPPC.Views.ControleCaixa
 
         private void FrmControleCaixa_Load(object sender, EventArgs e)
         {
+            DateTime dataHoraAtual = DateTime.Now;
 
+            maskDataHoras.Text = dataHoraAtual.ToString("dd/MM/yyyy HH:mm");
         }
 
         private void btnCadastrar_Click(object sender, EventArgs e)
@@ -73,8 +76,15 @@ namespace SGPPC.Views.ControleCaixa
 
                 if (controle.tem)
                 {
+                    string tabelaAfetada = "Controle de Caixa";
+                    DateTime dataHora = DateTime.Now;
+                    string acao = "btnCadastrar_Click";
+                    string descricao = "Cadastro de Controle de Caixa bem-sucedido";
+
+                    InserirLogsComands inserirLogs = new InserirLogsComands(tabelaAfetada, dataHora, acao, descricao);
+
                     MessageBox.Show(mensagem, "Cadastro", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    LimparFormulario.LimparForm(this);
+                    Close();
                 }
                 else
                 {

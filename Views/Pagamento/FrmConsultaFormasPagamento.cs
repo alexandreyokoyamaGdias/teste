@@ -41,9 +41,11 @@ namespace SGPPC.Views.Pagamento
                 DataGridViewRow selectedRow = dgPagamento.Rows[e.RowIndex];
                 string nome = selectedRow.Cells["Nome"].Value.ToString();
                 string descricao = selectedRow.Cells["Descricao"].Value.ToString();
+                string status = selectedRow.Cells["Status"].Value.ToString();
+                string id = selectedRow.Cells["Id"].Value.ToString();
 
                 // Passe esses valores para a tela de edição
-                FrmAlterarFormasPagamento telaEdicaoPagamento = new FrmAlterarFormasPagamento(nome, descricao);
+                FrmAlterarFormasPagamento telaEdicaoPagamento = new FrmAlterarFormasPagamento(nome, descricao, status, id);
                 telaEdicaoPagamento.ShowDialog();
             }
         }

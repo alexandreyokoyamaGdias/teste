@@ -59,5 +59,30 @@ namespace SGPPC.Data
 
             return mensagem;
         }
+
+        public String AlterarSabor(Int32 id, string descricao)
+        {
+            tem = false;
+
+            cmd.CommandText = "UPDATE Sabor SET Descricao = @Descricao WHERE Id = @Id";
+
+            cmd.Parameters.AddWithValue("@Id", id);
+            cmd.Parameters.AddWithValue("@Descricao", descricao);
+
+            try
+            {
+                cmd.Connection = con.conectar();
+                cmd.ExecuteNonQuery();
+                con.desconectar();
+                this.mensagem = "Atualizado com sucesso!";
+                tem = true;
+            }
+            catch (SqlException ex)
+            {
+                this.mensagem = "Erro com Banco de Dados!" + ex.Message;
+            }
+
+            return mensagem;
+        }
     }
 }

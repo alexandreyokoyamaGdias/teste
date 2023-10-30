@@ -25,30 +25,42 @@ namespace SGPPC.Repository
             return new string(input.Where(char.IsDigit).ToArray());
         }
 
-        public bool VerificarLogin(String login, String senha)
+        public bool VerificarLogin(string login, string senha)
         {
-            cmd.CommandText = "select * from Usuario where Email = @login and Senha = @senha";
-            cmd.Parameters.AddWithValue("@login", login);
-            cmd.Parameters.AddWithValue("@senha", senha);
-
-            try
+            using (SqlConnection connection = new SqlConnection("Data Source=ACF014\\SQLEXPRESS;Initial Catalog=SGPPC;Integrated Security=True"))
             {
-                cmd.Connection = con.conectar();
-                dr = cmd.ExecuteReader();
-
-                if (dr.HasRows)
+                using (SqlCommand cmd = new SqlCommand("SELECT Senha FROM Usuario WHERE Email = @login", connection))
                 {
-                    tem = true;
-                }
-                con.desconectar();
-                dr.Close();
-            }
-            catch (SqlException)
-            {
+                    cmd.Parameters.AddWithValue("@login", login);
 
-                this.mensagem = "Erro com o Banco de Dados!";
+                    try
+                    {
+                        connection.Open();
+                        using (SqlDataReader dr = cmd.ExecuteReader())
+                        {
+                            if (dr.HasRows)
+                            {
+                                string senhaArmazenada = "";
+
+                                while (dr.Read())
+                                {
+                                    senhaArmazenada = dr["Senha"].ToString();
+                                }
+
+                                if (BCrypt.Net.BCrypt.Verify(senha, senhaArmazenada))
+                                {
+                                    return true;
+                                }
+                            }
+                        }
+                    }
+                    catch (SqlException ex)
+                    {
+                        this.mensagem = "Erro com o Banco de Dados: " + ex.Message;
+                    }
+                }
             }
-            return tem;
+            return false;
         }
 
         public String Cadastrar(String nome, String email, String funcao, String cpf, String senha, String dataAd)
@@ -57,29 +69,69 @@ namespace SGPPC.Repository
 
             cpf = RemoverCaracteresNaoNumericos(cpf);
 
-            cmd.CommandText = "INSERT INTO Usuario (Nome, Email, Funcao, CPF, Senha, Data_Admissao) VALUES (@Nome, @Email, @Funcao, @CPF, @Senha, @Data_Admissao);";
-
-            cmd.Parameters.AddWithValue("@Nome", nome);
-            cmd.Parameters.AddWithValue("@Email", email);
-            cmd.Parameters.AddWithValue("@Funcao", funcao);
-            cmd.Parameters.AddWithValue("@CPF", cpf);
-            cmd.Parameters.AddWithValue("@Senha", senha);
-            cmd.Parameters.AddWithValue("@Data_Admissao", dataAd);
-
-            try
+            if (CPFJaExiste(cpf))
             {
-                cmd.Connection = con.conectar();
-                cmd.ExecuteNonQuery();
-                con.desconectar();
-                this.mensagem = "Cadastrado com sucesso!";
-                tem = true;
+                this.mensagem = "CPF já cadastrado. Não é possível cadastrar novamente.";
             }
-            catch (SqlException ex)
+            else if (EMAILJaExiste(email))
             {
-                this.mensagem = "Erro com Banco de Dados!" + ex.Message;
+                this.mensagem = "EMAIL já cadastrado. Não é possível cadastrar novamente.";
             }
+            else
+            {
+                cmd.CommandText = "INSERT INTO Usuario (Nome, Email, Funcao, CPF, Senha, Data_Admissao) VALUES (@Nome, @Email, @Funcao, @CPF, @Senha, @Data_Admissao);";
 
+                cmd.Parameters.AddWithValue("@Nome", nome);
+                cmd.Parameters.AddWithValue("@Email", email);
+                cmd.Parameters.AddWithValue("@Funcao", funcao);
+                cmd.Parameters.AddWithValue("@CPF", cpf);
+                cmd.Parameters.AddWithValue("@Senha", senha);
+                cmd.Parameters.AddWithValue("@Data_Admissao", dataAd);
+
+                try
+                {
+                    cmd.Connection = con.conectar();
+                    cmd.ExecuteNonQuery();
+                    con.desconectar();
+                    this.mensagem = "Cadastrado com sucesso!";
+                    tem = true;
+                }
+                catch (SqlException ex)
+                {
+                    this.mensagem = "Erro com Banco de Dados!" + ex.Message;
+                }
+            }
             return mensagem;
+        }
+
+        private bool CPFJaExiste(string cnpj)
+        {
+            using (SqlConnection connection = new SqlConnection("Data Source=ACF014\\SQLEXPRESS;Initial Catalog=SGPPC;Integrated Security=True"))
+            {
+                connection.Open();
+                string consulta = "SELECT COUNT(*) FROM Usuario WHERE CPF = @CPF";
+                using (SqlCommand command = new SqlCommand(consulta, connection))
+                {
+                    command.Parameters.AddWithValue("@CPF", cnpj);
+                    int count = (int)command.ExecuteScalar();
+                    return count > 0;
+                }
+            }
+        }
+
+        private bool EMAILJaExiste(string email)
+        {
+            using (SqlConnection connection = new SqlConnection("Data Source=ACF014\\SQLEXPRESS;Initial Catalog=SGPPC;Integrated Security=True"))
+            {
+                connection.Open();
+                string consulta = "SELECT COUNT(*) FROM Usuario WHERE Email = @Email";
+                using (SqlCommand command = new SqlCommand(consulta, connection))
+                {
+                    command.Parameters.AddWithValue("@Email", email);
+                    int count = (int)command.ExecuteScalar();
+                    return count > 0;
+                }
+            }
         }
     }
 }

@@ -19,19 +19,26 @@ namespace SGPPC.Data
 
         SqlDataReader dr;
 
+        private string RemoverCaracteresNaoNumericos(string input)
+        {
+            return new string(input.Where(char.IsDigit).ToArray());
+        }
+
         public String AlterarForn(Int32 id, string cnpj, string nome, string pais, string cidade, string estado, string status)
         {
             tem = false;
 
-            cmd.CommandText = "UPDATE Fornecedor SET Nome = @Nome, CNPJ = @CNPJ, Pais = @Pais, Cidade = @Cidade, Estado = @Estado, Status = @Status WHERE Id = @Id";
+            cnpj = RemoverCaracteresNaoNumericos(cnpj);
 
-            cmd.Parameters.AddWithValue("@Id", id);
+            cmd.CommandText = "UPDATE Fornecedor SET CNPJ = @CNPJ, Nome = @Nome, Pais = @Pais, Cidade = @Cidade, Estado = @Estado, Status = @Status WHERE Id = @Id";
+
+            cmd.Parameters.AddWithValue("@Id", id);          
             cmd.Parameters.AddWithValue("@CNPJ", cnpj);
             cmd.Parameters.AddWithValue("@Nome", nome);
             cmd.Parameters.AddWithValue("@Pais", pais);
             cmd.Parameters.AddWithValue("@Cidade", cidade);
-            cmd.Parameters.AddWithValue("@Cidade", estado);
-            cmd.Parameters.AddWithValue("@Cidade", status);
+            cmd.Parameters.AddWithValue("@Estado", estado);
+            cmd.Parameters.AddWithValue("@Status", status);
 
             try
             {

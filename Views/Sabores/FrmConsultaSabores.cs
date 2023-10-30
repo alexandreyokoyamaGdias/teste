@@ -69,9 +69,9 @@ namespace SGPPC.Views.Sabores
             {
                 DataGridViewRow selectedRow = dgSabor.Rows[e.RowIndex];
                 string descricao = selectedRow.Cells["Descricao"].Value.ToString();
+                string id = selectedRow.Cells["Id"].Value.ToString();
 
-                // Passe esses valores para a tela de edição
-                FrmAlterarSabores telaEdicao = new FrmAlterarSabores(descricao);
+                FrmAlterarSabores telaEdicao = new FrmAlterarSabores(descricao, id);
                 telaEdicao.ShowDialog();
             }
         }

@@ -43,6 +43,10 @@
             this.lblValor = new System.Windows.Forms.Label();
             this.lblData = new System.Windows.Forms.Label();
             this.lblFornecedor = new System.Windows.Forms.Label();
+            this.txbIdFoornecedor = new System.Windows.Forms.TextBox();
+            this.cmbSabor = new System.Windows.Forms.ComboBox();
+            this.lblSabor = new System.Windows.Forms.Label();
+            this.txbIdSabor = new System.Windows.Forms.TextBox();
             this.panelProduto.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -187,12 +191,51 @@
             this.lblFornecedor.TabIndex = 30;
             this.lblFornecedor.Text = "*Fornecedor";
             // 
+            // txbIdFoornecedor
+            // 
+            this.txbIdFoornecedor.Location = new System.Drawing.Point(12, 279);
+            this.txbIdFoornecedor.Name = "txbIdFoornecedor";
+            this.txbIdFoornecedor.ReadOnly = true;
+            this.txbIdFoornecedor.Size = new System.Drawing.Size(82, 26);
+            this.txbIdFoornecedor.TabIndex = 31;
+            this.txbIdFoornecedor.Visible = false;
+            // 
+            // cmbSabor
+            // 
+            this.cmbSabor.FormattingEnabled = true;
+            this.cmbSabor.Location = new System.Drawing.Point(332, 235);
+            this.cmbSabor.Name = "cmbSabor";
+            this.cmbSabor.Size = new System.Drawing.Size(288, 28);
+            this.cmbSabor.TabIndex = 32;
+            this.cmbSabor.SelectedIndexChanged += new System.EventHandler(this.cmbSabor_SelectedIndexChanged);
+            // 
+            // lblSabor
+            // 
+            this.lblSabor.AutoSize = true;
+            this.lblSabor.Location = new System.Drawing.Point(328, 212);
+            this.lblSabor.Name = "lblSabor";
+            this.lblSabor.Size = new System.Drawing.Size(58, 20);
+            this.lblSabor.TabIndex = 33;
+            this.lblSabor.Text = "*Sabor";
+            // 
+            // txbIdSabor
+            // 
+            this.txbIdSabor.Location = new System.Drawing.Point(332, 279);
+            this.txbIdSabor.Name = "txbIdSabor";
+            this.txbIdSabor.ReadOnly = true;
+            this.txbIdSabor.Size = new System.Drawing.Size(100, 26);
+            this.txbIdSabor.TabIndex = 34;
+            // 
             // FrmCadastroProduto
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.ClientSize = new System.Drawing.Size(632, 534);
+            this.Controls.Add(this.txbIdSabor);
+            this.Controls.Add(this.lblSabor);
+            this.Controls.Add(this.cmbSabor);
+            this.Controls.Add(this.txbIdFoornecedor);
             this.Controls.Add(this.lblFornecedor);
             this.Controls.Add(this.lblData);
             this.Controls.Add(this.lblValor);
@@ -236,5 +279,9 @@
         private System.Windows.Forms.Label lblValor;
         private System.Windows.Forms.Label lblData;
         private System.Windows.Forms.Label lblFornecedor;
+        private System.Windows.Forms.TextBox txbIdFoornecedor;
+        private System.Windows.Forms.ComboBox cmbSabor;
+        private System.Windows.Forms.Label lblSabor;
+        private System.Windows.Forms.TextBox txbIdSabor;
     }
 }

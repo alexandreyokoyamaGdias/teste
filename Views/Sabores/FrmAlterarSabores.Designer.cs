@@ -35,6 +35,7 @@
             this.btnCancelarSabor = new System.Windows.Forms.Button();
             this.btnLimparSabor = new System.Windows.Forms.Button();
             this.btnAlterarSabor = new System.Windows.Forms.Button();
+            this.txbId = new System.Windows.Forms.TextBox();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -107,6 +108,16 @@
             this.btnAlterarSabor.TabIndex = 39;
             this.btnAlterarSabor.Text = "Alterar";
             this.btnAlterarSabor.UseVisualStyleBackColor = true;
+            this.btnAlterarSabor.Click += new System.EventHandler(this.btnAlterarSabor_Click);
+            // 
+            // txbId
+            // 
+            this.txbId.Location = new System.Drawing.Point(559, 496);
+            this.txbId.Name = "txbId";
+            this.txbId.ReadOnly = true;
+            this.txbId.Size = new System.Drawing.Size(57, 26);
+            this.txbId.TabIndex = 42;
+            this.txbId.Visible = false;
             // 
             // FrmAlterarSabores
             // 
@@ -114,6 +125,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.ClientSize = new System.Drawing.Size(632, 534);
+            this.Controls.Add(this.txbId);
             this.Controls.Add(this.btnCancelarSabor);
             this.Controls.Add(this.btnLimparSabor);
             this.Controls.Add(this.btnAlterarSabor);
@@ -140,5 +152,6 @@
         private System.Windows.Forms.Button btnCancelarSabor;
         private System.Windows.Forms.Button btnLimparSabor;
         private System.Windows.Forms.Button btnAlterarSabor;
+        private System.Windows.Forms.TextBox txbId;
     }
 }

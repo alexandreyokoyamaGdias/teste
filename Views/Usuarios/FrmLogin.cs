@@ -25,26 +25,48 @@ namespace SGPPC.Views.Usuarios
 
         private void btnEntrar_Click(object sender, EventArgs e)
         {
-            Controle controle = new Controle();
-            controle.Acessar(txbLogin.Text, txbSenha.Text);
+            string login = txbLogin.Text;
+            string senha = txbSenha.Text;
 
-            if (controle.mensagem.Equals(""))
+            if (string.IsNullOrWhiteSpace(login) || string.IsNullOrWhiteSpace(senha))
             {
-                if (controle.tem)
-                {
-                    MessageBox.Show("Logado com sucesso", "Entrando", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    FrmPrincipal home = new FrmPrincipal();
-                    home.Show();
-                }
-                else
-                {
-                    MessageBox.Show("Login não encontrado, verifique login e senha", "ERRO!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
+                MessageBox.Show("Por favor, preencha o campo de login e senha.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return; // Não prossiga se o login ou senha estiver em branco
+            }
+
+            Controle controle = new Controle();
+
+            if (controle.VerificarLogin(login, senha))
+            {
+                MessageBox.Show("Logado com sucesso", "Entrando", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                // Se o login for bem-sucedido, abra o formulário principal
+                FrmPrincipal home = new FrmPrincipal();
+                home.Show();
+                this.Hide(); // Oculte o formulário de login
             }
             else
             {
-                MessageBox.Show(controle.mensagem);
+                MessageBox.Show("Login não encontrado ou senha incorreta, verifique login e senha", "ERRO!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+        //private void btnEntrar_Click(object sender, EventArgs e)
+        //{
+        //    Controle controle = new Controle();
+        //    string senhaFornecidaPeloUsuario = txbSenha.Text;
+
+        //    if (controle.Acessar(txbLogin.Text, senhaFornecidaPeloUsuario))
+        //    {
+        //        MessageBox.Show("Logado com sucesso", "Entrando", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        //        FrmPrincipal home = new FrmPrincipal();
+        //        home.Show();
+        //    }
+        //    else
+        //    {
+        //        MessageBox.Show("Login não encontrado ou senha incorreta, verifique login e senha", "ERRO!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        //    }
+        //}
+
     }
 }

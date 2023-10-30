@@ -1,4 +1,5 @@
 ﻿using SGPPC.Class;
+using SGPPC.Data;
 using SGPPC.Modelo;
 using System;
 using System.Collections.Generic;
@@ -38,7 +39,7 @@ namespace SGPPC.Views.Sabores
         {
             if (txbDescricao.Text.ToString().Trim() == "")
             {
-                MessageBox.Show("Preencha o campo Descrição", "Cadastro produto", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Preencha o campo Descrição", "Cadastro do Sabor!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 txbDescricao.Text = "";
                 txbDescricao.Focus();
                 return;
@@ -50,6 +51,13 @@ namespace SGPPC.Views.Sabores
 
                 if (saborControle.tem)
                 {
+                    string tabelaAfetada = "Sabor";
+                    DateTime dataHora = DateTime.Now;
+                    string acao = "btnCadastrar_Click";
+                    string descricao = "Cadastro de sabor bem-sucedido";
+
+                    InserirLogsComands inserirLogs = new InserirLogsComands(tabelaAfetada, dataHora, acao, descricao);
+
                     MessageBox.Show(mensagem, "Cadastro", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     LimparFormulario.LimparForm(this);
                 }

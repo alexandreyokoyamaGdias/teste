@@ -1,4 +1,5 @@
 ﻿using SGPPC.Class;
+using SGPPC.Data;
 using SGPPC.Modelo;
 using System;
 using System.Collections.Generic;
@@ -23,7 +24,7 @@ namespace SGPPC.Views.Fornecedor
             InitializeComponent();
         }
 
-        public FrmAlterarFornecedor(string cnpj, string nome, string pais, string cidade, string estado, string id)
+        public FrmAlterarFornecedor(string cnpj, string nome, string pais, string cidade, string estado, string status, string id)
         {
             InitializeComponent();
 
@@ -32,18 +33,24 @@ namespace SGPPC.Views.Fornecedor
             txbPais.Text = pais;
             txbCidade.Text = cidade;
             txbEstado.Text = estado;
+            txbId.Text = id;
+
+            if (status == "Ativo")
+            {
+                radioAtivo.Checked = true;
+                radioAtivo.Checked = false;
+            }
+            else if (status == "Inativo")
+            {
+                radioInativo.Checked = false;
+                radioInativo.Checked = true;
+            }
         }
 
         private void btnCancelar_Click(object sender, EventArgs e)
         {
             Close();
         }
-
-        private void FrmAlterarFornecedor_Load(object sender, EventArgs e)
-        {
-
-        }
-
 
         private void button1_Click(object sender, EventArgs e)
         {
@@ -54,59 +61,60 @@ namespace SGPPC.Views.Fornecedor
                 txbCNPJ.Focus();
                 return;
             }
-            else if (txbNome.Text.ToString().Trim() == "")
+            else if (string.IsNullOrWhiteSpace(txbNome.Text))
             {
                 MessageBox.Show("Preencha o campo Descrição", "Alteração fornecedor", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 txbNome.Text = "";
                 txbNome.Focus();
                 return;
             }
-            else if (txbPais.Text.ToString().Trim() == "")
+            else if (string.IsNullOrWhiteSpace(txbPais.Text))
             {
-                MessageBox.Show("Preencha o campo Valor", "Alteração fornecedor", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Preencha o campo País", "Alteração fornecedor", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 txbPais.Text = "";
                 txbPais.Focus();
                 return;
             }
-            else if (txbCidade.Text.ToString().Trim() == "")
+            else if (string.IsNullOrWhiteSpace(txbCidade.Text))
             {
-                MessageBox.Show("Preencha o campo Valor", "Alteração fornecedor", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Preencha o campo Cidade", "Alteração fornecedor", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 txbCidade.Text = "";
                 txbCidade.Focus();
                 return;
             }
-            else if (txbCidade.Text.ToString().Trim() == "")
+            else if (string.IsNullOrWhiteSpace(txbEstado.Text))
             {
-                MessageBox.Show("Preencha o campo Valor", "Alteração fornecedor", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                txbCidade.Text = "";
-                txbCidade.Focus();
-                return;
-            }
-            else if (txbEstado.Text.ToString().Trim() == "")
-            {
-                MessageBox.Show("Preencha o campo Valor", "Alteração fornecedor", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Preencha o campo Estado", "Alteração fornecedor", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 txbEstado.Text = "";
                 txbEstado.Focus();
                 return;
             }
-            else if (radioAtivo.Checked == false && radioInativo.Checked == false)
+            else if (!radioAtivo.Checked && !radioInativo.Checked)
             {
-                MessageBox.Show("Preencha o campo Status", "Alteração fornecedor", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Selecione um status (Ativo ou Inativo)", "Alteração fornecedor", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 radioAtivo.Focus();
                 radioInativo.Focus();
                 return;
             }
             else
             {
-                if (Int32.TryParse(txbId.Text, out Int32 id))
+                if (Int32.TryParse(txbId.Text, out int id))
                 {
                     FornecedorEditarControle fornecedorEditarControle = new FornecedorEditarControle();
-                    String mensagem = fornecedorEditarControle.AlterarForn(id, txbCNPJ.Text.Trim(), txbNome.Text.Trim(), txbPais.Text.Trim(), txbCidade.Text.Trim(), txbEstado.Text.Trim(), radioAtivo.Text.Trim(), radioInativo.Text.Trim());
+                    string status = radioAtivo.Checked ? "Ativo" : "Inativo";
+                    String mensagem = fornecedorEditarControle.AlterarForn(id, txbCNPJ.Text.Trim(), txbNome.Text.Trim(), txbPais.Text.Trim(), txbCidade.Text.Trim(), txbEstado.Text.Trim(), status);
 
                     if (fornecedorEditarControle.tem)
                     {
+                        string tabelaAfetada = "Fornecedor";
+                        DateTime dataHora = DateTime.Now;
+                        string acao = "button1_Click";
+                        string descricao = "Alteração de Fornecedor bem-sucedido";
+
+                        InserirLogsComands inserirLogs = new InserirLogsComands(tabelaAfetada, dataHora, acao, descricao);
+
                         MessageBox.Show(mensagem, "Alteração", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        LimparFormulario.LimparForm(this);
+                        Close();
                     }
                     else
                     {

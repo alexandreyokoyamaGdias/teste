@@ -1,5 +1,6 @@
 ﻿using SGPPC.Model;
 using SGPPC.Views.Fornecedor;
+using SGPPC.Views.Relatorios;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -75,11 +76,41 @@ namespace SGPPC.Views.ControleCaixa
                 string motivo = row.Cells["Motivo"].Value.ToString();
                 string tipo = row.Cells["Tipo_Operacao"].Value.ToString();
                 string valor = row.Cells["Valor"].Value.ToString();
-                string data = row.Cells["Data_Hora"].ToString();
+                string data = row.Cells["Data_Hora"].Value.ToString();
+                string id = row.Cells["Id"].Value.ToString();
 
-                FrmEditarControleCaixa telaEdicao = new FrmEditarControleCaixa(motivo, tipo, valor, data);
+                FrmEditarControleCaixa telaEdicao = new FrmEditarControleCaixa(motivo, tipo, valor, data, id);
                 telaEdicao.ShowDialog();
             }
+        }
+
+        private void btnGerarRelatorio_Click(object sender, EventArgs e)
+        {
+            var dt = GerarDadosRelatorioFluxoCaixa();
+
+            using (var frm = new FrmRelatorioFluxoCaixa(dt))
+            {
+                frm.ShowDialog();
+            }
+            //InserirLogs logs = new InserirLogs(DateTime.Now, "Relatório FluxoCaixa", "Gerar Relatório", $"Data{DateTime.Now} Usuario{idDoUsuario}", "Gerar Relatorio");
+
+        }
+
+        private DataTable GerarDadosRelatorioFluxoCaixa()
+        {
+            var dt = new DataTable();
+            dt.Columns.Add("Motivo");
+            dt.Columns.Add("Tipo_Operacao");
+            dt.Columns.Add("Valor");
+            dt.Columns.Add("Data_Hora");
+
+            foreach (DataGridViewRow item in dgControleCaixa.Rows)
+            {
+                dt.Rows.Add(item.Cells["Motivo"].Value.ToString(), item.Cells["Tipo_Operacao"].Value.ToString(), item.Cells["Valor"].Value.ToString(),
+                    item.Cells["Data_Hora"].Value.ToString());
+            }
+
+            return dt;
         }
     }
 }

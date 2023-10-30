@@ -12,7 +12,7 @@ namespace SGPPC.Model
 
         public String mensagem = "";
 
-        public CadastroFornecedor(string Nome, string CNPJ, string Pais, string Cidade, string Estado)
+        public CadastroFornecedor(string CNPJ, string Nome, string Pais, string Cidade, string Estado)
         {
             try
             {
@@ -20,11 +20,11 @@ namespace SGPPC.Model
                 cmd.Connection = conexao.conectar();
 
                 //Comando sql -- SqlCommand
-                cmd.CommandText = "INSERT INTO Fornecedor (Nome, CNPJ, Pais, Cidade, Estado) VALUES (@Nome, @CNPJ, @Pais, @Cidade, @Estado)";
+                cmd.CommandText = "INSERT INTO Fornecedor (CNPJ, Nome, Pais, Cidade, Estado) VALUES (@Nome, @CNPJ, @Pais, @Cidade, @Estado)";
 
                 //Parametros
-                cmd.Parameters.AddWithValue("@Nome", Nome);
                 cmd.Parameters.AddWithValue("@CNPJ", CNPJ);
+                cmd.Parameters.AddWithValue("@Nome", Nome);            
                 cmd.Parameters.AddWithValue("@Pais", Pais);
                 cmd.Parameters.AddWithValue("@Cidade", Cidade);
                 cmd.Parameters.AddWithValue("@Estado", Estado);

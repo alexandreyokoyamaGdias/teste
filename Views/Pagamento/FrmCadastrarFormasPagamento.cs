@@ -47,20 +47,59 @@ namespace SGPPC.Views.Pagamento
                 txbFormaDescricao.Focus();
                 return;
             }
+            else if (radioAtivoPagamento.Checked == false && radioInativoPagamento.Checked == false)
+            {
+                MessageBox.Show("Preencha o campo Status", "Cadastro Forma de Pagamento", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                radioAtivoPagamento.Focus();
+                radioInativoPagamento.Focus();
+                return;
+            }
             else
             {
-                FormaPagamentoControle formaPagamentoControle = new FormaPagamentoControle();
-                String mensagem = formaPagamentoControle.CadastrarPagamento(txbFormaNome.Text.Trim(), txbFormaDescricao.Text.Trim());
-
-                if (formaPagamentoControle.tem)
+                if (radioAtivoPagamento.Checked)
                 {
-                    MessageBox.Show(mensagem, "Cadastro", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    LimparFormulario.LimparForm(this);
+                    FormaPagamentoControle formaPagamentoControle = new FormaPagamentoControle();
+                    String mensagem = formaPagamentoControle.CadastrarPagamento(txbFormaNome.Text.Trim(), txbFormaDescricao.Text.Trim(), radioAtivoPagamento.Text.Trim());
+
+                    if (formaPagamentoControle.tem)
+                    {
+                        string tabelaAfetada = "Pagamento";
+                        DateTime dataHora = DateTime.Now;
+                        string acao = "btnCadastrar_Click";
+                        string descricao = "Cadastro de Pagamento bem-sucedido";
+
+                        InserirLogsComands inserirLogs = new InserirLogsComands(tabelaAfetada, dataHora, acao, descricao);
+
+                        MessageBox.Show(mensagem, "Cadastro", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        LimparFormulario.LimparForm(this);
+                    }
+                    else
+                    {
+                        MessageBox.Show(formaPagamentoControle.mensagem);
+                    }
                 }
                 else
                 {
-                    MessageBox.Show(formaPagamentoControle.mensagem);
-                }
+                    FormaPagamentoControle formaPagamentoControle = new FormaPagamentoControle();
+                    String mensagem = formaPagamentoControle.CadastrarPagamento(txbFormaNome.Text.Trim(), txbFormaDescricao.Text.Trim(), radioInativoPagamento.Text.Trim());
+
+                    if (formaPagamentoControle.tem)
+                    {
+                        string tabelaAfetada = "Pagamento";
+                        DateTime dataHora = DateTime.Now;
+                        string acao = "btnCadastrar_Click";
+                        string descricao = "Cadastro de Pagamento bem-sucedido";
+
+                        InserirLogsComands inserirLogs = new InserirLogsComands(tabelaAfetada, dataHora, acao, descricao);
+
+                        MessageBox.Show(mensagem, "Cadastro", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        LimparFormulario.LimparForm(this);
+                    }
+                    else
+                    {
+                        MessageBox.Show(formaPagamentoControle.mensagem);
+                    }
+                }            
             }
         }
     }

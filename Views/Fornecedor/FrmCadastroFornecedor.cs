@@ -1,5 +1,6 @@
 ﻿using SGPPC.Class;
 using SGPPC.Controllerss;
+using SGPPC.Data;
 using SGPPC.Model;
 using SGPPC.Modelo;
 using System;
@@ -75,6 +76,13 @@ namespace SGPPC.Views.Fornecedor
 
                     if (fornecedorControle.tem)
                     {
+                        string tabelaAfetada = "Fornecedor";
+                        DateTime dataHora = DateTime.Now;
+                        string acao = "btnCadastrar_Click";
+                        string descricao = "Cadastro de Fornecedor bem-sucedido";
+
+                        InserirLogsComands inserirLogs = new InserirLogsComands(tabelaAfetada, dataHora, acao, descricao);
+
                         MessageBox.Show(mensagem, "Cadastro", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         LimparFormulario.LimparForm(this);
                     }
@@ -90,6 +98,13 @@ namespace SGPPC.Views.Fornecedor
 
                     if (fornecedorControle.tem)
                     {
+                        string tabelaAfetada = "Fornecedor";
+                        DateTime dataHora = DateTime.Now;
+                        string acao = "btnCadastrar_Click";
+                        string descricao = "Cadastro de Fornecedor bem-sucedido";
+
+                        InserirLogsComands inserirLogs = new InserirLogsComands(tabelaAfetada, dataHora, acao, descricao);
+
                         MessageBox.Show(mensagem, "Cadastro", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         LimparFormulario.LimparForm(this);
                     }

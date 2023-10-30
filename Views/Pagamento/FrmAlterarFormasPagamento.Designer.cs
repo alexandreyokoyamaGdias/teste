@@ -37,6 +37,10 @@
             this.btnAlterar = new System.Windows.Forms.Button();
             this.lblDescricao = new System.Windows.Forms.Label();
             this.txbFormaPDescricaoo = new System.Windows.Forms.TextBox();
+            this.lblStatus = new System.Windows.Forms.Label();
+            this.radioInativoPagamentoAlterar = new System.Windows.Forms.RadioButton();
+            this.radioAtivoPagamentoAlterar = new System.Windows.Forms.RadioButton();
+            this.txbId = new System.Windows.Forms.TextBox();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -59,9 +63,9 @@
             this.lblPagamento.ForeColor = System.Drawing.Color.White;
             this.lblPagamento.Location = new System.Drawing.Point(3, 5);
             this.lblPagamento.Name = "lblPagamento";
-            this.lblPagamento.Size = new System.Drawing.Size(98, 21);
+            this.lblPagamento.Size = new System.Drawing.Size(222, 21);
             this.lblPagamento.TabIndex = 1;
-            this.lblPagamento.Text = "Pagamento";
+            this.lblPagamento.Text = "Editar Forma de Pagamento";
             this.lblPagamento.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // txbFormaNome
@@ -69,7 +73,7 @@
             this.txbFormaNome.Location = new System.Drawing.Point(12, 58);
             this.txbFormaNome.Multiline = true;
             this.txbFormaNome.Name = "txbFormaNome";
-            this.txbFormaNome.Size = new System.Drawing.Size(257, 26);
+            this.txbFormaNome.Size = new System.Drawing.Size(396, 23);
             this.txbFormaNome.TabIndex = 46;
             // 
             // lblPagamentoF
@@ -112,6 +116,7 @@
             this.btnAlterar.TabIndex = 48;
             this.btnAlterar.Text = "Alterar";
             this.btnAlterar.UseVisualStyleBackColor = true;
+            this.btnAlterar.Click += new System.EventHandler(this.btnAlterar_Click);
             // 
             // lblDescricao
             // 
@@ -127,14 +132,61 @@
             this.txbFormaPDescricaoo.Location = new System.Drawing.Point(15, 116);
             this.txbFormaPDescricaoo.Multiline = true;
             this.txbFormaPDescricaoo.Name = "txbFormaPDescricaoo";
-            this.txbFormaPDescricaoo.Size = new System.Drawing.Size(254, 26);
+            this.txbFormaPDescricaoo.Size = new System.Drawing.Size(396, 23);
             this.txbFormaPDescricaoo.TabIndex = 60;
+            // 
+            // lblStatus
+            // 
+            this.lblStatus.AutoSize = true;
+            this.lblStatus.Location = new System.Drawing.Point(13, 157);
+            this.lblStatus.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblStatus.Name = "lblStatus";
+            this.lblStatus.Size = new System.Drawing.Size(41, 13);
+            this.lblStatus.TabIndex = 64;
+            this.lblStatus.Text = "*Status";
+            // 
+            // radioInativoPagamentoAlterar
+            // 
+            this.radioInativoPagamentoAlterar.AutoSize = true;
+            this.radioInativoPagamentoAlterar.Location = new System.Drawing.Point(66, 175);
+            this.radioInativoPagamentoAlterar.Margin = new System.Windows.Forms.Padding(2);
+            this.radioInativoPagamentoAlterar.Name = "radioInativoPagamentoAlterar";
+            this.radioInativoPagamentoAlterar.Size = new System.Drawing.Size(57, 17);
+            this.radioInativoPagamentoAlterar.TabIndex = 63;
+            this.radioInativoPagamentoAlterar.TabStop = true;
+            this.radioInativoPagamentoAlterar.Text = "Inativo";
+            this.radioInativoPagamentoAlterar.UseVisualStyleBackColor = true;
+            // 
+            // radioAtivoPagamentoAlterar
+            // 
+            this.radioAtivoPagamentoAlterar.AutoSize = true;
+            this.radioAtivoPagamentoAlterar.Location = new System.Drawing.Point(16, 175);
+            this.radioAtivoPagamentoAlterar.Margin = new System.Windows.Forms.Padding(2);
+            this.radioAtivoPagamentoAlterar.Name = "radioAtivoPagamentoAlterar";
+            this.radioAtivoPagamentoAlterar.Size = new System.Drawing.Size(49, 17);
+            this.radioAtivoPagamentoAlterar.TabIndex = 62;
+            this.radioAtivoPagamentoAlterar.TabStop = true;
+            this.radioAtivoPagamentoAlterar.Text = "Ativo";
+            this.radioAtivoPagamentoAlterar.UseVisualStyleBackColor = true;
+            // 
+            // txbId
+            // 
+            this.txbId.Location = new System.Drawing.Point(364, 313);
+            this.txbId.Name = "txbId";
+            this.txbId.ReadOnly = true;
+            this.txbId.Size = new System.Drawing.Size(47, 20);
+            this.txbId.TabIndex = 65;
+            this.txbId.Visible = false;
             // 
             // FrmAlterarFormasPagamento
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(421, 347);
+            this.Controls.Add(this.txbId);
+            this.Controls.Add(this.lblStatus);
+            this.Controls.Add(this.radioInativoPagamentoAlterar);
+            this.Controls.Add(this.radioAtivoPagamentoAlterar);
             this.Controls.Add(this.lblDescricao);
             this.Controls.Add(this.txbFormaPDescricaoo);
             this.Controls.Add(this.btnCancelar);
@@ -167,5 +219,9 @@
         private System.Windows.Forms.Button btnAlterar;
         private System.Windows.Forms.Label lblDescricao;
         private System.Windows.Forms.TextBox txbFormaPDescricaoo;
+        private System.Windows.Forms.Label lblStatus;
+        private System.Windows.Forms.RadioButton radioInativoPagamentoAlterar;
+        private System.Windows.Forms.RadioButton radioAtivoPagamentoAlterar;
+        private System.Windows.Forms.TextBox txbId;
     }
 }

@@ -42,7 +42,6 @@
             this.lblCNPJ = new System.Windows.Forms.Label();
             this.btnCancelar = new System.Windows.Forms.Button();
             this.btnAlterar = new System.Windows.Forms.Button();
-            this.lblId = new System.Windows.Forms.Label();
             this.txbId = new System.Windows.Forms.TextBox();
             this.lblStatus = new System.Windows.Forms.Label();
             this.radioInativo = new System.Windows.Forms.RadioButton();
@@ -180,15 +179,6 @@
             this.btnAlterar.UseVisualStyleBackColor = true;
             this.btnAlterar.Click += new System.EventHandler(this.button1_Click);
             // 
-            // lblId
-            // 
-            this.lblId.AutoSize = true;
-            this.lblId.Location = new System.Drawing.Point(559, 470);
-            this.lblId.Name = "lblId";
-            this.lblId.Size = new System.Drawing.Size(23, 20);
-            this.lblId.TabIndex = 44;
-            this.lblId.Text = "Id";
-            // 
             // txbId
             // 
             this.txbId.Location = new System.Drawing.Point(563, 493);
@@ -196,6 +186,7 @@
             this.txbId.ReadOnly = true;
             this.txbId.Size = new System.Drawing.Size(60, 26);
             this.txbId.TabIndex = 45;
+            this.txbId.Visible = false;
             // 
             // lblStatus
             // 
@@ -237,7 +228,6 @@
             this.Controls.Add(this.radioInativo);
             this.Controls.Add(this.radioAtivo);
             this.Controls.Add(this.txbId);
-            this.Controls.Add(this.lblId);
             this.Controls.Add(this.btnAlterar);
             this.Controls.Add(this.btnCancelar);
             this.Controls.Add(this.lblEstado);
@@ -256,7 +246,6 @@
             this.Name = "FrmAlterarFornecedor";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FrmAlterarFornecedor";
-            this.Load += new System.EventHandler(this.FrmAlterarFornecedor_Load);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             this.ResumeLayout(false);
@@ -280,7 +269,6 @@
         private System.Windows.Forms.Label lblCNPJ;
         private System.Windows.Forms.Button btnCancelar;
         private System.Windows.Forms.Button btnAlterar;
-        private System.Windows.Forms.Label lblId;
         private System.Windows.Forms.TextBox txbId;
         private System.Windows.Forms.Label lblStatus;
         private System.Windows.Forms.RadioButton radioInativo;

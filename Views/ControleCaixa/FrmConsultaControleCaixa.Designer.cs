@@ -37,6 +37,7 @@
             this.btnCancelar = new System.Windows.Forms.Button();
             this.btnIncluir = new System.Windows.Forms.Button();
             this.dgControleCaixa = new System.Windows.Forms.DataGridView();
+            this.btnGerarRelatorio = new System.Windows.Forms.Button();
             this.panelFornecedor.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgControleCaixa)).BeginInit();
             this.SuspendLayout();
@@ -57,7 +58,8 @@
             this.comboBoxPesquisarControleCaixa.FormattingEnabled = true;
             this.comboBoxPesquisarControleCaixa.Items.AddRange(new object[] {
             "Motivo",
-            "Descricao"});
+            "Tipo_Operacao",
+            "Data_Hora"});
             this.comboBoxPesquisarControleCaixa.Location = new System.Drawing.Point(499, 61);
             this.comboBoxPesquisarControleCaixa.Margin = new System.Windows.Forms.Padding(2);
             this.comboBoxPesquisarControleCaixa.Name = "comboBoxPesquisarControleCaixa";
@@ -148,11 +150,22 @@
             this.dgControleCaixa.TabIndex = 15;
             this.dgControleCaixa.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgFornecedor_CellContentClick);
             // 
+            // btnGerarRelatorio
+            // 
+            this.btnGerarRelatorio.Location = new System.Drawing.Point(282, 383);
+            this.btnGerarRelatorio.Name = "btnGerarRelatorio";
+            this.btnGerarRelatorio.Size = new System.Drawing.Size(92, 23);
+            this.btnGerarRelatorio.TabIndex = 23;
+            this.btnGerarRelatorio.Text = "Gerar Relatorio";
+            this.btnGerarRelatorio.UseVisualStyleBackColor = true;
+            this.btnGerarRelatorio.Click += new System.EventHandler(this.btnGerarRelatorio_Click);
+            // 
             // FrmConsultaControleCaixa
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(739, 413);
+            this.Controls.Add(this.btnGerarRelatorio);
             this.Controls.Add(this.lblPesquisar);
             this.Controls.Add(this.comboBoxPesquisarControleCaixa);
             this.Controls.Add(this.btnConsultar);
@@ -186,5 +199,6 @@
         private System.Windows.Forms.Button btnCancelar;
         private System.Windows.Forms.Button btnIncluir;
         private System.Windows.Forms.DataGridView dgControleCaixa;
+        private System.Windows.Forms.Button btnGerarRelatorio;
     }
 }

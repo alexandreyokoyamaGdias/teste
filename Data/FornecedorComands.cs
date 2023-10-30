@@ -28,7 +28,7 @@ namespace SGPPC.Data
             return new string(input.Where(char.IsDigit).ToArray());
         }
 
-        public string CadastrarFor(string nome, string cnpj, string pais, string cidade, string estado, string status)
+        public string CadastrarFor(string cnpj, string nome, string pais, string cidade, string estado, string status)
         {
             tem = false;
 
@@ -40,10 +40,11 @@ namespace SGPPC.Data
             }
             else
             {
-                cmd.CommandText = "INSERT INTO Fornecedor (Nome, CNPJ, Pais, Cidade, Estado, Status) VALUES (@Nome, @CNPJ, @Pais, @Cidade, @Estado, @Status);";
+                cmd.CommandText = "INSERT INTO Fornecedor (CNPJ, Nome, Pais, Cidade, Estado, Status) VALUES (@CNPJ, @Nome, @Pais, @Cidade, @Estado, @Status);";
+                cmd.Parameters.Clear();
 
-                cmd.Parameters.AddWithValue("@Nome", nome);
                 cmd.Parameters.AddWithValue("@CNPJ", cnpj);
+                cmd.Parameters.AddWithValue("@Nome", nome);         
                 cmd.Parameters.AddWithValue("@Pais", pais);
                 cmd.Parameters.AddWithValue("@Cidade", cidade);
                 cmd.Parameters.AddWithValue("@Estado", estado);

@@ -1,39 +1,48 @@
 ﻿using SGPPC.Repository;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace SGPPC.Controllerss
 {
     public class Controle
     {
         public bool tem;
+        public string mensagem = "";
 
-        public String mensagem = "";
-
-        public bool Acessar(String login, String senha)
+        public bool VerificarLogin(string login, string senha)
         {
             LoginDalComands loginDal = new LoginDalComands();
-            tem = loginDal.VerificarLogin(login, senha);
+            string senhaCriptografada = CriptografarSenha(senha); // Criptografa a senha fornecida pelo usuário
+            tem = loginDal.VerificarLogin(login, senhaCriptografada);
+
             if (!loginDal.mensagem.Equals(""))
             {
                 this.mensagem = loginDal.mensagem;
             }
+
             return tem;
         }
 
-        public String Cadastrar(String nome, String email, String funcao, String cpf, String senha, String dataAd )
+        public string Cadastrar(string nome, string email, string funcao, string cpf, string senha, string dataAd)
         {
             LoginDalComands loginDal = new LoginDalComands();
-            this.mensagem = loginDal.Cadastrar(nome, email, funcao, cpf, senha, dataAd);
+            this.mensagem = loginDal.Cadastrar(nome, email, funcao, cpf, CriptografarSenha(senha), dataAd); // Criptografa a senha antes de armazená-la no banco
 
             if (loginDal.tem)
             {
                 this.tem = true;
             }
+
             return mensagem;
+        }
+
+        // Função para aplicar o algoritmo de hash (SHA-256) na senha
+        private string CriptografarSenha(string senha)
+        {
+            using (System.Security.Cryptography.SHA256 sha256 = System.Security.Cryptography.SHA256.Create())
+            {
+                byte[] bytes = sha256.ComputeHash(System.Text.Encoding.UTF8.GetBytes(senha));
+                return BitConverter.ToString(bytes).Replace("-", "").ToLower();
+            }
         }
     }
 }

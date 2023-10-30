@@ -7,45 +7,6 @@ using System.Threading.Tasks;
 
 namespace SGPPC.Data
 {
-    //public class PagamentoComands
-    //{
-    //    public bool tem = false;
-
-    //    public String mensagem = "";
-
-    //    SqlCommand cmd = new SqlCommand();
-
-    //    Conexao con = new Conexao();
-
-    //    SqlDataReader dr;
-
-
-    //    public String CadastrarPagamento(String nome, String descricao)
-    //    {
-    //        tem = false;
-
-    //        cmd.CommandText = "INSERT INTO FormasPagamento (Nome, Descricao) VALUES (@Nome, @Descricao);";
-
-    //        cmd.Parameters.AddWithValue("@Nome", nome);
-    //        cmd.Parameters.AddWithValue("@Descricao", descricao);
-
-    //        try
-    //        {
-    //            cmd.Connection = con.conectar();
-    //            cmd.ExecuteNonQuery();
-    //            con.desconectar();
-    //            this.mensagem = "Cadastrado com sucesso!";
-    //            tem = true;
-    //        }
-    //        catch (SqlException ex)
-    //        {
-    //            this.mensagem = "Erro com Banco de Dados!" + ex.Message;
-    //        }
-
-    //        return mensagem;
-    //    }
-    //}
-
     public class PagamentoComands
     {
         public bool tem = false;
@@ -54,7 +15,7 @@ namespace SGPPC.Data
         Conexao con = new Conexao();
         SqlDataReader dr;
 
-        public String CadastrarPagamento(String nome, String descricao)
+        public String CadastrarPagamento(string nome, string descricao, string status)
         {
             tem = false;
 
@@ -64,10 +25,12 @@ namespace SGPPC.Data
             }
             else
             {
-                cmd.CommandText = "INSERT INTO FormasPagamento (Nome, Descricao) VALUES (@Nome, @Descricao);";
+                cmd.CommandText = "INSERT INTO FormasPagamento (Nome, Descricao, Status) VALUES (@Nome, @Descricao, @Status);";
+                cmd.Parameters.Clear();
 
                 cmd.Parameters.AddWithValue("@Nome", nome);
                 cmd.Parameters.AddWithValue("@Descricao", descricao);
+                cmd.Parameters.AddWithValue("@Status", status);
 
                 try
                 {
@@ -89,6 +52,7 @@ namespace SGPPC.Data
         private bool NomeJaExiste(string nome)
         {
             cmd.CommandText = "SELECT COUNT(*) FROM FormasPagamento WHERE Nome = @Nome;";
+            cmd.Parameters.Clear(); // Limpa os parâmetros
             cmd.Parameters.AddWithValue("@Nome", nome);
 
             try
@@ -105,5 +69,4 @@ namespace SGPPC.Data
             }
         }
     }
-
 }

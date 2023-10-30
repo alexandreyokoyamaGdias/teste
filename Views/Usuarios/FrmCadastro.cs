@@ -11,6 +11,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using BCrypt.Net;
+using SGPPC.Data;
 
 namespace SGPPC.Views.Usuarios
 {
@@ -28,6 +30,12 @@ namespace SGPPC.Views.Usuarios
 
         private void btnCadastrar_Click(object sender, EventArgs e)
         {
+            string salt = BCrypt.Net.BCrypt.GenerateSalt();
+
+            string senhaDoUsuario = "senhaDoUsuario";
+
+            string hashedPassword = BCrypt.Net.BCrypt.HashPassword(senhaDoUsuario, salt);
+
             if (txbNome.Text.ToString().Trim() == "")
             {
                 MessageBox.Show("Preencha o campo Nome", "Cadastro de usuário", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -73,23 +81,31 @@ namespace SGPPC.Views.Usuarios
             else
             {
                 Controle controle = new Controle();
-                String mensagem = controle.Cadastrar(txbNome.Text, txbEmail.Text, cbFuncao.Text, maskCPF.Text, txbSenha.Text, maskDataHoraAdmissao.Text);
+                String mensagem = controle.Cadastrar(txbNome.Text, txbEmail.Text, cbFuncao.Text, maskCPF.Text, hashedPassword, maskDataHoraAdmissao.Text);
 
                 if (controle.tem)
                 {
+                    string tabelaAfetada = "Usuário";
+                    DateTime dataHora = DateTime.Now;
+                    string acao = "btnCadastrar_Click";
+                    string descricao = "Cadastro de Usuário bem-sucedido";
+
+                    InserirLogsComands inserirLogs = new InserirLogsComands(tabelaAfetada, dataHora, acao, descricao);
+
                     MessageBox.Show(mensagem, "Cadastro", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    LimparFormulario.LimparForm(this);
+                    Close();
                 }
                 else
                 {
                     MessageBox.Show(controle.mensagem);
                 }
-            }  
+            }
         }
 
         private void FrmCadastro_Load(object sender, EventArgs e)
         {
-
+            DateTime dataHoraAtual = DateTime.Now;
+            maskDataHoraAdmissao.Text = dataHoraAtual.ToString("dd/MM/yyyy HH:mm");
         }
 
         private void btnLimpar_Click(object sender, EventArgs e)
