@@ -1,5 +1,4 @@
 ﻿using SGPPC.Class;
-using SGPPC.Controllerss;
 using SGPPC.Modelo;
 using SGPPC.Repository;
 using System;
@@ -30,75 +29,67 @@ namespace SGPPC.Views.Usuarios
 
         private void btnCadastrar_Click(object sender, EventArgs e)
         {
-            string salt = BCrypt.Net.BCrypt.GenerateSalt();
-
-            string senhaDoUsuario = "senhaDoUsuario";
-
-            string hashedPassword = BCrypt.Net.BCrypt.HashPassword(senhaDoUsuario, salt);
-
-            if (txbNome.Text.ToString().Trim() == "")
+            if (string.IsNullOrWhiteSpace(txbNome.Text))
             {
                 MessageBox.Show("Preencha o campo Nome", "Cadastro de usuário", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                txbNome.Text = "";
                 txbNome.Focus();
                 return;
             }
-            else if (txbEmail.Text.ToString().Trim() == "")
+            else if (string.IsNullOrWhiteSpace(txbEmail.Text))
             {
                 MessageBox.Show("Preencha o campo email", "Cadastro de usuário", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                txbEmail.Text = "";
                 txbEmail.Focus();
                 return;
             }
-            else if (cbFuncao.Text.ToString().Trim() == "")
+            else if (string.IsNullOrWhiteSpace(cbFuncao.Text))
             {
-                MessageBox.Show("Preencha o campo Cidade", "Cadastro de usuário", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                cbFuncao.Text = "";
+                MessageBox.Show("Preencha o campo Função", "Cadastro de usuário", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 cbFuncao.Focus();
                 return;
             }
-            else if (maskCPF.Text == "   ,   ,   -  " || maskCPF.Text.Length < 14)
+            else if (string.IsNullOrWhiteSpace(maskCPF.Text) || maskCPF.Text.Length < 14)
             {
                 MessageBox.Show("Preencha o campo CPF com um CPF válido (entre 10 e 11 dígitos).", "Cadastro de usuário", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                maskCPF.Text = "";
                 maskCPF.Focus();
                 return;
             }
-            else if (txbSenha.Text.ToString().Trim() == "")
+            else if (string.IsNullOrWhiteSpace(txbSenha.Text))
             {
                 MessageBox.Show("Preencha o campo senha", "Cadastro de usuário", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                txbSenha.Text = "";
                 txbSenha.Focus();
                 return;
             }
-            else if (maskDataHoraAdmissao.Text.ToString().Trim() == "")
+            else if (string.IsNullOrWhiteSpace(maskDataHoraAdmissao.Text))
             {
                 MessageBox.Show("Preencha o campo data/hora admissão", "Cadastro de usuário", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                maskDataHoraAdmissao.Text = "";
                 maskDataHoraAdmissao.Focus();
                 return;
             }
+
+            string salt = BCrypt.Net.BCrypt.GenerateSalt();
+
+            string senhaDoUsuario = txbSenha.Text;
+
+            string hashedPassword = BCrypt.Net.BCrypt.HashPassword(senhaDoUsuario, salt);
+
+            Controle controle = new Controle();
+            string mensagem = controle.Cadastrar(txbNome.Text, txbEmail.Text, cbFuncao.Text, maskCPF.Text, hashedPassword, maskDataHoraAdmissao.Text);
+
+            if (controle.tem)
+            {
+                string tabelaAfetada = "Usuário";
+                DateTime dataHora = DateTime.Now;
+                string acao = "btnCadastrar_Click";
+                string descricao = "Cadastro de Usuário bem-sucedido";
+
+                InserirLogsComands inserirLogs = new InserirLogsComands(tabelaAfetada, dataHora, acao, descricao);
+
+                MessageBox.Show(mensagem, "Cadastro", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                Close();
+            }
             else
             {
-                Controle controle = new Controle();
-                String mensagem = controle.Cadastrar(txbNome.Text, txbEmail.Text, cbFuncao.Text, maskCPF.Text, hashedPassword, maskDataHoraAdmissao.Text);
-
-                if (controle.tem)
-                {
-                    string tabelaAfetada = "Usuário";
-                    DateTime dataHora = DateTime.Now;
-                    string acao = "btnCadastrar_Click";
-                    string descricao = "Cadastro de Usuário bem-sucedido";
-
-                    InserirLogsComands inserirLogs = new InserirLogsComands(tabelaAfetada, dataHora, acao, descricao);
-
-                    MessageBox.Show(mensagem, "Cadastro", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    Close();
-                }
-                else
-                {
-                    MessageBox.Show(controle.mensagem);
-                }
+                MessageBox.Show(mensagem);
             }
         }
 

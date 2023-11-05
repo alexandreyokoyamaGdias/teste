@@ -114,11 +114,16 @@
     <Compile Include="Model\ConsultaEntradaProduto.cs" />
     <Compile Include="Model\ConsultaFornecedor.cs" />
     <Compile Include="Model\ConsultaProduto.cs" />
+    <Compile Include="Model\ConsultarEstoque.cs" />
     <Compile Include="Model\ConsultarPagamento.cs" />
+    <Compile Include="Model\ConsultarVendas.cs" />
     <Compile Include="Model\ConsultaUsuario.cs" />
+    <Compile Include="Model\EstoqueClass.cs" />
     <Compile Include="Model\FlucoCaixaClass.cs" />
+    <Compile Include="Model\PedidoClass.cs" />
     <Compile Include="Model\ProjetaLogs.cs" />
     <Compile Include="Model\ValidaController.cs" />
+    <Compile Include="Model\VendasClass.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -269,12 +274,6 @@
     <Compile Include="Views\Cadastros\FrmCadastroPedido.Designer.cs">
       <DependentUpon>FrmCadastroPedido.cs</DependentUpon>
     </Compile>
-    <Compile Include="Views\Relatorios\Form1.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Views\Relatorios\Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
-    </Compile>
     <Compile Include="Views\Relatorios\FrmEstoque.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -299,17 +298,17 @@
     <Compile Include="Views\Relatorios\FrmRelatorioFluxoCaixa.Designer.cs">
       <DependentUpon>FrmRelatorioFluxoCaixa.cs</DependentUpon>
     </Compile>
-    <Compile Include="Views\Relatorios\FrmRelatorioVendas.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Views\Relatorios\FrmRelatorioVendas.Designer.cs">
-      <DependentUpon>FrmRelatorioVendas.cs</DependentUpon>
-    </Compile>
     <Compile Include="Views\Relatorios\FrmVendas.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Views\Relatorios\FrmVendas.Designer.cs">
       <DependentUpon>FrmVendas.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Relatorios\FrmVendasView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Relatorios\FrmVendasView.Designer.cs">
+      <DependentUpon>FrmVendasView.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\Sabores\FrmAlterarSabores.cs">
       <SubType>Form</SubType>
@@ -421,8 +420,8 @@
     <EmbeddedResource Include="Views\Cadastros\FrmCadastroPedido.resx">
       <DependentUpon>FrmCadastroPedido.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\Relatorios\Form1.resx">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <EmbeddedResource Include="Views\Relatorios\FrmEstoque.resx">
+      <DependentUpon>FrmEstoque.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Relatorios\FrmFluxoCaixa.resx">
       <DependentUpon>FrmFluxoCaixa.cs</DependentUpon>
@@ -433,8 +432,11 @@
     <EmbeddedResource Include="Views\Relatorios\FrmRelatorioFluxoCaixa.resx">
       <DependentUpon>FrmRelatorioFluxoCaixa.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\Relatorios\FrmRelatorioVendas.resx">
-      <DependentUpon>FrmRelatorioVendas.cs</DependentUpon>
+    <EmbeddedResource Include="Views\Relatorios\FrmVendas.resx">
+      <DependentUpon>FrmVendas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Relatorios\FrmVendasView.resx">
+      <DependentUpon>FrmVendasView.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Relatorios\Modelos\RelatorioEstoque.rdlc" />
     <EmbeddedResource Include="Views\Relatorios\Modelos\RelatorioFluxoCaixa.rdlc" />
@@ -477,7 +479,9 @@
     <None Include="Properties\DataSources\Program.datasource" />
     <None Include="Properties\DataSources\SGPPC.Model.CadastroFornecedor.datasource" />
     <None Include="Properties\DataSources\SGPPC.Model.CadastroProduto.datasource" />
+    <None Include="Properties\DataSources\SGPPC.Model.EstoqueClass.datasource" />
     <None Include="Properties\DataSources\SGPPC.Model.FlucoCaixaClass.datasource" />
+    <None Include="Properties\DataSources\SGPPC.Model.VendasClass.datasource" />
     <None Include="Properties\DataSources\SGPPC.Properties.Resources.datasource" />
     <None Include="Properties\DataSources\SGPPC.Properties.Settings.datasource" />
     <None Include="Properties\DataSources\SGPPC.Views.Cadastros.FrmCadastroFuncionario.datasource" />

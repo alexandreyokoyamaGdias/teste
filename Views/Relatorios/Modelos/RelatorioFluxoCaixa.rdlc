@@ -6,21 +6,21 @@
         <TablixBody>
           <TablixColumns>
             <TablixColumn>
-              <Width>2.5cm</Width>
+              <Width>6.52074cm</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>2.5cm</Width>
+              <Width>4.37444cm</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>2.5cm</Width>
+              <Width>4.1275cm</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>2.5cm</Width>
+              <Width>4.1275cm</Width>
             </TablixColumn>
           </TablixColumns>
           <TablixRows>
             <TablixRow>
-              <Height>0.6cm</Height>
+              <Height>0.65263cm</Height>
               <TablixCells>
                 <TablixCell>
                   <CellContents>
@@ -32,7 +32,9 @@
                           <TextRuns>
                             <TextRun>
                               <Value>Motivo</Value>
-                              <Style />
+                              <Style>
+                                <FontWeight>Bold</FontWeight>
+                              </Style>
                             </TextRun>
                           </TextRuns>
                           <Style />
@@ -62,7 +64,9 @@
                           <TextRuns>
                             <TextRun>
                               <Value>Tipo Operacao</Value>
-                              <Style />
+                              <Style>
+                                <FontWeight>Bold</FontWeight>
+                              </Style>
                             </TextRun>
                           </TextRuns>
                           <Style />
@@ -92,7 +96,9 @@
                           <TextRuns>
                             <TextRun>
                               <Value>Valor</Value>
-                              <Style />
+                              <Style>
+                                <FontWeight>Bold</FontWeight>
+                              </Style>
                             </TextRun>
                           </TextRuns>
                           <Style />
@@ -122,7 +128,9 @@
                           <TextRuns>
                             <TextRun>
                               <Value>Data Hora</Value>
-                              <Style />
+                              <Style>
+                                <FontWeight>Bold</FontWeight>
+                              </Style>
                             </TextRun>
                           </TextRuns>
                           <Style />
@@ -145,7 +153,7 @@
               </TablixCells>
             </TablixRow>
             <TablixRow>
-              <Height>0.6cm</Height>
+              <Height>0.74083cm</Height>
               <TablixCells>
                 <TablixCell>
                   <CellContents>
@@ -290,10 +298,9 @@
           </TablixMembers>
         </TablixRowHierarchy>
         <DataSetName>DataGastosFluxoCaixa</DataSetName>
-        <Top>1.79599cm</Top>
-        <Left>2.9737cm</Left>
-        <Height>1.2cm</Height>
-        <Width>10cm</Width>
+        <Top>0.14111cm</Top>
+        <Height>1.39346cm</Height>
+        <Width>19.15019cm</Width>
         <Style>
           <Border>
             <Style>None</Style>
@@ -304,7 +311,7 @@
     <Height>2in</Height>
     <Style />
   </Body>
-  <Width>6.5in</Width>
+  <Width>7.53944in</Width>
   <Page>
     <PageHeader>
       <Height>2.54cm</Height>
@@ -318,18 +325,53 @@
             <Paragraph>
               <TextRuns>
                 <TextRun>
-                  <Value>Relatório de Fluxo de Caixa</Value>
-                  <Style />
+                  <Value>Relatório Fluxo de Caixa</Value>
+                  <Style>
+                    <FontSize>16pt</FontSize>
+                    <FontWeight>Bold</FontWeight>
+                  </Style>
                 </TextRun>
               </TextRuns>
               <Style />
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>Textbox1</rd:DefaultName>
-          <Top>0.7112cm</Top>
-          <Left>5.4737cm</Left>
+          <Top>0.46426cm</Top>
+          <Left>6.76134cm</Left>
+          <Height>0.70583cm</Height>
+          <Width>6.94408cm</Width>
+          <Style>
+            <Border>
+              <Style>None</Style>
+            </Border>
+            <PaddingLeft>2pt</PaddingLeft>
+            <PaddingRight>2pt</PaddingRight>
+            <PaddingTop>2pt</PaddingTop>
+            <PaddingBottom>2pt</PaddingBottom>
+          </Style>
+        </Textbox>
+        <Textbox Name="Textbox2">
+          <CanGrow>true</CanGrow>
+          <KeepTogether>true</KeepTogether>
+          <Paragraphs>
+            <Paragraph>
+              <TextRuns>
+                <TextRun>
+                  <Value>=Now()</Value>
+                  <Style>
+                    <FontSize>9pt</FontSize>
+                    <Format>f</Format>
+                  </Style>
+                </TextRun>
+              </TextRuns>
+              <Style />
+            </Paragraph>
+          </Paragraphs>
+          <rd:DefaultName>Textbox2</rd:DefaultName>
+          <Top>1.90472cm</Top>
           <Height>0.6cm</Height>
-          <Width>4.51083cm</Width>
+          <Width>6.52074cm</Width>
+          <ZIndex>1</ZIndex>
           <Style>
             <Border>
               <Style>None</Style>

@@ -87,7 +87,7 @@ namespace SGPPC.Views.EntradaProduto
             else
             {
                 EntadaProdutoControle entradaprodutoControle = new EntadaProdutoControle();
-                String mensagem = entradaprodutoControle.CadastrarEntProd(txbPreco.Text.Trim(), txbQuantidade.Text.Trim(), maskedDataHoraEntrada.Text.Trim());
+                String mensagem = entradaprodutoControle.CadastrarEntProd(txbPreco.Text.Trim(), txbQuantidade.Text.Trim(), maskedDataHoraEntrada.Text.Trim(), txbId.Text.Trim());
 
                 if (entradaprodutoControle.tem)
                 {
@@ -112,6 +112,17 @@ namespace SGPPC.Views.EntradaProduto
 
                     MessageBox.Show(entradaprodutoControle.mensagem);
                 }
+            }
+        }
+
+        private void cbbProdutoEntrada_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cbbProdutoEntrada.SelectedIndex != -1)
+            {
+                KeyValuePair<int, string> selectedProduto = (KeyValuePair<int, string>)cbbProdutoEntrada.SelectedItem;
+                int saborID = selectedProduto.Key;
+
+                txbId.Text = saborID.ToString();
             }
         }
     }

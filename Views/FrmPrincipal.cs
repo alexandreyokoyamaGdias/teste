@@ -121,12 +121,6 @@ namespace SGPPC
             frmConsultaControleCaixa.ShowDialog();
         }
 
-        private void testeToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            Views.Relatorios.Form1 form1 = new Views.Relatorios.Form1();
-            form1.ShowDialog();
-        }
-
         private void RelatórioFluxoDeCaixa_Click(object sender, EventArgs e)
         {
             Views.Relatorios.FrmRelatorioFluxoCaixa frmRelatorioFluxoCaixa = new Views.Relatorios.FrmRelatorioFluxoCaixa();
@@ -135,14 +129,14 @@ namespace SGPPC
 
         private void RelatórioVenda_Click(object sender, EventArgs e)
         {
-            Views.Relatorios.FrmRelatorioVendas frmRelatorioVendas = new Views.Relatorios.FrmRelatorioVendas();
-            frmRelatorioVendas.ShowDialog();
+            Views.Relatorios.FrmVendas frmVendas = new Views.Relatorios.FrmVendas();
+            frmVendas.ShowDialog();
         }
 
         private void RelatórioEstoque_Click(object sender, EventArgs e)
         {
-            Views.Relatorios.FrmRelatorioEstoque frmRelatorioEstoque = new Views.Relatorios.FrmRelatorioEstoque();
-            frmRelatorioEstoque.ShowDialog();
+            Views.Relatorios.FrmEstoque frmEstoque = new Views.Relatorios.FrmEstoque();
+            frmEstoque.ShowDialog();
         }
 
         private void button4_Click(object sender, EventArgs e)

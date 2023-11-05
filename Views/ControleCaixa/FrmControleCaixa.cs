@@ -1,5 +1,5 @@
 ﻿using SGPPC.Class;
-using SGPPC.Controllerss;
+
 using SGPPC.Data;
 using SGPPC.Modelo;
 using System;

@@ -1,6 +1,6 @@
 ﻿namespace SGPPC.Views.Relatorios
 {
-    partial class FrmRelatorioEstoque
+    partial class FrmVendasView
     {
         /// <summary>
         /// Required designer variable.
@@ -28,39 +28,37 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.reportViewerEstoque = new Microsoft.Reporting.WinForms.ReportViewer();
+            this.reportViewer1 = new Microsoft.Reporting.WinForms.ReportViewer();
             this.SuspendLayout();
             // 
-            // reportViewerEstoque
+            // reportViewer1
             // 
-            this.reportViewerEstoque.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.reportViewerEstoque.LocalReport.ReportEmbeddedResource = "SGPPC.Views.Relatorios.Modelos.RelatorioEstoque.rdlc";
-            this.reportViewerEstoque.Location = new System.Drawing.Point(0, 0);
-            this.reportViewerEstoque.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.reportViewerEstoque.Name = "reportViewerEstoque";
-            this.reportViewerEstoque.ServerReport.BearerToken = null;
-            this.reportViewerEstoque.Size = new System.Drawing.Size(1108, 635);
-            this.reportViewerEstoque.TabIndex = 0;
-            this.reportViewerEstoque.Load += new System.EventHandler(this.reportViewer1_Load);
+            this.reportViewer1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.reportViewer1.DocumentMapWidth = 29;
+            this.reportViewer1.LocalReport.ReportEmbeddedResource = "SGPPC.Views.Relatorios.Modelos.RelatorioVendas.rdlc";
+            this.reportViewer1.Location = new System.Drawing.Point(0, 0);
+            this.reportViewer1.Name = "reportViewer1";
+            this.reportViewer1.ServerReport.BearerToken = null;
+            this.reportViewer1.Size = new System.Drawing.Size(1108, 635);
+            this.reportViewer1.TabIndex = 0;
             // 
-            // FrmRelatorioEstoque
+            // FrmVendasView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1108, 635);
-            this.Controls.Add(this.reportViewerEstoque);
+            this.Controls.Add(this.reportViewer1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
-            this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.Name = "FrmRelatorioEstoque";
+            this.Name = "FrmVendasView";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "FrmRelatorioEstoque";
-            this.Load += new System.EventHandler(this.FrmRelatorioEstoque_Load);
+            this.Text = "FrmVendasView";
+            this.Load += new System.EventHandler(this.FrmVendasView_Load);
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private Microsoft.Reporting.WinForms.ReportViewer reportViewerEstoque;
+        private Microsoft.Reporting.WinForms.ReportViewer reportViewer1;
     }
 }

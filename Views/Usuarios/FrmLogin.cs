@@ -1,4 +1,5 @@
-﻿using SGPPC.Controllerss;
+﻿
+using SGPPC.Data;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -30,43 +31,45 @@ namespace SGPPC.Views.Usuarios
 
             if (string.IsNullOrWhiteSpace(login) || string.IsNullOrWhiteSpace(senha))
             {
+                string tabelaAfetada = "Usuário";
+                DateTime dataHora = DateTime.Now;
+                string acao = "btnEntrar_Click";
+                string descricao = "Login ou senha em branco!";
+
+                InserirLogsComands inserirLogs = new InserirLogsComands(tabelaAfetada, dataHora, acao, descricao);
+
                 MessageBox.Show("Por favor, preencha o campo de login e senha.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return; // Não prossiga se o login ou senha estiver em branco
+                return;
             }
 
             Controle controle = new Controle();
 
             if (controle.VerificarLogin(login, senha))
             {
+                string tabelaAfetada = "Usuário";
+                DateTime dataHora = DateTime.Now;
+                string acao = "btnEntrar_Click";
+                string descricao = "Usuário logado com sucesso!";
+
+                InserirLogsComands inserirLogs = new InserirLogsComands(tabelaAfetada, dataHora, acao, descricao);
+
                 MessageBox.Show("Logado com sucesso", "Entrando", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                // Se o login for bem-sucedido, abra o formulário principal
                 FrmPrincipal home = new FrmPrincipal();
                 home.Show();
-                this.Hide(); // Oculte o formulário de login
+                this.Hide();
             }
             else
             {
+                string tabelaAfetada = "Usuário";
+                DateTime dataHora = DateTime.Now;
+                string acao = "btnEntrar_Click";
+                string descricao = "Usuário não encontrado!";
+
+                InserirLogsComands inserirLogs = new InserirLogsComands(tabelaAfetada, dataHora, acao, descricao);
+
                 MessageBox.Show("Login não encontrado ou senha incorreta, verifique login e senha", "ERRO!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-
-        //private void btnEntrar_Click(object sender, EventArgs e)
-        //{
-        //    Controle controle = new Controle();
-        //    string senhaFornecidaPeloUsuario = txbSenha.Text;
-
-        //    if (controle.Acessar(txbLogin.Text, senhaFornecidaPeloUsuario))
-        //    {
-        //        MessageBox.Show("Logado com sucesso", "Entrando", MessageBoxButtons.OK, MessageBoxIcon.Information);
-        //        FrmPrincipal home = new FrmPrincipal();
-        //        home.Show();
-        //    }
-        //    else
-        //    {
-        //        MessageBox.Show("Login não encontrado ou senha incorreta, verifique login e senha", "ERRO!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-        //    }
-        //}
-
     }
 }

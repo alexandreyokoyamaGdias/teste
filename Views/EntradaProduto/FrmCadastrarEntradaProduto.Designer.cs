@@ -41,6 +41,7 @@
             this.cbbProdutoEntrada = new System.Windows.Forms.ComboBox();
             this.lblProdutoEntrada = new System.Windows.Forms.Label();
             this.lblDataHoraEntrada = new System.Windows.Forms.Label();
+            this.txbId = new System.Windows.Forms.TextBox();
             this.panelCadastrarEntradaProduto.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -150,6 +151,7 @@
             this.cbbProdutoEntrada.Name = "cbbProdutoEntrada";
             this.cbbProdutoEntrada.Size = new System.Drawing.Size(296, 28);
             this.cbbProdutoEntrada.TabIndex = 55;
+            this.cbbProdutoEntrada.SelectedIndexChanged += new System.EventHandler(this.cbbProdutoEntrada_SelectedIndexChanged);
             // 
             // lblProdutoEntrada
             // 
@@ -169,11 +171,19 @@
             this.lblDataHoraEntrada.TabIndex = 57;
             this.lblDataHoraEntrada.Text = "Data/Hora Entrada";
             // 
+            // txbId
+            // 
+            this.txbId.Location = new System.Drawing.Point(553, 488);
+            this.txbId.Name = "txbId";
+            this.txbId.Size = new System.Drawing.Size(66, 26);
+            this.txbId.TabIndex = 58;
+            // 
             // FrmCadastrarEntradaProduto
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(632, 534);
+            this.Controls.Add(this.txbId);
             this.Controls.Add(this.lblDataHoraEntrada);
             this.Controls.Add(this.lblProdutoEntrada);
             this.Controls.Add(this.cbbProdutoEntrada);
@@ -214,5 +224,6 @@
         private System.Windows.Forms.ComboBox cbbProdutoEntrada;
         private System.Windows.Forms.Label lblProdutoEntrada;
         private System.Windows.Forms.Label lblDataHoraEntrada;
+        private System.Windows.Forms.TextBox txbId;
     }
 }

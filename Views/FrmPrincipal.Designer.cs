@@ -30,14 +30,6 @@
         {
             this.components = new System.ComponentModel.Container();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
-            this.MenuCadastros = new System.Windows.Forms.ToolStripMenuItem();
-            this.fornecedorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.produtoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.CadastroPedidos = new System.Windows.Forms.ToolStripMenuItem();
-            this.CadastroFormasDePagamento = new System.Windows.Forms.ToolStripMenuItem();
-            this.CadastroPerfil = new System.Windows.Forms.ToolStripMenuItem();
-            this.CadastroDeUsuário = new System.Windows.Forms.ToolStripMenuItem();
-            this.cargosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.MenuRelatórios = new System.Windows.Forms.ToolStripMenuItem();
             this.RelatórioFluxoDeCaixa = new System.Windows.Forms.ToolStripMenuItem();
             this.RelatórioVenda = new System.Windows.Forms.ToolStripMenuItem();
@@ -54,7 +46,6 @@
             this.cadastrarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.consultarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.MenuSair = new System.Windows.Forms.ToolStripMenuItem();
-            this.testeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pnlCabecalhoSistema = new System.Windows.Forms.Panel();
             this.lblData = new System.Windows.Forms.Label();
             this.lblHora = new System.Windows.Forms.Label();
@@ -76,77 +67,16 @@
             this.menuStrip1.GripMargin = new System.Windows.Forms.Padding(2, 2, 0, 2);
             this.menuStrip1.ImageScalingSize = new System.Drawing.Size(24, 24);
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.MenuCadastros,
             this.MenuRelatórios,
             this.produtoToolStripMenuItem1,
             this.pedidoToolStripMenuItem,
             this.usuárioToolStripMenuItem,
-            this.MenuSair,
-            this.testeToolStripMenuItem});
+            this.MenuSair});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(1742, 33);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
-            // 
-            // MenuCadastros
-            // 
-            this.MenuCadastros.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.fornecedorToolStripMenuItem,
-            this.produtoToolStripMenuItem,
-            this.CadastroPedidos,
-            this.CadastroFormasDePagamento,
-            this.CadastroPerfil,
-            this.CadastroDeUsuário,
-            this.cargosToolStripMenuItem});
-            this.MenuCadastros.Name = "MenuCadastros";
-            this.MenuCadastros.Size = new System.Drawing.Size(107, 29);
-            this.MenuCadastros.Text = "Cadastros";
-            // 
-            // fornecedorToolStripMenuItem
-            // 
-            this.fornecedorToolStripMenuItem.Name = "fornecedorToolStripMenuItem";
-            this.fornecedorToolStripMenuItem.Size = new System.Drawing.Size(293, 34);
-            this.fornecedorToolStripMenuItem.Text = "Fornecedor";
-            this.fornecedorToolStripMenuItem.Click += new System.EventHandler(this.fornecedorToolStripMenuItem_Click);
-            // 
-            // produtoToolStripMenuItem
-            // 
-            this.produtoToolStripMenuItem.Name = "produtoToolStripMenuItem";
-            this.produtoToolStripMenuItem.Size = new System.Drawing.Size(293, 34);
-            this.produtoToolStripMenuItem.Text = "Produto";
-            this.produtoToolStripMenuItem.Click += new System.EventHandler(this.produtoToolStripMenuItem_Click);
-            // 
-            // CadastroPedidos
-            // 
-            this.CadastroPedidos.Name = "CadastroPedidos";
-            this.CadastroPedidos.Size = new System.Drawing.Size(293, 34);
-            this.CadastroPedidos.Text = "Pedido";
-            this.CadastroPedidos.Click += new System.EventHandler(this.CadastroPedidos_Click);
-            // 
-            // CadastroFormasDePagamento
-            // 
-            this.CadastroFormasDePagamento.Name = "CadastroFormasDePagamento";
-            this.CadastroFormasDePagamento.Size = new System.Drawing.Size(293, 34);
-            this.CadastroFormasDePagamento.Text = "Formas de Pagamento";
-            // 
-            // CadastroPerfil
-            // 
-            this.CadastroPerfil.Name = "CadastroPerfil";
-            this.CadastroPerfil.Size = new System.Drawing.Size(293, 34);
-            this.CadastroPerfil.Text = "Perfil";
-            // 
-            // CadastroDeUsuário
-            // 
-            this.CadastroDeUsuário.Name = "CadastroDeUsuário";
-            this.CadastroDeUsuário.Size = new System.Drawing.Size(293, 34);
-            this.CadastroDeUsuário.Text = "Usuário";
-            // 
-            // cargosToolStripMenuItem
-            // 
-            this.cargosToolStripMenuItem.Name = "cargosToolStripMenuItem";
-            this.cargosToolStripMenuItem.Size = new System.Drawing.Size(293, 34);
-            this.cargosToolStripMenuItem.Text = "Cargos";
             // 
             // MenuRelatórios
             // 
@@ -270,13 +200,6 @@
             this.MenuSair.Size = new System.Drawing.Size(57, 29);
             this.MenuSair.Text = "Sair";
             this.MenuSair.Click += new System.EventHandler(this.MenuSair_Click);
-            // 
-            // testeToolStripMenuItem
-            // 
-            this.testeToolStripMenuItem.Name = "testeToolStripMenuItem";
-            this.testeToolStripMenuItem.Size = new System.Drawing.Size(67, 29);
-            this.testeToolStripMenuItem.Text = "Teste";
-            this.testeToolStripMenuItem.Click += new System.EventHandler(this.testeToolStripMenuItem_Click);
             // 
             // pnlCabecalhoSistema
             // 
@@ -446,42 +369,33 @@
         #endregion
 
         private System.Windows.Forms.MenuStrip menuStrip1;
-        private System.Windows.Forms.ToolStripMenuItem MenuCadastros;
-        private System.Windows.Forms.ToolStripMenuItem CadastroPedidos;
         private System.Windows.Forms.ToolStripMenuItem MenuRelatórios;
-        private System.Windows.Forms.ToolStripMenuItem MenuSair;
-        private System.Windows.Forms.ToolStripMenuItem CadastroFormasDePagamento;
-        private System.Windows.Forms.ToolStripMenuItem CadastroDeUsuário;
-        private System.Windows.Forms.ToolStripMenuItem RelatórioFluxoDeCaixa;
-        private System.Windows.Forms.ToolStripMenuItem RelatórioVenda;
-        private System.Windows.Forms.ToolStripMenuItem RelatórioEstoque;
-        private System.Windows.Forms.ToolStripMenuItem CadastroPerfil;
         private System.Windows.Forms.Panel pnlCabecalhoSistema;
-        private System.Windows.Forms.ToolStripMenuItem cargosToolStripMenuItem;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.ToolStripMenuItem usuárioToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem cadastrarToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem consultarToolStripMenuItem;
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Button button5;
-        private System.Windows.Forms.ToolStripMenuItem fornecedorToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem produtoToolStripMenuItem;
         private System.Windows.Forms.Label lblData;
         private System.Windows.Forms.Label lblHora;
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.ToolStripMenuItem produtoToolStripMenuItem1;
-        private System.Windows.Forms.ToolStripMenuItem consultaToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem produtoToolStripMenuItem2;
-        private System.Windows.Forms.ToolStripMenuItem saboresToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem formasDePagamentoToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem pedidoToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem controleDeCaixaToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem testeToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem entradaDeProdutoToolStripMenuItem;
+        public System.Windows.Forms.ToolStripMenuItem MenuSair;
+        public System.Windows.Forms.ToolStripMenuItem RelatórioFluxoDeCaixa;
+        public System.Windows.Forms.ToolStripMenuItem RelatórioVenda;
+        public System.Windows.Forms.ToolStripMenuItem RelatórioEstoque;
+        public System.Windows.Forms.ToolStripMenuItem cadastrarToolStripMenuItem;
+        public System.Windows.Forms.ToolStripMenuItem consultarToolStripMenuItem;
+        public System.Windows.Forms.ToolStripMenuItem consultaToolStripMenuItem;
+        public System.Windows.Forms.ToolStripMenuItem produtoToolStripMenuItem2;
+        public System.Windows.Forms.ToolStripMenuItem saboresToolStripMenuItem;
+        public System.Windows.Forms.ToolStripMenuItem formasDePagamentoToolStripMenuItem;
+        public System.Windows.Forms.ToolStripMenuItem pedidoToolStripMenuItem;
+        public System.Windows.Forms.ToolStripMenuItem controleDeCaixaToolStripMenuItem;
+        public System.Windows.Forms.ToolStripMenuItem entradaDeProdutoToolStripMenuItem;
     }
 }
 
