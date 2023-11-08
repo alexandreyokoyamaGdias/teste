@@ -167,3 +167,6 @@ C:\Users\aydias\Downloads\teste\obj\Debug\SGPPC.Views.Relatorios.FrmFluxoCaixa.r
 C:\Users\aydias\Downloads\teste\obj\Debug\SGPPC.Views.Relatorios.FrmVendas.resources
 C:\Users\aydias\Downloads\teste\obj\Debug\SGPPC.Views.Relatorios.FrmEstoque.resources
 C:\Users\aydias\Downloads\teste\obj\Debug\SGPPC.Views.Relatorios.FrmVendasView.resources
+C:\Users\aydias\Downloads\teste\obj\Debug\SGPPC.Views.TipoOperacao.FrmCadastroTipoOperacao.resources
+C:\Users\aydias\Downloads\teste\obj\Debug\SGPPC.Views.TipoOperacao.FrmConsultaTipoOperacao.resources
+C:\Users\aydias\Downloads\teste\obj\Debug\SGPPC.Views.TipoOperacao.FrmEdicaoTipoOpercao.resources

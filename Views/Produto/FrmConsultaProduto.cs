@@ -73,10 +73,10 @@ namespace SGPPC.Views.Consultas
                 string descricao = selectedRow.Cells["Descricao"].Value.ToString();
                 string valor = selectedRow.Cells["Valor"].Value.ToString();
                 string data = selectedRow.Cells["Data_Validade"].Value.ToString();
-                //string fornecedor = selectedRow.Cells["Nome"].Value.ToString();
+                string fornecedor = selectedRow.Cells["Id_Fornecedor"].Value.ToString();
                 string id = selectedRow.Cells["Id"].Value.ToString();
 
-                FrmAlterarProduto telaEdicao = new FrmAlterarProduto(nome, descricao, valor, data, id);
+                FrmAlterarProduto telaEdicao = new FrmAlterarProduto(nome, descricao, valor, data, fornecedor, id);
                 telaEdicao.ShowDialog();
             }
         }

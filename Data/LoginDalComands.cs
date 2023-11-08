@@ -25,11 +25,52 @@ namespace SGPPC.Repository
             return new string(input.Where(char.IsDigit).ToArray());
         }
 
-        public bool VerificarLogin(string login, string senha)
+        //public bool VerificarLogin(string login, string senha)
+        //{
+        //    using (SqlConnection connection = new SqlConnection("Data Source=ACF014\\SQLEXPRESS;Initial Catalog=SGPPC;Integrated Security=True"))
+        //    {
+        //        using (SqlCommand cmd = new SqlCommand("SELECT Senha FROM Usuario WHERE Email = @login", connection))
+        //        {
+        //            cmd.Parameters.AddWithValue("@login", login);
+
+        //            try
+        //            {
+        //                connection.Open();
+        //                using (SqlDataReader dr = cmd.ExecuteReader())
+        //                {
+        //                    if (dr.HasRows)
+        //                    {
+        //                        string senhaArmazenada = "";
+
+        //                        while (dr.Read())
+        //                        {
+        //                            senhaArmazenada = dr["Senha"].ToString();
+        //                        }
+
+        //                        if (BCrypt.Net.BCrypt.Verify(senha, senhaArmazenada))
+        //                        {
+        //                            return true;
+        //                        }
+        //                    }
+        //                }
+        //            }
+        //            catch (SqlException ex)
+        //            {
+        //                this.mensagem = "Erro com o Banco de Dados: " + ex.Message;
+        //            }
+        //        }
+        //    }
+        //    return false;
+        //}
+
+        public bool VerificarLogin(string login, string senha, out int userID, out string userName)
         {
+            userID = -1;  // Valor padrão para indicar falha no login
+            userName = string.Empty;
+
             using (SqlConnection connection = new SqlConnection("Data Source=ACF014\\SQLEXPRESS;Initial Catalog=SGPPC;Integrated Security=True"))
             {
-                using (SqlCommand cmd = new SqlCommand("SELECT Senha FROM Usuario WHERE Email = @login", connection))
+                using (SqlCommand cmd = new SqlCommand("SELECT Id, Nome, Senha FROM Usuario WHERE Email = @login", connection))
                 {
                     cmd.Parameters.AddWithValue("@login", login);
 
@@ -44,6 +85,8 @@ namespace SGPPC.Repository
 
                                 while (dr.Read())
                                 {
+                                    userID = Convert.ToInt32(dr["ID"]);
+                                    userName = dr["Nome"].ToString();
                                     senhaArmazenada = dr["Senha"].ToString();
                                 }
 
@@ -62,6 +105,7 @@ namespace SGPPC.Repository
             }
             return false;
         }
+
 
         public String Cadastrar(String nome, String email, String funcao, String cpf, String senha, String dataAd)
         {

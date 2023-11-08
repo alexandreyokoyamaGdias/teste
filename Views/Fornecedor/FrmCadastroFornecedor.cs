@@ -1,5 +1,5 @@
-﻿using SGPPC.Class;
-
+﻿using Microsoft.ReportingServices.ReportProcessing.ReportObjectModel;
+using SGPPC.Class;
 using SGPPC.Data;
 using SGPPC.Model;
 using SGPPC.Modelo;
@@ -18,6 +18,8 @@ namespace SGPPC.Views.Fornecedor
 {
     public partial class FrmCadastroFornecedor : Form
     {
+        public int UserID { get; private set; }
+
         public FrmCadastroFornecedor()
         {
             InitializeComponent();
@@ -69,48 +71,54 @@ namespace SGPPC.Views.Fornecedor
             }
             else
             {
-                if (radioAtivo.Checked)
+                FrmPrincipal principalForm = Application.OpenForms.OfType<FrmPrincipal>().FirstOrDefault();
+                if (principalForm != null)
                 {
-                    FornecedorControle fornecedorControle = new FornecedorControle();
-                    String mensagem = fornecedorControle.CadastrarFor(txbNome.Text.Trim(), maskCNPJ.Text.Trim(), txbPais.Text.Trim(), txbCidade.Text.Trim(), txbEstado.Text.Trim(), radioAtivo.Text.Trim());
-
-                    if (fornecedorControle.tem)
+                    if (radioAtivo.Checked)
                     {
-                        string tabelaAfetada = "Fornecedor";
-                        DateTime dataHora = DateTime.Now;
-                        string acao = "btnCadastrar_Click";
-                        string descricao = "Cadastro de Fornecedor bem-sucedido";
+                        FornecedorControle fornecedorControle = new FornecedorControle();
+                        String mensagem = fornecedorControle.CadastrarFor(txbNome.Text.Trim(), maskCNPJ.Text.Trim(), txbPais.Text.Trim(), txbCidade.Text.Trim(), txbEstado.Text.Trim(), radioAtivo.Text.Trim());
 
-                        InserirLogsComands inserirLogs = new InserirLogsComands(tabelaAfetada, dataHora, acao, descricao);
+                        int userId = principalForm.UserID; // Obtenha o UserID da instância de FrmPrincipal
+                        if (fornecedorControle.tem)
+                        {
+                            string tabelaAfetada = "Fornecedor";
+                            DateTime dataHora = DateTime.Now;
+                            string acao = "btnCadastrar_Click";
+                            string descricao = "Cadastro de Fornecedor bem-sucedido";
 
-                        MessageBox.Show(mensagem, "Cadastro", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        LimparFormulario.LimparForm(this);
+                            InserirLogsComands inserirLogs = new InserirLogsComands(tabelaAfetada, dataHora, acao, descricao, userId);
+
+                            MessageBox.Show(mensagem, "Cadastro", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            Close();
+                        }
+                        else
+                        {
+                            MessageBox.Show(fornecedorControle.mensagem);
+                        }
                     }
                     else
                     {
-                        MessageBox.Show(fornecedorControle.mensagem);
-                    }
-                }
-                else
-                {
-                    FornecedorControle fornecedorControle = new FornecedorControle();
-                    String mensagem = fornecedorControle.CadastrarFor(txbNome.Text.Trim(), maskCNPJ.Text.Trim(), txbPais.Text.Trim(), txbCidade.Text.Trim(), txbEstado.Text.Trim(), radioInativo.Text.Trim());
+                        FornecedorControle fornecedorControle = new FornecedorControle();
+                        String mensagem = fornecedorControle.CadastrarFor(txbNome.Text.Trim(), maskCNPJ.Text.Trim(), txbPais.Text.Trim(), txbCidade.Text.Trim(), txbEstado.Text.Trim(), radioInativo.Text.Trim());
 
-                    if (fornecedorControle.tem)
-                    {
-                        string tabelaAfetada = "Fornecedor";
-                        DateTime dataHora = DateTime.Now;
-                        string acao = "btnCadastrar_Click";
-                        string descricao = "Cadastro de Fornecedor bem-sucedido";
+                        int userId = principalForm.UserID; // Obtenha o UserID da instância de FrmPrincipal
+                        if (fornecedorControle.tem)
+                        {
+                            string tabelaAfetada = "Fornecedor";
+                            DateTime dataHora = DateTime.Now;
+                            string acao = "btnCadastrar_Click";
+                            string descricao = "Cadastro de Fornecedor bem-sucedido";
 
-                        InserirLogsComands inserirLogs = new InserirLogsComands(tabelaAfetada, dataHora, acao, descricao);
+                            InserirLogsComands inserirLogs = new InserirLogsComands(tabelaAfetada, dataHora, acao, descricao, userId);
 
-                        MessageBox.Show(mensagem, "Cadastro", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        LimparFormulario.LimparForm(this);
-                    }
-                    else
-                    {
-                        MessageBox.Show(fornecedorControle.mensagem);
+                            MessageBox.Show(mensagem, "Cadastro", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            Close();
+                        }
+                        else
+                        {
+                            MessageBox.Show(fornecedorControle.mensagem);
+                        }
                     }
                 }
             }

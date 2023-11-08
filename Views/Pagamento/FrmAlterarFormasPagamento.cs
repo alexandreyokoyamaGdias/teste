@@ -1,4 +1,5 @@
-﻿using SGPPC.Class;
+﻿using Microsoft.ReportingServices.ReportProcessing.ReportObjectModel;
+using SGPPC.Class;
 using SGPPC.Data;
 using SGPPC.Modelo;
 using System;
@@ -15,6 +16,8 @@ namespace SGPPC.Views.Pagamento
 {
     public partial class FrmAlterarFormasPagamento : Form
     {
+        public int UserID { get; private set; }
+
         public FrmAlterarFormasPagamento()
         {
             InitializeComponent();
@@ -78,27 +81,32 @@ namespace SGPPC.Views.Pagamento
             }
             else
             {
-                if (int.TryParse(txbId.Text, out int id))
+                FrmPrincipal principalForm = Application.OpenForms.OfType<FrmPrincipal>().FirstOrDefault();
+                if (principalForm != null)
                 {
-                    PagamentoAlterarControle pagamentoAlterarControle = new PagamentoAlterarControle();
-                    string status = radioAtivoPagamentoAlterar.Checked ? "Ativo" : "Inativo";
-                    string mensagem = pagamentoAlterarControle.AlterarPagamento(id, txbFormaNome.Text.Trim(), txbFormaPDescricaoo.Text.Trim(), status);
-
-                    if (pagamentoAlterarControle.tem)
+                    if (int.TryParse(txbId.Text, out int id))
                     {
-                        string tabelaAfetada = "Pagamento";
-                        DateTime dataHora = DateTime.Now;
-                        string acao = "btnAlterar_Click";
-                        string descricao = "Alteração do Pagamento bem-sucedido";
+                        PagamentoAlterarControle pagamentoAlterarControle = new PagamentoAlterarControle();
+                        string status = radioAtivoPagamentoAlterar.Checked ? "Ativo" : "Inativo";
+                        string mensagem = pagamentoAlterarControle.AlterarPagamento(id, txbFormaNome.Text.Trim(), txbFormaPDescricaoo.Text.Trim(), status);
 
-                        InserirLogsComands inserirLogs = new InserirLogsComands(tabelaAfetada, dataHora, acao, descricao);
+                        int userId = principalForm.UserID; // Obtenha o UserID da instância de FrmPrincipal
+                        if (pagamentoAlterarControle.tem)
+                        {
+                            string tabelaAfetada = "Pagamento";
+                            DateTime dataHora = DateTime.Now;
+                            string acao = "btnAlterar_Click";
+                            string descricao = "Alteração do Pagamento bem-sucedido";
 
-                        MessageBox.Show(mensagem, "Alteração", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        Close();
-                    }
-                    else
-                    {
-                        MessageBox.Show(pagamentoAlterarControle.mensagem);
+                            InserirLogsComands inserirLogs = new InserirLogsComands(tabelaAfetada, dataHora, acao, descricao, userId);
+
+                            MessageBox.Show(mensagem, "Alteração", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            Close();
+                        }
+                        else
+                        {
+                            MessageBox.Show(pagamentoAlterarControle.mensagem);
+                        }
                     }
                 }
                 else

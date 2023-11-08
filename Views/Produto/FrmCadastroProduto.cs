@@ -1,16 +1,20 @@
-﻿using SGPPC.Class;
+﻿using Microsoft.ReportingServices.ReportProcessing.ReportObjectModel;
+using SGPPC.Class;
 using SGPPC.Data;
 using SGPPC.Modelo;
 using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Globalization;
+using System.Linq;
 using System.Windows.Forms;
 
 namespace SGPPC.Views.Produto
 {
     public partial class FrmCadastroProduto : Form
     {
+        public int UserID { get; private set; }
+
         public FrmCadastroProduto()
         {
             InitializeComponent();
@@ -58,32 +62,38 @@ namespace SGPPC.Views.Produto
             }
             else
             {
-                ProdutoControle fornecedorControle = new ProdutoControle();
-                String mensagem = fornecedorControle.CadastrarProd(txbNomeProd.Text.Trim(), txbDescricaoProd.Text.Trim(), txbValorProd.Text.Trim(), maskTxbDataProd.Text.Trim(), txbIdFoornecedor.Text.Trim(), txbIdSabor.Text.Trim());
-
-                if (fornecedorControle.tem)
+                FrmPrincipal principalForm = Application.OpenForms.OfType<FrmPrincipal>().FirstOrDefault();
+                if (principalForm != null)
                 {
-                    string tabelaAfetada = "Produto";
-                    DateTime dataHora = DateTime.Now;
-                    string acao = "button1_Click";
-                    string descricao = "Cadastro de produto bem-sucedido";
+                    ProdutoControle fornecedorControle = new ProdutoControle();
+                    String mensagem = fornecedorControle.CadastrarProd(txbNomeProd.Text.Trim(), txbDescricaoProd.Text.Trim(), txbValorProd.Text.Trim(), maskTxbDataProd.Text.Trim(), txbIdFoornecedor.Text.Trim(), txbIdSabor.Text.Trim());
 
-                    InserirLogsComands inserirLogs = new InserirLogsComands(tabelaAfetada, dataHora, acao, descricao);
+                    int userId = principalForm.UserID; // Obtenha o UserID da instância de FrmPrincipal
+                    if (fornecedorControle.tem)
+                    {
+                        string tabelaAfetada = "Produto";
+                        DateTime dataHora = DateTime.Now;
+                        string acao = "button1_Click";
+                        string descricao = "Cadastro de produto bem-sucedido";
 
-                    MessageBox.Show(mensagem, "Cadastro", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    LimparFormulario.LimparForm(this);
-                }
-                else
-                {
-                    string tabelaAfetada = "Produto";
-                    DateTime dataHora = DateTime.Now;
-                    string acao = "button1_Click";
-                    string descricao = "Erro ao cadastrar produto";
+                        InserirLogsComands inserirLogs = new InserirLogsComands(tabelaAfetada, dataHora, acao, descricao, userId);
 
-                    InserirLogsComands inserirLogs = new InserirLogsComands(tabelaAfetada, dataHora, acao, descricao);
+                        MessageBox.Show(mensagem, "Cadastro", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        Close();
+                    }
+                    else
+                    {
+                        string tabelaAfetada = "Produto";
+                        DateTime dataHora = DateTime.Now;
+                        string acao = "button1_Click";
+                        string descricao = "Erro ao cadastrar produto";
 
-                    MessageBox.Show(fornecedorControle.mensagem);
-                }
+                        InserirLogsComands inserirLogs = new InserirLogsComands(tabelaAfetada, dataHora, acao, descricao, userId);
+
+                        MessageBox.Show(fornecedorControle.mensagem);
+                    }
+
+                }     
             }
         }
 

@@ -12,11 +12,14 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using BCrypt.Net;
 using SGPPC.Data;
+using Microsoft.ReportingServices.ReportProcessing.ReportObjectModel;
 
 namespace SGPPC.Views.Usuarios
 {
     public partial class FrmCadastro : Form
     {
+        public int UserID { get; private set; }
+
         public FrmCadastro()
         {
             InitializeComponent();
@@ -72,25 +75,31 @@ namespace SGPPC.Views.Usuarios
 
             string hashedPassword = BCrypt.Net.BCrypt.HashPassword(senhaDoUsuario, salt);
 
-            Controle controle = new Controle();
-            string mensagem = controle.Cadastrar(txbNome.Text, txbEmail.Text, cbFuncao.Text, maskCPF.Text, hashedPassword, maskDataHoraAdmissao.Text);
-
-            if (controle.tem)
+            FrmPrincipal principalForm = Application.OpenForms.OfType<FrmPrincipal>().FirstOrDefault();
+            if (principalForm != null)
             {
-                string tabelaAfetada = "Usuário";
-                DateTime dataHora = DateTime.Now;
-                string acao = "btnCadastrar_Click";
-                string descricao = "Cadastro de Usuário bem-sucedido";
+                int userId = principalForm.UserID; // Obtenha o UserID da instância de FrmPrincipal
 
-                InserirLogsComands inserirLogs = new InserirLogsComands(tabelaAfetada, dataHora, acao, descricao);
+                Controle controle = new Controle();
+                string mensagem = controle.Cadastrar(txbNome.Text, txbEmail.Text, cbFuncao.Text, maskCPF.Text, hashedPassword, maskDataHoraAdmissao.Text);
+                
+                if (controle.tem)
+                {
+                    string tabelaAfetada = "Usuário";
+                    DateTime dataHora = DateTime.Now;
+                    string acao = "btnCadastrar_Click";
+                    string descricao = "Cadastro de Usuário bem-sucedido";
 
-                MessageBox.Show(mensagem, "Cadastro", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                Close();
-            }
-            else
-            {
-                MessageBox.Show(mensagem);
-            }
+                    InserirLogsComands inserirLogs = new InserirLogsComands(tabelaAfetada, dataHora, acao, descricao, userId);
+
+                    MessageBox.Show(mensagem, "Cadastro", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    Close();
+                }
+                else
+                {
+                    MessageBox.Show(mensagem);
+                }
+            }    
         }
 
         private void FrmCadastro_Load(object sender, EventArgs e)

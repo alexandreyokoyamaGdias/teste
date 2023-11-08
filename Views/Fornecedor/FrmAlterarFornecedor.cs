@@ -19,6 +19,8 @@ namespace SGPPC.Views.Fornecedor
 {
     public partial class FrmAlterarFornecedor : Form
     {
+        public int UserID { get; private set; }
+
         public FrmAlterarFornecedor()
         {
             InitializeComponent();
@@ -98,27 +100,32 @@ namespace SGPPC.Views.Fornecedor
             }
             else
             {
-                if (Int32.TryParse(txbId.Text, out int id))
+                FrmPrincipal principalForm = Application.OpenForms.OfType<FrmPrincipal>().FirstOrDefault();
+                if (principalForm != null)
                 {
-                    FornecedorEditarControle fornecedorEditarControle = new FornecedorEditarControle();
-                    string status = radioAtivo.Checked ? "Ativo" : "Inativo";
-                    String mensagem = fornecedorEditarControle.AlterarForn(id, txbCNPJ.Text.Trim(), txbNome.Text.Trim(), txbPais.Text.Trim(), txbCidade.Text.Trim(), txbEstado.Text.Trim(), status);
-
-                    if (fornecedorEditarControle.tem)
+                    if (Int32.TryParse(txbId.Text, out int id))
                     {
-                        string tabelaAfetada = "Fornecedor";
-                        DateTime dataHora = DateTime.Now;
-                        string acao = "button1_Click";
-                        string descricao = "Alteração de Fornecedor bem-sucedido";
+                        FornecedorEditarControle fornecedorEditarControle = new FornecedorEditarControle();
+                        string status = radioAtivo.Checked ? "Ativo" : "Inativo";
+                        String mensagem = fornecedorEditarControle.AlterarForn(id, txbCNPJ.Text.Trim(), txbNome.Text.Trim(), txbPais.Text.Trim(), txbCidade.Text.Trim(), txbEstado.Text.Trim(), status);
 
-                        InserirLogsComands inserirLogs = new InserirLogsComands(tabelaAfetada, dataHora, acao, descricao);
+                        int userId = principalForm.UserID; // Obtenha o UserID da instância de FrmPrincipal
+                        if (fornecedorEditarControle.tem)
+                        {
+                            string tabelaAfetada = "Fornecedor";
+                            DateTime dataHora = DateTime.Now;
+                            string acao = "button1_Click";
+                            string descricao = "Alteração de Fornecedor bem-sucedido";
 
-                        MessageBox.Show(mensagem, "Alteração", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        Close();
-                    }
-                    else
-                    {
-                        MessageBox.Show(fornecedorEditarControle.mensagem);
+                            InserirLogsComands inserirLogs = new InserirLogsComands(tabelaAfetada, dataHora, acao, descricao, userId);
+
+                            MessageBox.Show(mensagem, "Alteração", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            Close();
+                        }
+                        else
+                        {
+                            MessageBox.Show(fornecedorEditarControle.mensagem);
+                        }
                     }
                 }
                 else

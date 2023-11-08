@@ -12,6 +12,10 @@ namespace SGPPC
 {
     public partial class FrmPrincipal : Form
     {
+        public string UserName { get; set; }
+
+        public int UserID { get; set; }
+
         public FrmPrincipal()
         {
             InitializeComponent();
@@ -71,6 +75,8 @@ namespace SGPPC
         {
             lblHora.Text = DateTime.Now.ToLongTimeString();
             lblData.Text = DateTime.Now.ToLongDateString();
+
+            StatusHora.Text = DateTime.Now.ToLongTimeString();
         }
 
         private void consultaToolStripMenuItem_Click(object sender, EventArgs e)
@@ -160,6 +166,21 @@ namespace SGPPC
         {
             Views.EntradaProduto.FrmConsultaEntradaProduto frmConsultaEntradaProduto = new Views.EntradaProduto.FrmConsultaEntradaProduto();
             frmConsultaEntradaProduto.ShowDialog();
+        }
+
+        private void FrmPrincipal_Load(object sender, EventArgs e)
+        {
+            StatusHora.Text = DateTime.Now.ToString("HH:mm:ss");
+            StatusData.Text = DateTime.Today.ToString("dd/MM/yyyy");
+
+            StatusUsuarioLogado.Text = UserName;
+            StripLabelId.Text = UserID.ToString();
+        }
+
+        private void timerStatus_Tick(object sender, EventArgs e)
+        {
+            StatusHora.Text = DateTime.Now.ToString("HH:mm:ss");
+            StatusData.Text = DateTime.Today.ToString("dd/MM/yyyy");
         }
     }
 }

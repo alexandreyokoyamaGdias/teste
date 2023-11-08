@@ -1,4 +1,5 @@
-﻿using SGPPC.Class;
+﻿using Microsoft.ReportingServices.ReportProcessing.ReportObjectModel;
+using SGPPC.Class;
 using SGPPC.Data;
 using SGPPC.Modelo;
 using System;
@@ -15,6 +16,8 @@ namespace SGPPC.Views.Sabores
 {
     public partial class FrmCadastroSabores : Form
     {
+        public int UserID { get; private set; }
+
         public FrmCadastroSabores()
         {
             InitializeComponent();
@@ -37,17 +40,21 @@ namespace SGPPC.Views.Sabores
 
         private void btnCadastrar_Click(object sender, EventArgs e)
         {
-            if (txbDescricao.Text.ToString().Trim() == "")
+            if (string.IsNullOrWhiteSpace(txbDescricao.Text))
             {
                 MessageBox.Show("Preencha o campo Descrição", "Cadastro do Sabor!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 txbDescricao.Text = "";
                 txbDescricao.Focus();
                 return;
             }
-            else
+
+            FrmPrincipal principalForm = Application.OpenForms.OfType<FrmPrincipal>().FirstOrDefault();
+            if(principalForm != null)
             {
+                int userId = principalForm.UserID; // Obtenha o UserID da instância de FrmPrincipal
+
                 SaborControlee saborControle = new SaborControlee();
-                String mensagem = saborControle.CadastrarSabor(txbDescricao.Text.Trim());
+                string mensagem = saborControle.CadastrarSabor(txbDescricao.Text.Trim());
 
                 if (saborControle.tem)
                 {
@@ -56,10 +63,10 @@ namespace SGPPC.Views.Sabores
                     string acao = "btnCadastrar_Click";
                     string descricao = "Cadastro de sabor bem-sucedido";
 
-                    InserirLogsComands inserirLogs = new InserirLogsComands(tabelaAfetada, dataHora, acao, descricao);
+                    InserirLogsComands inserirLogs = new InserirLogsComands(tabelaAfetada, dataHora, acao, descricao, userId);
 
                     MessageBox.Show(mensagem, "Cadastro", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    LimparFormulario.LimparForm(this);
+                    Close();
                 }
                 else
                 {
@@ -67,5 +74,41 @@ namespace SGPPC.Views.Sabores
                 }
             }
         }
+
+
+        //private void btnCadastrar_Click(object sender, EventArgs e)
+        //{
+        //    if (txbDescricao.Text.ToString().Trim() == "")
+        //    {
+        //        MessageBox.Show("Preencha o campo Descrição", "Cadastro do Sabor!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+        //        txbDescricao.Text = "";
+        //        txbDescricao.Focus();
+        //        return;
+        //    }
+        //    else
+        //    {
+        //        SaborControlee saborControle = new SaborControlee();
+        //        String mensagem = saborControle.CadastrarSabor(txbDescricao.Text.Trim());
+
+        //        if (saborControle.tem)
+        //        {
+        //            int userId;
+        //            string tabelaAfetada = "Sabor";
+        //            DateTime dataHora = DateTime.Now;
+        //            string acao = "btnCadastrar_Click";
+        //            string descricao = "Cadastro de sabor bem-sucedido";
+        //            userId = -1;
+
+        //            InserirLogsComands inserirLogs = new InserirLogsComands(tabelaAfetada, dataHora, acao, descricao, userId);
+
+        //            MessageBox.Show(mensagem, "Cadastro", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        //            LimparFormulario.LimparForm(this);
+        //        }
+        //        else
+        //        {
+        //            MessageBox.Show(saborControle.mensagem);
+        //        }
+        //    }
+        //}
     }
 }

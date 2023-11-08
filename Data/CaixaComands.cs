@@ -32,7 +32,7 @@ namespace SGPPC.Data
 
             //cmd.CommandText = "INSERT INTO Controle_Caixa_Pedido (Motivo, Tipo_Operacao, Valor, Data_Hora) VALUES (@Motivo, @Tipo_Operacao, @Valor, @Data_Hora);";
             cmd.CommandText = "INSERT INTO Controle_Caixa_Pedido (Motivo, Tipo_Operacao, Valor, Data_Hora) " +
-                              "VALUES (@Nome, @Descricao, @Valor, @Data);";
+                              "VALUES (@Motivo, @Tipo_Operacao, @Valor, @Data_Hora);";
 
             cmd.Parameters.AddWithValue("@Motivo", motivo);
             cmd.Parameters.AddWithValue("@Tipo_Operacao", tipo);

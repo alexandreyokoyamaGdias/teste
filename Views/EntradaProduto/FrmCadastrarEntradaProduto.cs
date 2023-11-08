@@ -17,6 +17,8 @@ namespace SGPPC.Views.EntradaProduto
 {
     public partial class FrmCadastrarEntradaProduto : Form
     {
+        public int UserID { get; private set; }
+
         public FrmCadastrarEntradaProduto()
         {
             InitializeComponent();
@@ -86,31 +88,36 @@ namespace SGPPC.Views.EntradaProduto
             }
             else
             {
-                EntadaProdutoControle entradaprodutoControle = new EntadaProdutoControle();
-                String mensagem = entradaprodutoControle.CadastrarEntProd(txbPreco.Text.Trim(), txbQuantidade.Text.Trim(), maskedDataHoraEntrada.Text.Trim(), txbId.Text.Trim());
-
-                if (entradaprodutoControle.tem)
+                FrmPrincipal principalForm = Application.OpenForms.OfType<FrmPrincipal>().FirstOrDefault();
+                if (principalForm != null)
                 {
-                    string tabelaAfetada = "Cadastro Entrada de Produto";
-                    DateTime dataHora = DateTime.Now;
-                    string acao = "btnCadastrar_Click";
-                    string descricao = "Cadastro de entrada do produto bem-sucedido";
+                    EntadaProdutoControle entradaprodutoControle = new EntadaProdutoControle();
+                    String mensagem = entradaprodutoControle.CadastrarEntProd(txbPreco.Text.Trim(), txbQuantidade.Text.Trim(), maskedDataHoraEntrada.Text.Trim(), txbId.Text.Trim());
 
-                    InserirLogsComands inserirLogs = new InserirLogsComands(tabelaAfetada, dataHora, acao, descricao);
+                    int userId = principalForm.UserID; // Obtenha o UserID da instância de FrmPrincipal
+                    if (entradaprodutoControle.tem)
+                    {
+                        string tabelaAfetada = "Cadastro Entrada de Produto";
+                        DateTime dataHora = DateTime.Now;
+                        string acao = "btnCadastrar_Click";
+                        string descricao = "Cadastro de entrada do produto bem-sucedido";
 
-                    MessageBox.Show(mensagem, "Cadastro", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    LimparFormulario.LimparForm(this);
-                }
-                else
-                {
-                    string tabelaAfetada = "Cadastro Entrada de Produto";
-                    DateTime dataHora = DateTime.Now;
-                    string acao = "btnCadastrar_Click";
-                    string descricao = "Erro ao tentar cadastrar entrada do produto";
+                        InserirLogsComands inserirLogs = new InserirLogsComands(tabelaAfetada, dataHora, acao, descricao, userId);
 
-                    InserirLogsComands inserirLogs = new InserirLogsComands(tabelaAfetada, dataHora, acao, descricao);
+                        MessageBox.Show(mensagem, "Cadastro", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        LimparFormulario.LimparForm(this);
+                    }
+                    else
+                    {
+                        string tabelaAfetada = "Cadastro Entrada de Produto";
+                        DateTime dataHora = DateTime.Now;
+                        string acao = "btnCadastrar_Click";
+                        string descricao = "Erro ao tentar cadastrar entrada do produto";
 
-                    MessageBox.Show(entradaprodutoControle.mensagem);
+                        InserirLogsComands inserirLogs = new InserirLogsComands(tabelaAfetada, dataHora, acao, descricao, userId);
+
+                        MessageBox.Show(entradaprodutoControle.mensagem);
+                    }
                 }
             }
         }

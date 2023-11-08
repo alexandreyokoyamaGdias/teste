@@ -16,6 +16,8 @@ namespace SGPPC.Views.ControleCaixa
 {
     public partial class FrmEditarControleCaixa : Form
     {
+        public int UserID { get; private set; }
+
         public FrmEditarControleCaixa()
         {
             InitializeComponent();
@@ -74,33 +76,38 @@ namespace SGPPC.Views.ControleCaixa
             }
             else
             {
-                if (Int32.TryParse(txbId.Text, out Int32 id))
+                FrmPrincipal principalForm = Application.OpenForms.OfType<FrmPrincipal>().FirstOrDefault();
+                if (principalForm != null)
                 {
-                    CaixaControle controle = new CaixaControle();
-                    String mensagem = controle.EditarCaixa(txbMotivoEditar.Text, txbTipoOperadcaoEditar.Text, txbValorEditar.Text, id);
-
-                    if (controle.tem)
+                    if (Int32.TryParse(txbId.Text, out Int32 id))
                     {
-                        string tabelaAfetada = "Controle de Caixa";
-                        DateTime dataHora = DateTime.Now;
-                        string acao = "btnEditar_Click";
-                        string descricao = "Alteração bem-sucedido";
+                        CaixaControle controle = new CaixaControle();
+                        String mensagem = controle.EditarCaixa(txbMotivoEditar.Text, txbTipoOperadcaoEditar.Text, txbValorEditar.Text, id);
 
-                        InserirLogsComands inserirLogs = new InserirLogsComands(tabelaAfetada, dataHora, acao, descricao);
+                        int userId = principalForm.UserID; // Obtenha o UserID da instância de FrmPrincipal
+                        if (controle.tem)
+                        {
+                            string tabelaAfetada = "Controle de Caixa";
+                            DateTime dataHora = DateTime.Now;
+                            string acao = "btnEditar_Click";
+                            string descricao = "Alteração bem-sucedido";
 
-                        MessageBox.Show(mensagem, "Alteração", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        Close();
+                            InserirLogsComands inserirLogs = new InserirLogsComands(tabelaAfetada, dataHora, acao, descricao, userId);
+
+                            MessageBox.Show(mensagem, "Alteração", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            Close();
+                        }
+                        else
+                        {
+                            MessageBox.Show(controle.mensagem);
+                        }
                     }
                     else
                     {
-                        MessageBox.Show(controle.mensagem);
+                        MessageBox.Show("ID inválido. O ID deve ser um número inteiro.", "Alteração do caixa.", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        txbId.Text = "";
+                        txbId.Focus();
                     }
-                }
-                else
-                {
-                    MessageBox.Show("ID inválido. O ID deve ser um número inteiro.", "Alteração do caixa.", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    txbId.Text = "";
-                    txbId.Focus();
                 }
             }
         }

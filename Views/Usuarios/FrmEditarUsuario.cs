@@ -1,4 +1,5 @@
-﻿using SGPPC.Class;
+﻿using Microsoft.ReportingServices.ReportProcessing.ReportObjectModel;
+using SGPPC.Class;
 using SGPPC.Data;
 using SGPPC.Modelo;
 using System;
@@ -16,6 +17,8 @@ namespace SGPPC.Views.Usuarios
 {
     public partial class FrmEditarUsuario : Form
     {
+        public int UserID { get; private set; }
+
         public FrmEditarUsuario()
         {
             InitializeComponent();
@@ -83,26 +86,31 @@ namespace SGPPC.Views.Usuarios
             }
             else
             {
-                if (Int32.TryParse(txbIdUser.Text, out Int32 id))
+                FrmPrincipal principalForm = Application.OpenForms.OfType<FrmPrincipal>().FirstOrDefault();
+                if (principalForm != null)
                 {
-                    UsuarioEditarControle usuarioEditarControle = new UsuarioEditarControle();
-                    String mensagem = usuarioEditarControle.EditarUsuario(txbNomeEdit.Text.Trim(), txbEmailEdit.Text.Trim(), maskCPFEdit.Text.Trim(), cbFuncaoEdit.Text.Trim(), txbSenhaEdit.Text.Trim(), id);
-
-                    if (usuarioEditarControle.tem)
+                    int userId = principalForm.UserID; // Obtenha o UserID da instância de FrmPrincipal
+                    if (Int32.TryParse(txbIdUser.Text, out Int32 id))
                     {
-                        string tabelaAfetada = "Usuário";
-                        DateTime dataHora = DateTime.Now;
-                        string acao = "btnAlterar_Click";
-                        string descricao = "Edição do Usuário bem-sucedido";
+                        UsuarioEditarControle usuarioEditarControle = new UsuarioEditarControle();
+                        String mensagem = usuarioEditarControle.EditarUsuario(txbNomeEdit.Text.Trim(), txbEmailEdit.Text.Trim(), maskCPFEdit.Text.Trim(), cbFuncaoEdit.Text.Trim(), txbSenhaEdit.Text.Trim(), id);
 
-                        InserirLogsComands inserirLogs = new InserirLogsComands(tabelaAfetada, dataHora, acao, descricao);
+                        if (usuarioEditarControle.tem)
+                        {
+                            string tabelaAfetada = "Usuário";
+                            DateTime dataHora = DateTime.Now;
+                            string acao = "btnAlterar_Click";
+                            string descricao = "Edição do Usuário bem-sucedido";
 
-                        MessageBox.Show(mensagem, "Alteração", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        Close();
-                    }
-                    else
-                    {
-                        MessageBox.Show(usuarioEditarControle.mensagem);
+                            InserirLogsComands inserirLogs = new InserirLogsComands(tabelaAfetada, dataHora, acao, descricao, userId);
+
+                            MessageBox.Show(mensagem, "Alteração", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            Close();
+                        }
+                        else
+                        {
+                            MessageBox.Show(usuarioEditarControle.mensagem);
+                        }
                     }
                 }
                 else

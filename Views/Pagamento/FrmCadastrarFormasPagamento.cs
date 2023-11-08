@@ -1,4 +1,5 @@
-﻿using SGPPC.Class;
+﻿using Microsoft.ReportingServices.ReportProcessing.ReportObjectModel;
+using SGPPC.Class;
 using SGPPC.Data;
 using SGPPC.Modelo;
 using System;
@@ -16,6 +17,8 @@ namespace SGPPC.Views.Pagamento
 {
     public partial class FrmCadastrarFormasPagamento : Form
     {
+        public int UserID { get; private set; }
+
         public FrmCadastrarFormasPagamento()
         {
             InitializeComponent();
@@ -56,50 +59,56 @@ namespace SGPPC.Views.Pagamento
             }
             else
             {
-                if (radioAtivoPagamento.Checked)
+                FrmPrincipal principalForm = Application.OpenForms.OfType<FrmPrincipal>().FirstOrDefault();
+                if (principalForm != null)
                 {
-                    FormaPagamentoControle formaPagamentoControle = new FormaPagamentoControle();
-                    String mensagem = formaPagamentoControle.CadastrarPagamento(txbFormaNome.Text.Trim(), txbFormaDescricao.Text.Trim(), radioAtivoPagamento.Text.Trim());
-
-                    if (formaPagamentoControle.tem)
+                    if (radioAtivoPagamento.Checked)
                     {
-                        string tabelaAfetada = "Pagamento";
-                        DateTime dataHora = DateTime.Now;
-                        string acao = "btnCadastrar_Click";
-                        string descricao = "Cadastro de Pagamento bem-sucedido";
+                        FormaPagamentoControle formaPagamentoControle = new FormaPagamentoControle();
+                        String mensagem = formaPagamentoControle.CadastrarPagamento(txbFormaNome.Text.Trim(), txbFormaDescricao.Text.Trim(), radioAtivoPagamento.Text.Trim());
 
-                        InserirLogsComands inserirLogs = new InserirLogsComands(tabelaAfetada, dataHora, acao, descricao);
+                        int userId = principalForm.UserID; // Obtenha o UserID da instância de FrmPrincipal
+                        if (formaPagamentoControle.tem)
+                        {
+                            string tabelaAfetada = "Pagamento";
+                            DateTime dataHora = DateTime.Now;
+                            string acao = "btnCadastrar_Click";
+                            string descricao = "Cadastro de Pagamento bem-sucedido";
 
-                        MessageBox.Show(mensagem, "Cadastro", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        LimparFormulario.LimparForm(this);
+                            InserirLogsComands inserirLogs = new InserirLogsComands(tabelaAfetada, dataHora, acao, descricao, userId);
+
+                            MessageBox.Show(mensagem, "Cadastro", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            Close();
+                        }
+                        else
+                        {
+                            MessageBox.Show(formaPagamentoControle.mensagem);
+                        }
                     }
                     else
                     {
-                        MessageBox.Show(formaPagamentoControle.mensagem);
-                    }
-                }
-                else
-                {
-                    FormaPagamentoControle formaPagamentoControle = new FormaPagamentoControle();
-                    String mensagem = formaPagamentoControle.CadastrarPagamento(txbFormaNome.Text.Trim(), txbFormaDescricao.Text.Trim(), radioInativoPagamento.Text.Trim());
+                        FormaPagamentoControle formaPagamentoControle = new FormaPagamentoControle();
+                        String mensagem = formaPagamentoControle.CadastrarPagamento(txbFormaNome.Text.Trim(), txbFormaDescricao.Text.Trim(), radioInativoPagamento.Text.Trim());
 
-                    if (formaPagamentoControle.tem)
-                    {
-                        string tabelaAfetada = "Pagamento";
-                        DateTime dataHora = DateTime.Now;
-                        string acao = "btnCadastrar_Click";
-                        string descricao = "Cadastro de Pagamento bem-sucedido";
+                        int userId = principalForm.UserID; // Obtenha o UserID da instância de FrmPrincipal
+                        if (formaPagamentoControle.tem)
+                        {
+                            string tabelaAfetada = "Pagamento";
+                            DateTime dataHora = DateTime.Now;
+                            string acao = "btnCadastrar_Click";
+                            string descricao = "Cadastro de Pagamento bem-sucedido";
 
-                        InserirLogsComands inserirLogs = new InserirLogsComands(tabelaAfetada, dataHora, acao, descricao);
+                            InserirLogsComands inserirLogs = new InserirLogsComands(tabelaAfetada, dataHora, acao, descricao, userId);
 
-                        MessageBox.Show(mensagem, "Cadastro", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        LimparFormulario.LimparForm(this);
+                            MessageBox.Show(mensagem, "Cadastro", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            Close();
+                        }
+                        else
+                        {
+                            MessageBox.Show(formaPagamentoControle.mensagem);
+                        }
                     }
-                    else
-                    {
-                        MessageBox.Show(formaPagamentoControle.mensagem);
-                    }
-                }            
+                }                     
             }
         }
     }

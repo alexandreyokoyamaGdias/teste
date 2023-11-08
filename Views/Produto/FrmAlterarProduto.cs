@@ -1,21 +1,41 @@
-﻿using SGPPC.Class;
+﻿using Microsoft.ReportingServices.ReportProcessing.ReportObjectModel;
+using SGPPC.Class;
 using SGPPC.Data;
 using SGPPC.Modelo;
 using System;
 using System.Data.SqlClient;
 using System.Globalization;
+using System.Linq;
 using System.Windows.Forms;
 
 namespace SGPPC.Views.Produto
 {
     public partial class FrmAlterarProduto : Form
     {
+        private string fornecedor;
+        private int fornecedorIdDoProduto;
+
+        public int UserID { get; private set; }
+
         public FrmAlterarProduto()
         {
             InitializeComponent();
         }
 
-        public FrmAlterarProduto(string nome, string descricao, string valor, string data, string id)
+        //public FrmAlterarProduto(string nome, string descricao, string valor, string data, string id)
+        //{
+        //    InitializeComponent();
+
+        //    // Preencher os campos da tela de edição com os valores do produto
+        //    txbNomeProdAlt.Text = nome;
+        //    txbDescricaoProdAlt.Text = descricao;
+        //    txbValorProdAlt.Text = valor;
+        //    maskTxbDataProdAlt.Text = data;
+        //    //cbFornecedorProdAlt.SelectedItem = fornecedor;
+        //    txbId.Text = id;
+        //}
+
+        public FrmAlterarProduto(string nome, string descricao, string valor, string data, string fornecedor, string id)
         {
             InitializeComponent();
 
@@ -24,10 +44,9 @@ namespace SGPPC.Views.Produto
             txbDescricaoProdAlt.Text = descricao;
             txbValorProdAlt.Text = valor;
             maskTxbDataProdAlt.Text = data;
-            //cbFornecedorProdAlt.SelectedItem = fornecedor;
+            cbFornecedorProdAlt.SelectedItem = fornecedor;
             txbId.Text = id;
         }
-
 
         private void button2_Click(object sender, EventArgs e)
         {
@@ -71,34 +90,39 @@ namespace SGPPC.Views.Produto
             }
             else
             {
-                decimal.TryParse(txbValorProdAlt.Text, out decimal valorteste);
-                if (Int32.TryParse(txbId.Text, out Int32 id))
+                FrmPrincipal principalForm = Application.OpenForms.OfType<FrmPrincipal>().FirstOrDefault();
+                if (principalForm != null) 
                 {
-                    ProdutoAlterarControle produtoAlterarControle = new ProdutoAlterarControle();
-                    String mensagem = produtoAlterarControle.AlterarProd(id, txbNomeProdAlt.Text.Trim(), txbDescricaoProdAlt.Text.Trim(), valorteste, maskTxbDataProdAlt.Text.Trim());
-
-                    if (produtoAlterarControle.tem)
+                    decimal.TryParse(txbValorProdAlt.Text, out decimal valorteste);
+                    if (Int32.TryParse(txbId.Text, out Int32 id))
                     {
-                        string tabelaAfetada = "Produto";
-                        DateTime dataHora = DateTime.Now;
-                        string acao = "btnAlterar_Click";
-                        string descricao = "Alteração de produto bem-sucedida";
+                        ProdutoAlterarControle produtoAlterarControle = new ProdutoAlterarControle();
+                        String mensagem = produtoAlterarControle.AlterarProd(id, txbNomeProdAlt.Text.Trim(), txbDescricaoProdAlt.Text.Trim(), valorteste, maskTxbDataProdAlt.Text.Trim());
 
-                        InserirLogsComands inserirLogs = new InserirLogsComands(tabelaAfetada, dataHora, acao, descricao);
+                        int userId = principalForm.UserID; // Obtenha o UserID da instância de FrmPrincipal
+                        if (produtoAlterarControle.tem)
+                        {
+                            string tabelaAfetada = "Produto";
+                            DateTime dataHora = DateTime.Now;
+                            string acao = "btnAlterar_Click";
+                            string descricao = "Alteração de produto bem-sucedida";
 
-                        MessageBox.Show(mensagem, "Alteração", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        Close();
-                    }
-                    else
-                    {
-                        string tabelaAfetada = "Produto";
-                        DateTime dataHora = DateTime.Now;
-                        string acao = "btnAlterar_Click";
-                        string descricao = "Erro na alteração do produto";
+                            InserirLogsComands inserirLogs = new InserirLogsComands(tabelaAfetada, dataHora, acao, descricao, userId);
 
-                        InserirLogsComands inserirLogs = new InserirLogsComands(tabelaAfetada, dataHora, acao, descricao);
+                            MessageBox.Show(mensagem, "Alteração", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            Close();
+                        }
+                        else
+                        {
+                            string tabelaAfetada = "Produto";
+                            DateTime dataHora = DateTime.Now;
+                            string acao = "btnAlterar_Click";
+                            string descricao = "Erro na alteração do produto";
 
-                        MessageBox.Show(produtoAlterarControle.mensagem);
+                            InserirLogsComands inserirLogs = new InserirLogsComands(tabelaAfetada, dataHora, acao, descricao, userId);
+
+                            MessageBox.Show(produtoAlterarControle.mensagem);
+                        }
                     }
                 }
                 else

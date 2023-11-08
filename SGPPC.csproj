@@ -77,6 +77,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Class\Fornecedor.cs" />
     <Compile Include="Class\LimparFormulario.cs" />
     <Compile Include="DataEstoque.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -116,6 +117,7 @@
     <Compile Include="Model\ConsultaProduto.cs" />
     <Compile Include="Model\ConsultarEstoque.cs" />
     <Compile Include="Model\ConsultarPagamento.cs" />
+    <Compile Include="Model\ConsultarTipoOpercao.cs" />
     <Compile Include="Model\ConsultarVendas.cs" />
     <Compile Include="Model\ConsultaUsuario.cs" />
     <Compile Include="Model\EstoqueClass.cs" />
@@ -328,6 +330,24 @@
     <Compile Include="Views\Sabores\FrmConsultaSabores.Designer.cs">
       <DependentUpon>FrmConsultaSabores.cs</DependentUpon>
     </Compile>
+    <Compile Include="Views\TipoOperacao\FrmCadastroTipoOperacao.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\TipoOperacao\FrmCadastroTipoOperacao.Designer.cs">
+      <DependentUpon>FrmCadastroTipoOperacao.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\TipoOperacao\FrmConsultaTipoOperacao.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\TipoOperacao\FrmConsultaTipoOperacao.Designer.cs">
+      <DependentUpon>FrmConsultaTipoOperacao.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\TipoOperacao\FrmEdicaoTipoOpercao.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\TipoOperacao\FrmEdicaoTipoOpercao.Designer.cs">
+      <DependentUpon>FrmEdicaoTipoOpercao.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\Usuarios\FrmCadastro.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -449,6 +469,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Sabores\FrmConsultaSabores.resx">
       <DependentUpon>FrmConsultaSabores.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\TipoOperacao\FrmCadastroTipoOperacao.resx">
+      <DependentUpon>FrmCadastroTipoOperacao.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\TipoOperacao\FrmConsultaTipoOperacao.resx">
+      <DependentUpon>FrmConsultaTipoOperacao.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\TipoOperacao\FrmEdicaoTipoOpercao.resx">
+      <DependentUpon>FrmEdicaoTipoOpercao.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Usuarios\FrmCadastro.resx">
       <DependentUpon>FrmCadastro.cs</DependentUpon>

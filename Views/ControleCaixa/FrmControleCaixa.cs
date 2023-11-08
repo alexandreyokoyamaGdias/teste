@@ -17,6 +17,8 @@ namespace SGPPC.Views.ControleCaixa
 {
     public partial class FrmControleCaixa : Form
     {
+        public int UserID { get; private set; }
+
         public FrmControleCaixa()
         {
             InitializeComponent();
@@ -71,24 +73,29 @@ namespace SGPPC.Views.ControleCaixa
             }
             else
             {
-                CaixaControle controle = new CaixaControle();
-                String mensagem = controle.CadastrarCaixa(txbMotivo.Text, txbTipoOperadcao.Text, txbValor.Text, maskDataHoras.Text);
-
-                if (controle.tem)
+                FrmPrincipal principalForm = Application.OpenForms.OfType<FrmPrincipal>().FirstOrDefault();
+                if (principalForm != null) 
                 {
-                    string tabelaAfetada = "Controle de Caixa";
-                    DateTime dataHora = DateTime.Now;
-                    string acao = "btnCadastrar_Click";
-                    string descricao = "Cadastro de Controle de Caixa bem-sucedido";
+                    CaixaControle controle = new CaixaControle();
+                    String mensagem = controle.CadastrarCaixa(txbMotivo.Text, txbTipoOperadcao.Text, txbValor.Text, maskDataHoras.Text);
 
-                    InserirLogsComands inserirLogs = new InserirLogsComands(tabelaAfetada, dataHora, acao, descricao);
+                    int userId = principalForm.UserID; // Obtenha o UserID da instância de FrmPrincipal
+                    if (controle.tem)
+                    {
+                        string tabelaAfetada = "Controle de Caixa";
+                        DateTime dataHora = DateTime.Now;
+                        string acao = "btnCadastrar_Click";
+                        string descricao = "Cadastro de Controle de Caixa bem-sucedido";
 
-                    MessageBox.Show(mensagem, "Cadastro", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    Close();
-                }
-                else
-                {
-                    MessageBox.Show(controle.mensagem);
+                        InserirLogsComands inserirLogs = new InserirLogsComands(tabelaAfetada, dataHora, acao, descricao, userId);
+
+                        MessageBox.Show(mensagem, "Cadastro", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        Close();
+                    }
+                    else
+                    {
+                        MessageBox.Show(controle.mensagem);
+                    }
                 }
             }
         }
