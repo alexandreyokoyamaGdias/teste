@@ -38,8 +38,14 @@
             this.btnIncluir = new System.Windows.Forms.Button();
             this.dgControleCaixa = new System.Windows.Forms.DataGridView();
             this.btnGerarRelatorio = new System.Windows.Forms.Button();
+            this.PanelDebito = new System.Windows.Forms.Panel();
+            this.lblValorTotal = new System.Windows.Forms.Label();
+            this.PanelCredito = new System.Windows.Forms.Panel();
+            this.lblCredito = new System.Windows.Forms.Label();
             this.panelFornecedor.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgControleCaixa)).BeginInit();
+            this.PanelDebito.SuspendLayout();
+            this.PanelCredito.SuspendLayout();
             this.SuspendLayout();
             // 
             // lblPesquisar
@@ -59,9 +65,9 @@
             "Motivo",
             "Tipo_Operacao",
             "Data_Hora"});
-            this.comboBoxPesquisarControleCaixa.Location = new System.Drawing.Point(748, 94);
+            this.comboBoxPesquisarControleCaixa.Location = new System.Drawing.Point(460, 94);
             this.comboBoxPesquisarControleCaixa.Name = "comboBoxPesquisarControleCaixa";
-            this.comboBoxPesquisarControleCaixa.Size = new System.Drawing.Size(346, 34);
+            this.comboBoxPesquisarControleCaixa.Size = new System.Drawing.Size(232, 34);
             this.comboBoxPesquisarControleCaixa.TabIndex = 21;
             // 
             // btnConsultar
@@ -80,7 +86,7 @@
             this.txtPesquisar.Location = new System.Drawing.Point(10, 94);
             this.txtPesquisar.Multiline = true;
             this.txtPesquisar.Name = "txtPesquisar";
-            this.txtPesquisar.Size = new System.Drawing.Size(730, 38);
+            this.txtPesquisar.Size = new System.Drawing.Size(444, 38);
             this.txtPesquisar.TabIndex = 19;
             this.txtPesquisar.TextChanged += new System.EventHandler(this.txtPesquisar_TextChanged);
             // 
@@ -154,11 +160,53 @@
             this.btnGerarRelatorio.UseVisualStyleBackColor = true;
             this.btnGerarRelatorio.Click += new System.EventHandler(this.btnGerarRelatorio_Click);
             // 
+            // PanelDebito
+            // 
+            this.PanelDebito.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.PanelDebito.Controls.Add(this.lblValorTotal);
+            this.PanelDebito.Location = new System.Drawing.Point(718, 71);
+            this.PanelDebito.Name = "PanelDebito";
+            this.PanelDebito.Size = new System.Drawing.Size(378, 39);
+            this.PanelDebito.TabIndex = 25;
+            // 
+            // lblValorTotal
+            // 
+            this.lblValorTotal.AutoSize = true;
+            this.lblValorTotal.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblValorTotal.Location = new System.Drawing.Point(3, 0);
+            this.lblValorTotal.Name = "lblValorTotal";
+            this.lblValorTotal.Size = new System.Drawing.Size(243, 39);
+            this.lblValorTotal.TabIndex = 25;
+            this.lblValorTotal.Text = "Valor do Débito";
+            this.lblValorTotal.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // PanelCredito
+            // 
+            this.PanelCredito.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.PanelCredito.Controls.Add(this.lblCredito);
+            this.PanelCredito.Location = new System.Drawing.Point(718, 113);
+            this.PanelCredito.Name = "PanelCredito";
+            this.PanelCredito.Size = new System.Drawing.Size(378, 39);
+            this.PanelCredito.TabIndex = 26;
+            // 
+            // lblCredito
+            // 
+            this.lblCredito.AutoSize = true;
+            this.lblCredito.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCredito.Location = new System.Drawing.Point(3, 0);
+            this.lblCredito.Name = "lblCredito";
+            this.lblCredito.Size = new System.Drawing.Size(254, 39);
+            this.lblCredito.TabIndex = 25;
+            this.lblCredito.Text = "Valor do Crédito";
+            this.lblCredito.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
             // FrmConsultaControleCaixa
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1108, 635);
+            this.Controls.Add(this.PanelCredito);
+            this.Controls.Add(this.PanelDebito);
             this.Controls.Add(this.btnGerarRelatorio);
             this.Controls.Add(this.lblPesquisar);
             this.Controls.Add(this.comboBoxPesquisarControleCaixa);
@@ -178,6 +226,10 @@
             this.panelFornecedor.ResumeLayout(false);
             this.panelFornecedor.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgControleCaixa)).EndInit();
+            this.PanelDebito.ResumeLayout(false);
+            this.PanelDebito.PerformLayout();
+            this.PanelCredito.ResumeLayout(false);
+            this.PanelCredito.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -195,5 +247,9 @@
         private System.Windows.Forms.Button btnIncluir;
         private System.Windows.Forms.DataGridView dgControleCaixa;
         private System.Windows.Forms.Button btnGerarRelatorio;
+        private System.Windows.Forms.Panel PanelDebito;
+        private System.Windows.Forms.Label lblValorTotal;
+        private System.Windows.Forms.Panel PanelCredito;
+        private System.Windows.Forms.Label lblCredito;
     }
 }

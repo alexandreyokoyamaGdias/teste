@@ -69,7 +69,7 @@
             this.txbDescricao.Location = new System.Drawing.Point(10, 145);
             this.txbDescricao.Multiline = true;
             this.txbDescricao.Name = "txbDescricao";
-            this.txbDescricao.Size = new System.Drawing.Size(608, 26);
+            this.txbDescricao.Size = new System.Drawing.Size(608, 30);
             this.txbDescricao.TabIndex = 46;
             // 
             // txbTipoOperacao
@@ -77,7 +77,7 @@
             this.txbTipoOperacao.Location = new System.Drawing.Point(10, 83);
             this.txbTipoOperacao.Multiline = true;
             this.txbTipoOperacao.Name = "txbTipoOperacao";
-            this.txbTipoOperacao.Size = new System.Drawing.Size(608, 26);
+            this.txbTipoOperacao.Size = new System.Drawing.Size(608, 30);
             this.txbTipoOperacao.TabIndex = 47;
             // 
             // btnCadastrar
@@ -88,6 +88,7 @@
             this.btnCadastrar.TabIndex = 48;
             this.btnCadastrar.Text = "Cadastrar";
             this.btnCadastrar.UseVisualStyleBackColor = true;
+            this.btnCadastrar.Click += new System.EventHandler(this.btnCadastrar_Click);
             // 
             // btnLimpar
             // 
@@ -142,6 +143,7 @@
             this.Controls.Add(this.panel2);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "FrmCadastroTipoOperacao";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FrmCadastroTipoOperacao";
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();

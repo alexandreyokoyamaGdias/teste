@@ -1,5 +1,4 @@
-﻿
-using Microsoft.ReportingServices.ReportProcessing.ReportObjectModel;
+﻿using Microsoft.ReportingServices.ReportProcessing.ReportObjectModel;
 using SGPPC.Data;
 using System;
 using System.Collections.Generic;
@@ -38,12 +37,13 @@ namespace SGPPC.Views.Usuarios
 
             int userID; // Variável para armazenar o ID do usuário logado
             string userName; // Variável para armazenar o nome do usuário logado
+            string userFunction;
 
             Controle controle = new Controle();
 
-            if (controle.VerificarLogin(login, senha, out userID, out userName))
+            if (controle.VerificarLogin(login, senha, out userID, out userName, out userFunction))
             {
-                if (userID > 0) // Verifique se o ID do usuário é válido
+                if (userID > 0)
                 {
                     string tabelaAfetada = "Usuário";
                     DateTime dataHora = DateTime.Now;
@@ -57,12 +57,12 @@ namespace SGPPC.Views.Usuarios
                     FrmPrincipal home = new FrmPrincipal();
                     home.UserID = userID;
                     home.UserName = userName;
+                    home.userFunction = userFunction;
                     home.Show();
                     this.Hide();
                 }
                 else
                 {
-                    // Trate a situação de usuário não encontrado
                     MessageBox.Show("Usuário não encontrado", "ERRO!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
@@ -73,7 +73,7 @@ namespace SGPPC.Views.Usuarios
                 string acao = "btnEntrar_Click";
                 string descricao = "Senha incorreta ou login não encontrado";
 
-                InserirLogsComands inserirLogs = new InserirLogsComands(tabelaAfetada, dataHora, acao, descricao, -1); // Use -1 ou outro valor apropriado para indicar erro
+                InserirLogsComands inserirLogs = new InserirLogsComands(tabelaAfetada, dataHora, acao, descricao, -1);
 
                 MessageBox.Show("Senha incorreta ou login não encontrado, verifique login e senha", "ERRO!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }

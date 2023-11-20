@@ -48,8 +48,9 @@
             this.panel2.BackColor = System.Drawing.Color.Orange;
             this.panel2.Controls.Add(this.lblProduto);
             this.panel2.Location = new System.Drawing.Point(0, 0);
+            this.panel2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(632, 48);
+            this.panel2.Size = new System.Drawing.Size(421, 31);
             this.panel2.TabIndex = 45;
             // 
             // lblProduto
@@ -57,19 +58,19 @@
             this.lblProduto.AutoSize = true;
             this.lblProduto.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblProduto.ForeColor = System.Drawing.Color.White;
-            this.lblProduto.Location = new System.Drawing.Point(4, 8);
-            this.lblProduto.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblProduto.Location = new System.Drawing.Point(3, 5);
             this.lblProduto.Name = "lblProduto";
-            this.lblProduto.Size = new System.Drawing.Size(108, 32);
+            this.lblProduto.Size = new System.Drawing.Size(72, 21);
             this.lblProduto.TabIndex = 1;
             this.lblProduto.Text = "Produto";
             this.lblProduto.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // btnCancelar
             // 
-            this.btnCancelar.Location = new System.Drawing.Point(289, 480);
+            this.btnCancelar.Location = new System.Drawing.Point(193, 312);
+            this.btnCancelar.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnCancelar.Name = "btnCancelar";
-            this.btnCancelar.Size = new System.Drawing.Size(118, 42);
+            this.btnCancelar.Size = new System.Drawing.Size(79, 27);
             this.btnCancelar.TabIndex = 59;
             this.btnCancelar.Text = "Cancelar";
             this.btnCancelar.UseVisualStyleBackColor = true;
@@ -78,26 +79,29 @@
             // lblEdtTipoOperacao
             // 
             this.lblEdtTipoOperacao.AutoSize = true;
-            this.lblEdtTipoOperacao.Location = new System.Drawing.Point(14, 60);
+            this.lblEdtTipoOperacao.Location = new System.Drawing.Point(9, 39);
+            this.lblEdtTipoOperacao.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblEdtTipoOperacao.Name = "lblEdtTipoOperacao";
-            this.lblEdtTipoOperacao.Size = new System.Drawing.Size(135, 20);
+            this.lblEdtTipoOperacao.Size = new System.Drawing.Size(93, 13);
             this.lblEdtTipoOperacao.TabIndex = 58;
             this.lblEdtTipoOperacao.Text = "Tipo de Operação";
             // 
             // lblEdtDescricao
             // 
             this.lblEdtDescricao.AutoSize = true;
-            this.lblEdtDescricao.Location = new System.Drawing.Point(14, 122);
+            this.lblEdtDescricao.Location = new System.Drawing.Point(9, 79);
+            this.lblEdtDescricao.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblEdtDescricao.Name = "lblEdtDescricao";
-            this.lblEdtDescricao.Size = new System.Drawing.Size(80, 20);
+            this.lblEdtDescricao.Size = new System.Drawing.Size(55, 13);
             this.lblEdtDescricao.TabIndex = 57;
             this.lblEdtDescricao.Text = "Descrição";
             // 
             // btnLimpar
             // 
-            this.btnLimpar.Location = new System.Drawing.Point(152, 480);
+            this.btnLimpar.Location = new System.Drawing.Point(101, 312);
+            this.btnLimpar.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnLimpar.Name = "btnLimpar";
-            this.btnLimpar.Size = new System.Drawing.Size(118, 42);
+            this.btnLimpar.Size = new System.Drawing.Size(79, 27);
             this.btnLimpar.TabIndex = 56;
             this.btnLimpar.Text = "Limpar";
             this.btnLimpar.UseVisualStyleBackColor = true;
@@ -105,43 +109,48 @@
             // 
             // btnSalvar
             // 
-            this.btnSalvar.Location = new System.Drawing.Point(14, 480);
+            this.btnSalvar.Location = new System.Drawing.Point(9, 312);
+            this.btnSalvar.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnSalvar.Name = "btnSalvar";
-            this.btnSalvar.Size = new System.Drawing.Size(118, 42);
+            this.btnSalvar.Size = new System.Drawing.Size(79, 27);
             this.btnSalvar.TabIndex = 55;
             this.btnSalvar.Text = "Salvar";
             this.btnSalvar.UseVisualStyleBackColor = true;
+            this.btnSalvar.Click += new System.EventHandler(this.btnSalvar_Click);
             // 
             // txbEdtTipoOperacao
             // 
-            this.txbEdtTipoOperacao.Location = new System.Drawing.Point(12, 83);
+            this.txbEdtTipoOperacao.Location = new System.Drawing.Point(8, 54);
+            this.txbEdtTipoOperacao.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txbEdtTipoOperacao.Multiline = true;
             this.txbEdtTipoOperacao.Name = "txbEdtTipoOperacao";
-            this.txbEdtTipoOperacao.Size = new System.Drawing.Size(608, 26);
+            this.txbEdtTipoOperacao.Size = new System.Drawing.Size(407, 21);
             this.txbEdtTipoOperacao.TabIndex = 54;
             // 
             // txbEdtDescricao
             // 
-            this.txbEdtDescricao.Location = new System.Drawing.Point(12, 145);
+            this.txbEdtDescricao.Location = new System.Drawing.Point(8, 94);
+            this.txbEdtDescricao.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txbEdtDescricao.Multiline = true;
             this.txbEdtDescricao.Name = "txbEdtDescricao";
-            this.txbEdtDescricao.Size = new System.Drawing.Size(608, 26);
+            this.txbEdtDescricao.Size = new System.Drawing.Size(407, 21);
             this.txbEdtDescricao.TabIndex = 53;
             // 
             // txbId
             // 
-            this.txbId.Location = new System.Drawing.Point(572, 496);
+            this.txbId.Location = new System.Drawing.Point(381, 322);
+            this.txbId.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txbId.Name = "txbId";
             this.txbId.ReadOnly = true;
-            this.txbId.Size = new System.Drawing.Size(48, 26);
+            this.txbId.Size = new System.Drawing.Size(33, 20);
             this.txbId.TabIndex = 60;
             this.txbId.Visible = false;
             // 
             // FrmEdicaoTipoOpercao
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(632, 534);
+            this.ClientSize = new System.Drawing.Size(421, 347);
             this.Controls.Add(this.txbId);
             this.Controls.Add(this.btnCancelar);
             this.Controls.Add(this.lblEdtTipoOperacao);
@@ -152,9 +161,11 @@
             this.Controls.Add(this.txbEdtDescricao);
             this.Controls.Add(this.panel2);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "FrmEdicaoTipoOpercao";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FrmEdicaoTipoOpercao";
+            this.Load += new System.EventHandler(this.FrmEdicaoTipoOpercao_Load);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             this.ResumeLayout(false);

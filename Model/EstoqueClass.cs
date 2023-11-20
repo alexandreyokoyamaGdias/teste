@@ -10,16 +10,16 @@ namespace SGPPC.Model
     {
         public int Id { get; set; }
 
-        public string NomeProduto { get; set; }
+        public string Nome_Produto { get; set; }
 
         public string Descricao { get; set; }
 
-        public string PrecoUnitario { get; set; }
+        public string Preco_Unitario { get; set; }
 
         public string Quantidade { get; set; }
 
-        public string NomeFornecedor { get; set; }
+        public string Id_Fornecedor { get; set; }
 
-        public DateTime DataHoraEntrada { get; set; }
+        public DateTime Data_Hora_Entrada { get; set; }
     }
 }

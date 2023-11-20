@@ -6,6 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Globalization;
 using System.Linq;
@@ -37,8 +38,30 @@ namespace SGPPC.Views.ControleCaixa
         private void FrmControleCaixa_Load(object sender, EventArgs e)
         {
             DateTime dataHoraAtual = DateTime.Now;
-
             maskDataHoras.Text = dataHoraAtual.ToString("dd/MM/yyyy HH:mm");
+
+            string connectionString = "Data Source=ACF014\\SQLEXPRESS;Initial Catalog=SGPPC;Integrated Security=True";
+
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                connection.Open();
+
+                string query = "SELECT Id, Descricao FROM TipoOperacao";
+
+                SqlCommand cmd = new SqlCommand(query, connection);
+
+                using (SqlDataReader reader = cmd.ExecuteReader())
+                {
+                    cbbTipoOperacao.Items.Clear();
+
+                    while (reader.Read())
+                    {
+                        int tipoOperacaoID = Convert.ToInt32(reader["Id"]);
+                        string tipoOperacaoDescricao = reader["Descricao"].ToString();
+                        cbbTipoOperacao.Items.Add(tipoOperacaoDescricao);
+                    }
+                }
+            }
         }
 
         private void btnCadastrar_Click(object sender, EventArgs e)
@@ -50,11 +73,11 @@ namespace SGPPC.Views.ControleCaixa
                 txbMotivo.Focus();
                 return;
             }
-            else if (txbTipoOperadcao.Text.ToString().Trim() == "")
+            else if (cbbTipoOperacao.Text.ToString().Trim() == "")
             {
                 MessageBox.Show("Preencha o campo Tipo de Operação", "Controle de Caixa", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                txbTipoOperadcao.Text = "";
-                txbTipoOperadcao.Focus();
+                cbbTipoOperacao.Text = "";
+                cbbTipoOperacao.Focus();
                 return;
             }
             else if (txbValor.Text.ToString().Trim() == "")
@@ -77,9 +100,9 @@ namespace SGPPC.Views.ControleCaixa
                 if (principalForm != null) 
                 {
                     CaixaControle controle = new CaixaControle();
-                    String mensagem = controle.CadastrarCaixa(txbMotivo.Text, txbTipoOperadcao.Text, txbValor.Text, maskDataHoras.Text);
+                    String mensagem = controle.CadastrarCaixa(txbMotivo.Text, cbbTipoOperacao.Text, txbValor.Text, maskDataHoras.Text);
 
-                    int userId = principalForm.UserID; // Obtenha o UserID da instância de FrmPrincipal
+                    int userId = principalForm.UserID;
                     if (controle.tem)
                     {
                         string tabelaAfetada = "Controle de Caixa";
@@ -99,5 +122,30 @@ namespace SGPPC.Views.ControleCaixa
                 }
             }
         }
+
+        private void cbbTipoOperacao_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cbbTipoOperacao.SelectedIndex != -1)
+            {
+                string selectedDescricao = cbbTipoOperacao.SelectedItem.ToString();
+                int tipoOperacaoID = ObterIdPelaDescricao(selectedDescricao);
+
+                txbIdTipoOperacao.Text = tipoOperacaoID.ToString();
+            }
+        }
+
+        private int ObterIdPelaDescricao(string descricao)
+        {
+            if (descricao == "Descrição1")
+            {
+                return 1;
+            }
+            else if (descricao == "Descrição2")
+            {
+                return 2;
+            }
+
+            return 0;
+        }       
     }
 }

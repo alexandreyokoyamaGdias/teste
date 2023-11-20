@@ -45,6 +45,9 @@
             this.lblSenha = new System.Windows.Forms.Label();
             this.btnLimpar = new System.Windows.Forms.Button();
             this.txbEmail = new System.Windows.Forms.TextBox();
+            this.comboBoxNivelPermissao = new System.Windows.Forms.ComboBox();
+            this.lblPerfil = new System.Windows.Forms.Label();
+            this.textBoxId = new System.Windows.Forms.TextBox();
             this.panelProduto.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -226,6 +229,33 @@
             this.txbEmail.Size = new System.Drawing.Size(288, 30);
             this.txbEmail.TabIndex = 35;
             // 
+            // comboBoxNivelPermissao
+            // 
+            this.comboBoxNivelPermissao.FormattingEnabled = true;
+            this.comboBoxNivelPermissao.Location = new System.Drawing.Point(22, 283);
+            this.comboBoxNivelPermissao.Name = "comboBoxNivelPermissao";
+            this.comboBoxNivelPermissao.Size = new System.Drawing.Size(284, 28);
+            this.comboBoxNivelPermissao.TabIndex = 36;
+            this.comboBoxNivelPermissao.SelectedIndexChanged += new System.EventHandler(this.comboBoxNivelPermissao_SelectedIndexChanged);
+            // 
+            // lblPerfil
+            // 
+            this.lblPerfil.AutoSize = true;
+            this.lblPerfil.Location = new System.Drawing.Point(18, 260);
+            this.lblPerfil.Name = "lblPerfil";
+            this.lblPerfil.Size = new System.Drawing.Size(148, 20);
+            this.lblPerfil.TabIndex = 37;
+            this.lblPerfil.Text = "*Nível de Permissão";
+            // 
+            // textBoxId
+            // 
+            this.textBoxId.Location = new System.Drawing.Point(567, 496);
+            this.textBoxId.Name = "textBoxId";
+            this.textBoxId.ReadOnly = true;
+            this.textBoxId.Size = new System.Drawing.Size(53, 26);
+            this.textBoxId.TabIndex = 38;
+            this.textBoxId.Visible = false;
+            // 
             // FrmCadastro
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
@@ -233,6 +263,9 @@
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.ClientSize = new System.Drawing.Size(632, 534);
+            this.Controls.Add(this.textBoxId);
+            this.Controls.Add(this.lblPerfil);
+            this.Controls.Add(this.comboBoxNivelPermissao);
             this.Controls.Add(this.txbEmail);
             this.Controls.Add(this.btnLimpar);
             this.Controls.Add(this.lblSenha);
@@ -281,5 +314,8 @@
         private System.Windows.Forms.Label lblSenha;
         private System.Windows.Forms.Button btnLimpar;
         private System.Windows.Forms.TextBox txbEmail;
+        private System.Windows.Forms.ComboBox comboBoxNivelPermissao;
+        private System.Windows.Forms.Label lblPerfil;
+        private System.Windows.Forms.TextBox textBoxId;
     }
 }

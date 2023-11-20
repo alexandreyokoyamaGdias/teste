@@ -16,6 +16,14 @@ namespace SGPPC.Views.Pagamento
 {
     public partial class FrmAlterarFormasPagamento : Form
     {
+        private string descricaoOriginalFormaPagamento;
+
+        private string descricaoOrignalDescricao;
+
+        private string descricaoOriginalAtivo;
+
+        private string descricaoOriginalInativo;
+
         public int UserID { get; private set; }
 
         public FrmAlterarFormasPagamento()
@@ -55,7 +63,13 @@ namespace SGPPC.Views.Pagamento
 
         private void FrmAlterarFormasPagamento_Load(object sender, EventArgs e)
         {
+            descricaoOriginalFormaPagamento = txbFormaNome.Text;
 
+            descricaoOrignalDescricao = txbFormaPDescricaoo.Text;
+
+            descricaoOriginalAtivo = radioAtivoPagamentoAlterar.Text;
+
+            descricaoOriginalInativo = radioInativoPagamentoAlterar.Text;
         }
 
         private void btnAlterar_Click(object sender, EventArgs e)
@@ -90,13 +104,30 @@ namespace SGPPC.Views.Pagamento
                         string status = radioAtivoPagamentoAlterar.Checked ? "Ativo" : "Inativo";
                         string mensagem = pagamentoAlterarControle.AlterarPagamento(id, txbFormaNome.Text.Trim(), txbFormaPDescricaoo.Text.Trim(), status);
 
-                        int userId = principalForm.UserID; // Obtenha o UserID da instância de FrmPrincipal
+                        int userId = principalForm.UserID;
                         if (pagamentoAlterarControle.tem)
                         {
                             string tabelaAfetada = "Pagamento";
                             DateTime dataHora = DateTime.Now;
                             string acao = "btnAlterar_Click";
-                            string descricao = "Alteração do Pagamento bem-sucedido";
+                            string descricao = "Alteração: ";
+
+                            if (descricaoOriginalFormaPagamento != txbFormaNome.Text)
+                            {
+                                descricao += "O 'Tipo de Pagamento' foi alterado de " + "'" + descricaoOriginalFormaPagamento + "'" + " para " + "'" + txbFormaNome.Text + "'.";
+                            }
+                            else if (descricaoOrignalDescricao != txbFormaPDescricaoo.Text)
+                            {
+                                descricao += "A 'Descrição' foi alterada de " + "'" + descricaoOrignalDescricao + "'" + " para " + "'" + txbFormaPDescricaoo.Text + "'.";
+                            }
+                            else if (descricaoOriginalAtivo != radioAtivoPagamentoAlterar.Text)
+                            {
+                                descricao += "O 'Status' foi alterado de " + "'" + descricaoOriginalAtivo + "'" + " para " + "'" + radioAtivoPagamentoAlterar.Text + "'.";
+                            }
+                            else if (descricaoOriginalInativo != radioInativoPagamentoAlterar.Text)
+                            {
+                                descricao += "O 'Status' foi alterado de " + "'" + descricaoOriginalInativo + "'" + " para " + "'" + radioInativoPagamentoAlterar.Text + "'.";
+                            }
 
                             InserirLogsComands inserirLogs = new InserirLogsComands(tabelaAfetada, dataHora, acao, descricao, userId);
 
@@ -105,6 +136,29 @@ namespace SGPPC.Views.Pagamento
                         }
                         else
                         {
+                            string tabelaAfetada = "Pagamento";
+                            DateTime dataHora = DateTime.Now;
+                            string acao = "btnAlterar_Click";
+                            string descricao = "Erro na alteração: ";
+
+                            if (descricaoOriginalFormaPagamento != txbFormaNome.Text)
+                            {
+                                descricao += "O 'Tipo de Pagamento' não pode ser alterado de " + "'" + descricaoOriginalFormaPagamento + "'" + " para " + "'" + txbFormaNome.Text + "'.";
+                            }
+                            else if (descricaoOrignalDescricao != txbFormaPDescricaoo.Text)
+                            {
+                                descricao += "A 'Descrição' não pode ser alterado de " + "'" + descricaoOrignalDescricao + "'" + " para " + "'" + txbFormaPDescricaoo.Text + "'.";
+                            }
+                            else if (descricaoOriginalAtivo != radioAtivoPagamentoAlterar.Text)
+                            {
+                                descricao += "O 'Status' não pode ser alterado de " + "'" + descricaoOriginalAtivo + "'" + " para " + "'" + radioAtivoPagamentoAlterar.Text + "'.";
+                            }
+                            else if (descricaoOriginalInativo != radioInativoPagamentoAlterar.Text)
+                            {
+                                descricao += "O 'Status' não pode ser alterado de " + "'" + descricaoOriginalInativo + "'" + " para " + "'" + radioInativoPagamentoAlterar.Text + "'.";
+                            }
+
+                            InserirLogsComands inserirLogs = new InserirLogsComands(tabelaAfetada, dataHora, acao, descricao, userId);
                             MessageBox.Show(pagamentoAlterarControle.mensagem);
                         }
                     }

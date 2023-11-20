@@ -85,11 +85,11 @@ namespace SGPPC.Views.Relatorios
         private DataTable GerarDadosRelatorioVendas()
         {
             var dt = new DataTable();
-            dt.Columns.Add("Nome_Produto");
-            dt.Columns.Add("Nome_Cliente");
-            dt.Columns.Add("Data_Hora_Pedido");
-            dt.Columns.Add("Id_FormasPagamento");
-            dt.Columns.Add("Qunatidade");
+            dt.Columns.Add("NomeProduto");
+            dt.Columns.Add("NomeCliente");
+            dt.Columns.Add("DataHoraPedido");
+            dt.Columns.Add("IdFormasPagamento");
+            dt.Columns.Add("Quantidade");
             dt.Columns.Add("Valor");
 
             foreach (DataGridViewRow item in dgVendas.Rows)

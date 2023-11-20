@@ -18,6 +18,6 @@ namespace SGPPC.Model
 
         public DateTime DataHoraPedido { get; set; }
 
-        public string FormasPagamento { get; set; }
+        public string IdFormasPagamento { get; set; }
     }
 }

@@ -8,11 +8,20 @@ namespace SGPPC.Model
 {
     public class PedidoClass
     {
-        public string NomeCliente { get; set; }
-        public string Produto { get; set; }
-        public string Descricao { get; set; }
-        public int Quantidade { get; set; }
-        public decimal Valor { get; set; }
-        public DateTime Data { get; set; }
+        public string NomeCliente { get; set; }//
+
+        public int IdProduto { get; set; }//
+
+        public int Quantidade { get; set; }//
+
+        public int IdFormasPagamento { get; set; }//
+
+        public decimal Valor { get; set; }//
+
+        public DateTime DataHoraPedido { get; set; }//
+
+        public int IdUsuario { get; set; }//
+
+        public int IdPedido { get; set; }//
     }
 }

@@ -32,32 +32,46 @@ namespace SGPPC.Views.Produto
 
         private void button1_Click(object sender, EventArgs e)
         {
-            if (txbNomeProd.Text.ToString().Trim() == "")
+            if (txbNomeProdCadastro.Text.ToString().Trim() == "")
             {
-                MessageBox.Show("Preencha o campo Nome", "Cadastro produto", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                txbNomeProd.Text = "";
-                txbNomeProd.Focus();
+                MessageBox.Show("Preencha o campo Nota Fiscal", "Entrada produto", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                txbNomeProdCadastro.Text = "";
+                txbNomeProdCadastro.Focus();
                 return;
             }
-            else if (txbDescricaoProd.Text.ToString().Trim() == "")
+            else if (txbDescricaoProdCadastrado.Text.ToString().Trim() == "")
             {
-                MessageBox.Show("Preencha o campo Descrição", "Cadastro produto", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                txbDescricaoProd.Text = "";
-                txbDescricaoProd.Focus();
+                MessageBox.Show("Preencha o campo Preço", "Entrada produto", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                txbDescricaoProdCadastrado.Text = "";
+                txbDescricaoProdCadastrado.Focus();
                 return;
             }
-            else if (txbValorProd.Text.ToString().Trim() == "")
+            else if (txbValorProdCadastro.Text.ToString().Trim() == "")
             {
-                MessageBox.Show("Preencha o campo Valor", "Cadastro produto", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                txbValorProd.Text = "";
-                txbValorProd.Focus();
+                MessageBox.Show("Preencha o campo Quantidade", "Entrada produto", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                txbValorProdCadastro.Text = "";
+                txbValorProdCadastro.Focus();
                 return;
             }
-            else if (!DateTime.TryParseExact(maskTxbDataProd.Text, "dd/MM/yyyy", CultureInfo.InvariantCulture, DateTimeStyles.None, out DateTime data))
+            else if (maskTxbDataProdCadastro.Text.ToString().Trim() == "")
             {
-                MessageBox.Show("Data inválida. Preencha o campo Data no formato dd/MM/yyyy.", "Cadastro produto", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                maskTxbDataProd.Text = "";
-                maskTxbDataProd.Focus();
+                MessageBox.Show("Preencha o campo Fornecedor", "Entrada produto", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                maskTxbDataProdCadastro.Text = "";
+                maskTxbDataProdCadastro.Focus();
+                return;
+            }
+            else if (cbFornecedorProdCadastro.Text.ToString().Trim() == "")
+            {
+                MessageBox.Show("Preencha o campo Produto", "Entrada produto", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                cbFornecedorProdCadastro.Text = "";
+                cbFornecedorProdCadastro.Focus();
+                return;
+            }
+            else if (cmbSaborCadastro.Text.ToString().Trim() == "")
+            {
+                MessageBox.Show("Preencha o campo Produto", "Entrada produto", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                cmbSaborCadastro.Text = "";
+                cmbSaborCadastro.Focus();
                 return;
             }
             else
@@ -66,9 +80,9 @@ namespace SGPPC.Views.Produto
                 if (principalForm != null)
                 {
                     ProdutoControle fornecedorControle = new ProdutoControle();
-                    String mensagem = fornecedorControle.CadastrarProd(txbNomeProd.Text.Trim(), txbDescricaoProd.Text.Trim(), txbValorProd.Text.Trim(), maskTxbDataProd.Text.Trim(), txbIdFoornecedor.Text.Trim(), txbIdSabor.Text.Trim());
+                    String mensagem = fornecedorControle.CadastrarProd(txbNomeProdCadastro.Text.Trim(), txbDescricaoProdCadastrado.Text.Trim(), txbValorProdCadastro.Text.Trim(), maskTxbDataProdCadastro.Text.Trim(), cbFornecedorProdCadastro.Text.Trim(), cmbSaborCadastro.Text.Trim());
 
-                    int userId = principalForm.UserID; // Obtenha o UserID da instância de FrmPrincipal
+                    int userId = principalForm.UserID;
                     if (fornecedorControle.tem)
                     {
                         string tabelaAfetada = "Produto";
@@ -97,17 +111,6 @@ namespace SGPPC.Views.Produto
             }
         }
 
-        private void cbFornecedorProd_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (cbFornecedorProd.SelectedIndex != -1)
-            {
-                KeyValuePair<int, string> selectedFornecedor = (KeyValuePair<int, string>)cbFornecedorProd.SelectedItem;
-                int fornecedorID = selectedFornecedor.Key;
-
-                txbIdFoornecedor.Text = fornecedorID.ToString();
-            }
-        }
-
         private void FrmCadastroProduto_Load(object sender, EventArgs e)
         {
             string connectionString = "Data Source=ACF014\\SQLEXPRESS;Initial Catalog=SGPPC;Integrated Security=True";
@@ -124,40 +127,61 @@ namespace SGPPC.Views.Produto
 
                 using (SqlDataReader reader = cmd.ExecuteReader())
                 {
-                    cbFornecedorProd.Items.Clear();
+                    cbFornecedorProdCadastro.Items.Clear();
 
                     while (reader.Read())
                     {
                         int fornecedorID = Convert.ToInt32(reader["Id"]);
                         string fornecedorNome = reader["Nome"].ToString();
-                        cbFornecedorProd.Items.Add(new KeyValuePair<int, string>(fornecedorID, fornecedorNome));
+                        cbFornecedorProdCadastro.Items.Add(new KeyValuePair<int, string>(fornecedorID, fornecedorNome));
                     }
                 }
 
                 using (SqlDataReader reader2 = cmd2.ExecuteReader())
                 {
-                    cmbSabor.Items.Clear();
+                    cmbSaborCadastro.Items.Clear();
 
                     while (reader2.Read())
                     {
-                        int saborID = Convert.ToInt32(reader2["Id"]);
-                        string saborDescricao = reader2["Descricao"].ToString();
+                        int produtoID = Convert.ToInt32(reader2["Id"]);
+                        string produtoDescricao = reader2["Descricao"].ToString();
 
-                        cmbSabor.Items.Add(new KeyValuePair<int, string>(saborID, saborDescricao));
+                        cmbSaborCadastro.Items.Add(new KeyValuePair<int, string>(produtoID, produtoDescricao));
                     }
                 }
             }
         }
 
-        private void cmbSabor_SelectedIndexChanged(object sender, EventArgs e)
+        private void FrmCadastroProduto_Load_1(object sender, EventArgs e)
         {
-            if (cmbSabor.SelectedIndex != -1)
+
+        }
+
+        private void cbFornecedorProdCadastro_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cbFornecedorProdCadastro.SelectedIndex != -1)
             {
-                KeyValuePair<int, string> selectedSabor = (KeyValuePair<int, string>)cmbSabor.SelectedItem;
+                KeyValuePair<int, string> selectedFornecedor = (KeyValuePair<int, string>)cbFornecedorProdCadastro.SelectedItem;
+                int fornecedorID = selectedFornecedor.Key;
+
+                txbIdFornCadastro.Text = fornecedorID.ToString();
+            }
+        }
+
+        private void cmbSaborCadastro_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cmbSaborCadastro.SelectedIndex != -1)
+            {
+                KeyValuePair<int, string> selectedSabor = (KeyValuePair<int, string>)cmbSaborCadastro.SelectedItem;
                 int saborID = selectedSabor.Key;
 
-                txbIdSabor.Text = saborID.ToString();
+                txbIdSaborCadastro.Text = saborID.ToString();
             }
+        }
+
+        private void btnCadastro_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

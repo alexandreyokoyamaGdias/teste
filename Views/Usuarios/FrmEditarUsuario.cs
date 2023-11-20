@@ -6,6 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Globalization;
 using System.Linq;
@@ -17,6 +18,15 @@ namespace SGPPC.Views.Usuarios
 {
     public partial class FrmEditarUsuario : Form
     {
+
+        private string descricaoOriginalNome;
+
+        private string descricaoOrignalEmail;
+
+        private string descricaoOriginalCPF;
+
+        private string descricaoOrignalFuncao;
+
         public int UserID { get; private set; }
 
         public FrmEditarUsuario()
@@ -89,7 +99,7 @@ namespace SGPPC.Views.Usuarios
                 FrmPrincipal principalForm = Application.OpenForms.OfType<FrmPrincipal>().FirstOrDefault();
                 if (principalForm != null)
                 {
-                    int userId = principalForm.UserID; // Obtenha o UserID da instância de FrmPrincipal
+                    int userId = principalForm.UserID;
                     if (Int32.TryParse(txbIdUser.Text, out Int32 id))
                     {
                         UsuarioEditarControle usuarioEditarControle = new UsuarioEditarControle();
@@ -100,7 +110,24 @@ namespace SGPPC.Views.Usuarios
                             string tabelaAfetada = "Usuário";
                             DateTime dataHora = DateTime.Now;
                             string acao = "btnAlterar_Click";
-                            string descricao = "Edição do Usuário bem-sucedido";
+                            string descricao = "Alteração: ";
+
+                            if (descricaoOriginalNome != txbNomeEdit.Text)
+                            {
+                                descricao += "O 'Nome' foi alterado de " + "'" + descricaoOriginalNome + "'" + " para " + "'" + txbNomeEdit.Text + "'.";
+                            }
+                            else if (descricaoOrignalEmail != txbEmailEdit.Text)
+                            {
+                                descricao += "O 'E-mail' foi alterado de " + "'" + descricaoOrignalEmail + "'" + " para " + "'" + txbEmailEdit.Text + "'.";
+                            }                         
+                            else if (descricaoOriginalCPF != maskCPFEdit.Text)
+                            {
+                                descricao += "O 'CPF' foi alterado de " + "'" + descricaoOriginalCPF + "'" + " para " + "'" + maskCPFEdit.Text + "'.";
+                            }
+                            else if (descricaoOrignalFuncao != cbFuncaoEdit.Text)
+                            {
+                                descricao += "A 'Função' foi alterado de " + "'" + descricaoOrignalFuncao + "'" + " para " + "'" + cbFuncaoEdit.Text + "'.";
+                            }
 
                             InserirLogsComands inserirLogs = new InserirLogsComands(tabelaAfetada, dataHora, acao, descricao, userId);
 
@@ -109,6 +136,29 @@ namespace SGPPC.Views.Usuarios
                         }
                         else
                         {
+                            string tabelaAfetada = "Usuário";
+                            DateTime dataHora = DateTime.Now;
+                            string acao = "btnAlterar_Click";
+                            string descricao = "Erro na alteração: ";
+
+                            if (descricaoOriginalNome != txbNomeEdit.Text)
+                            {
+                                descricao += "O 'Nome' não pode ser alterado de " + "'" + descricaoOriginalNome + "'" + " para " + "'" + txbNomeEdit.Text + "'.";
+                            }
+                            else if (descricaoOrignalEmail != txbEmailEdit.Text)
+                            {
+                                descricao += "O 'E-mail' não pode ser alterado de " + "'" + descricaoOrignalEmail + "'" + " para " + "'" + txbEmailEdit.Text + "'.";
+                            }
+                            else if (descricaoOriginalCPF != maskCPFEdit.Text)
+                            {
+                                descricao += "O 'CPF' não pode ser alterado de " + "'" + descricaoOriginalCPF + "'" + " para " + "'" + maskCPFEdit.Text + "'.";
+                            }
+                            else if (descricaoOrignalFuncao != cbFuncaoEdit.Text)
+                            {
+                                descricao += "A 'Função' não pode ser alterada de " + "'" + descricaoOrignalFuncao + "'" + " para " + "'" + cbFuncaoEdit.Text + "'.";
+                            }
+
+                            InserirLogsComands inserirLogs = new InserirLogsComands(tabelaAfetada, dataHora, acao, descricao, userId);
                             MessageBox.Show(usuarioEditarControle.mensagem);
                         }
                     }
@@ -124,7 +174,13 @@ namespace SGPPC.Views.Usuarios
 
         private void FrmEditarUsuario_Load(object sender, EventArgs e)
         {
+            descricaoOriginalNome = txbNomeEdit.Text;
 
+            descricaoOrignalEmail = txbEmailEdit.Text;
+
+            descricaoOriginalCPF = maskCPFEdit.Text;
+
+            descricaoOrignalFuncao = cbFuncaoEdit.Text;
         }
     }
 }

@@ -16,6 +16,8 @@ namespace SGPPC
 
         public int UserID { get; set; }
 
+        public string userFunction { get; set; }
+
         public FrmPrincipal()
         {
             InitializeComponent();
@@ -24,18 +26,6 @@ namespace SGPPC
         private void MenuSair_Click(object sender, EventArgs e)
         {
             Close();
-        }
-
-        private void CadastroPedidos_Click(object sender, EventArgs e)
-        {
-            Views.Cadastros.FrmCadastroPedido frmCadastroPedido = new Views.Cadastros.FrmCadastroPedido();
-            frmCadastroPedido.ShowDialog();
-        }
-
-        private void CadastroProdutos_Click(object sender, EventArgs e)
-        {
-            Views.Cadastros.FrmCadastroProdutos frmCadastroProduto = new Views.Cadastros.FrmCadastroProdutos();
-            frmCadastroProduto.ShowDialog();
         }
 
         private void ConsultaProdutoMenu_Click(object sender, EventArgs e)
@@ -48,22 +38,10 @@ namespace SGPPC
         {
         }
 
-        private void btnCadastroFuncionario_Click(object sender, EventArgs e)
-        {
-            Views.Cadastros.FrmCadastroFuncionario frmCadastroFuncionario = new Views.Cadastros.FrmCadastroFuncionario();
-            frmCadastroFuncionario.ShowDialog();
-        }
-
         private void fornecedorToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Views.Cadastros.FrmFornecedor frmFornecedor = new Views.Cadastros.FrmFornecedor();
             frmFornecedor.ShowDialog();
-        }
-
-        private void produtoToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            Views.Cadastros.FrmCadastroProdutos frmCadastroProduto = new Views.Cadastros.FrmCadastroProdutos();
-            frmCadastroProduto.ShowDialog(); // ShowDialog();
         }
 
         private void timer1_Tick(object sender, EventArgs e)
@@ -118,6 +96,7 @@ namespace SGPPC
         private void pedidoToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Views.Pedidos.FrmPedido frmPedido = new Views.Pedidos.FrmPedido();
+            frmPedido.UserID = this.UserID;
             frmPedido.ShowDialog();
         }
 
@@ -175,6 +154,36 @@ namespace SGPPC
 
             StatusUsuarioLogado.Text = UserName;
             StripLabelId.Text = UserID.ToString();
+
+            toolStripTextBoxFuncao.Text = userFunction;
+
+            if (userFunction == "Padrão")
+            {
+                MenuRelatorios.Visible = false;
+                controleDeCaixaToolStripMenuItem.Visible = false;
+                formasDePagamentoToolStripMenuItem.Visible = false;
+                tipoDeOperaçãoToolStripMenuItem.Visible = false;
+                entradaDeProdutoToolStripMenuItem.Visible = false;
+                pedidoToolStripMenuItem.Visible = false;
+                cadastrarToolStripMenuItemCadastrar.Visible = false;
+                consultarToolStripMenuItemUsuario.Visible = false;
+
+                saboresToolStripMenuItem.Visible = true;
+                produtoToolStripMenu.Visible = true;
+                consultaToolStripMenuItemFornecedor.Visible = true;
+                pedidoToolStripMenuItem.Visible = true;
+                perfilToolStripMenuItem.Visible = true;
+
+            }
+            else if (userFunction == "Administrador")
+            {
+                MenuRelatorios.Visible = true;
+                produtoToolStripMenuItem1.Visible = true;
+                pedidoToolStripMenuItem.Visible = true;
+                usuarioToolStripMenuItem.Visible = true;
+                entradaProdutoToolStripMenuItem.Visible = true;
+                perfilToolStripMenuItem.Visible = true;
+            }
         }
 
         private void timerStatus_Tick(object sender, EventArgs e)
@@ -182,5 +191,36 @@ namespace SGPPC
             StatusHora.Text = DateTime.Now.ToString("HH:mm:ss");
             StatusData.Text = DateTime.Today.ToString("dd/MM/yyyy");
         }
+
+        private void tipoDeOperaçãoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Views.TipoOperacao.FrmConsultaTipoOperacao frmConsultaTipoOperacao = new Views.TipoOperacao.FrmConsultaTipoOperacao();
+            frmConsultaTipoOperacao.ShowDialog();
+        }
+
+        private void entradaProdutoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Views.EntradaProduto.FrmCadastrarEntradaProduto frmCadastrarEntradaProduto = new Views.EntradaProduto.FrmCadastrarEntradaProduto();
+            frmCadastrarEntradaProduto.ShowDialog();
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void StripLabelId_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void perfilToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Views.Perfil.FrmPerfilUsuario frmPerfilUsuario = new Views.Perfil.FrmPerfilUsuario();
+            frmPerfilUsuario.UserID = this.UserID;
+            frmPerfilUsuario.ShowDialog();
+        }
+
+
     }
 }

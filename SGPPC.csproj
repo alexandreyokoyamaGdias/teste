@@ -77,8 +77,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Class\ConsultaIdProduto.cs" />
+    <Compile Include="Class\ConsultarIdFornecedor.cs" />
     <Compile Include="Class\Fornecedor.cs" />
     <Compile Include="Class\LimparFormulario.cs" />
+    <Compile Include="Controller\EntradaController.cs" />
+    <Compile Include="Controller\EntradaProdutoController.cs" />
     <Compile Include="DataEstoque.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -94,6 +98,7 @@
     <Compile Include="Data\ProdutoAlterarComands.cs" />
     <Compile Include="Data\ProdutoComands.cs" />
     <Compile Include="Data\SaborComands.cs" />
+    <Compile Include="Data\TipoOperacaoComands.cs" />
     <Compile Include="Data\UsuarioEditarComands.cs" />
     <Compile Include="Modelo\CaixaControle.cs" />
     <Compile Include="Modelo\Controle.cs" />
@@ -105,6 +110,7 @@
     <Compile Include="Modelo\ProdutoAlterarControle.cs" />
     <Compile Include="Modelo\ProdutoControle.cs" />
     <Compile Include="Modelo\SaborControlee.cs" />
+    <Compile Include="Modelo\TipoOperacaoControle.cs" />
     <Compile Include="Modelo\UsuarioEditarControle.cs" />
     <Compile Include="Model\CadastroProduto.cs" />
     <Compile Include="Model\ColsultaFornecedor.cs" />
@@ -123,6 +129,7 @@
     <Compile Include="Model\EstoqueClass.cs" />
     <Compile Include="Model\FlucoCaixaClass.cs" />
     <Compile Include="Model\PedidoClass.cs" />
+    <Compile Include="Model\ProdutoEntradaClass.cs" />
     <Compile Include="Model\ProjetaLogs.cs" />
     <Compile Include="Model\ValidaController.cs" />
     <Compile Include="Model\VendasClass.cs" />
@@ -147,13 +154,17 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>SGPPCDataSet2.xsd</DependentUpon>
     </Compile>
+    <Compile Include="SGPPCDataSet3.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SGPPCDataSet3.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="SGPPCDataSet3Venda.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SGPPCDataSet3Venda.xsd</DependentUpon>
+    </Compile>
     <Compile Include="SqlServerTypes\Loader.cs" />
-    <Compile Include="Views\Cadastros\FrmCadastroFuncionario.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Views\Cadastros\FrmCadastroFuncionario.Designer.cs">
-      <DependentUpon>FrmCadastroFuncionario.cs</DependentUpon>
-    </Compile>
     <Compile Include="Views\ControleCaixa\FrmConsultaControleCaixa.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -232,6 +243,12 @@
     <Compile Include="Views\Pedidos\FrmPedido.Designer.cs">
       <DependentUpon>FrmPedido.cs</DependentUpon>
     </Compile>
+    <Compile Include="Views\Perfil\FrmPerfilUsuario.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Perfil\FrmPerfilUsuario.Designer.cs">
+      <DependentUpon>FrmPerfilUsuario.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\Produto\FrmAlterarProduto.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -243,12 +260,6 @@
     </Compile>
     <Compile Include="Views\Produto\FrmCadastroProduto.Designer.cs">
       <DependentUpon>FrmCadastroProduto.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Views\Produto\FrmCadastroProdutos.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Views\Produto\FrmCadastroProdutos.Designer.cs">
-      <DependentUpon>FrmCadastroProdutos.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\Fornecedor\FrmFornecedor.cs">
       <SubType>Form</SubType>
@@ -270,12 +281,6 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Views\Cadastros\FrmCadastroPedido.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Views\Cadastros\FrmCadastroPedido.Designer.cs">
-      <DependentUpon>FrmCadastroPedido.cs</DependentUpon>
-    </Compile>
     <Compile Include="Views\Relatorios\FrmEstoque.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -372,9 +377,6 @@
     <Compile Include="Views\Usuarios\FrmLogin.Designer.cs">
       <DependentUpon>FrmLogin.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="Views\Cadastros\FrmCadastroFuncionario.resx">
-      <DependentUpon>FrmCadastroFuncionario.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Views\ControleCaixa\FrmConsultaControleCaixa.resx">
       <DependentUpon>FrmConsultaControleCaixa.cs</DependentUpon>
     </EmbeddedResource>
@@ -414,14 +416,14 @@
     <EmbeddedResource Include="Views\Pedidos\FrmPedido.resx">
       <DependentUpon>FrmPedido.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Views\Perfil\FrmPerfilUsuario.resx">
+      <DependentUpon>FrmPerfilUsuario.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Views\Produto\FrmAlterarProduto.resx">
       <DependentUpon>FrmAlterarProduto.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Produto\FrmCadastroProduto.resx">
       <DependentUpon>FrmCadastroProduto.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Views\Produto\FrmCadastroProdutos.resx">
-      <DependentUpon>FrmCadastroProdutos.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Fornecedor\FrmFornecedor.resx">
       <DependentUpon>FrmFornecedor.cs</DependentUpon>
@@ -436,9 +438,6 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <SubType>Designer</SubType>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Views\Cadastros\FrmCadastroPedido.resx">
-      <DependentUpon>FrmCadastroPedido.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Relatorios\FrmEstoque.resx">
       <DependentUpon>FrmEstoque.cs</DependentUpon>
@@ -510,6 +509,7 @@
     <None Include="Properties\DataSources\SGPPC.Model.CadastroProduto.datasource" />
     <None Include="Properties\DataSources\SGPPC.Model.EstoqueClass.datasource" />
     <None Include="Properties\DataSources\SGPPC.Model.FlucoCaixaClass.datasource" />
+    <None Include="Properties\DataSources\SGPPC.Model.PedidoClass.datasource" />
     <None Include="Properties\DataSources\SGPPC.Model.VendasClass.datasource" />
     <None Include="Properties\DataSources\SGPPC.Properties.Resources.datasource" />
     <None Include="Properties\DataSources\SGPPC.Properties.Settings.datasource" />
@@ -561,6 +561,28 @@
     </None>
     <None Include="SGPPCDataSet2.xss">
       <DependentUpon>SGPPCDataSet2.xsd</DependentUpon>
+    </None>
+    <None Include="SGPPCDataSet3.xsc">
+      <DependentUpon>SGPPCDataSet3.xsd</DependentUpon>
+    </None>
+    <None Include="SGPPCDataSet3.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>SGPPCDataSet3.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="SGPPCDataSet3.xss">
+      <DependentUpon>SGPPCDataSet3.xsd</DependentUpon>
+    </None>
+    <None Include="SGPPCDataSet3Venda.xsc">
+      <DependentUpon>SGPPCDataSet3Venda.xsd</DependentUpon>
+    </None>
+    <None Include="SGPPCDataSet3Venda.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>SGPPCDataSet3Venda.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="SGPPCDataSet3Venda.xss">
+      <DependentUpon>SGPPCDataSet3Venda.xsd</DependentUpon>
     </None>
   </ItemGroup>
   <ItemGroup>

@@ -44,6 +44,10 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.lblProduto = new System.Windows.Forms.Label();
             this.txbId = new System.Windows.Forms.TextBox();
+            this.lblSabor = new System.Windows.Forms.Label();
+            this.cmbSaborEdit = new System.Windows.Forms.ComboBox();
+            this.txbIdSaborEdit = new System.Windows.Forms.TextBox();
+            this.txbIdFornEdit = new System.Windows.Forms.TextBox();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -129,6 +133,7 @@
             this.cbFornecedorProdAlt.Name = "cbFornecedorProdAlt";
             this.cbFornecedorProdAlt.Size = new System.Drawing.Size(288, 28);
             this.cbFornecedorProdAlt.TabIndex = 35;
+            this.cbFornecedorProdAlt.SelectedIndexChanged += new System.EventHandler(this.cbFornecedorProdAlt_SelectedIndexChanged);
             // 
             // maskTxbDataProdAlt
             // 
@@ -197,11 +202,53 @@
             this.txbId.TabIndex = 45;
             this.txbId.Visible = false;
             // 
+            // lblSabor
+            // 
+            this.lblSabor.AutoSize = true;
+            this.lblSabor.Location = new System.Drawing.Point(328, 226);
+            this.lblSabor.Name = "lblSabor";
+            this.lblSabor.Size = new System.Drawing.Size(58, 20);
+            this.lblSabor.TabIndex = 47;
+            this.lblSabor.Text = "*Sabor";
+            // 
+            // cmbSaborEdit
+            // 
+            this.cmbSaborEdit.FormattingEnabled = true;
+            this.cmbSaborEdit.Location = new System.Drawing.Point(332, 249);
+            this.cmbSaborEdit.Name = "cmbSaborEdit";
+            this.cmbSaborEdit.Size = new System.Drawing.Size(288, 28);
+            this.cmbSaborEdit.TabIndex = 46;
+            this.cmbSaborEdit.SelectedIndexChanged += new System.EventHandler(this.cmbSaborEdit_SelectedIndexChanged);
+            // 
+            // txbIdSaborEdit
+            // 
+            this.txbIdSaborEdit.Location = new System.Drawing.Point(332, 289);
+            this.txbIdSaborEdit.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.txbIdSaborEdit.Name = "txbIdSaborEdit";
+            this.txbIdSaborEdit.ReadOnly = true;
+            this.txbIdSaborEdit.Size = new System.Drawing.Size(62, 26);
+            this.txbIdSaborEdit.TabIndex = 48;
+            this.txbIdSaborEdit.Visible = false;
+            // 
+            // txbIdFornEdit
+            // 
+            this.txbIdFornEdit.Location = new System.Drawing.Point(12, 289);
+            this.txbIdFornEdit.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.txbIdFornEdit.Name = "txbIdFornEdit";
+            this.txbIdFornEdit.ReadOnly = true;
+            this.txbIdFornEdit.Size = new System.Drawing.Size(62, 26);
+            this.txbIdFornEdit.TabIndex = 49;
+            this.txbIdFornEdit.Visible = false;
+            // 
             // FrmAlterarProduto
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(632, 534);
+            this.Controls.Add(this.txbIdFornEdit);
+            this.Controls.Add(this.txbIdSaborEdit);
+            this.Controls.Add(this.lblSabor);
+            this.Controls.Add(this.cmbSaborEdit);
             this.Controls.Add(this.txbId);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.lblFornecedorAlt);
@@ -246,5 +293,9 @@
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Label lblProduto;
         private System.Windows.Forms.TextBox txbId;
+        private System.Windows.Forms.Label lblSabor;
+        private System.Windows.Forms.ComboBox cmbSaborEdit;
+        private System.Windows.Forms.TextBox txbIdSaborEdit;
+        private System.Windows.Forms.TextBox txbIdFornEdit;
     }
 }

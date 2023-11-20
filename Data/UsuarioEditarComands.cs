@@ -25,17 +25,19 @@ namespace SGPPC.Data
             return new string(input.Where(char.IsDigit).ToArray());
         }
 
+
         public String EditarUsuario(string nome, string email, string cpf, string funcao, string senha, Int32 id)
         {
             tem = false;
 
             cpf = RemoverCaracteresNaoNumericos(cpf);
 
-            if (CPFJaExiste(cpf))
+            if (!CPFJaExiste(cpf) && EMAILJaExiste(email))
             {
                 this.mensagem = "CPF já cadastrado. Não é possível cadastrar novamente.";
             }
-            else if (EMAILJaExiste(email))
+
+            if (!EMAILJaExiste(email) && EMAILJaExiste(email))
             {
                 this.mensagem = "EMAIL já cadastrado. Não é possível cadastrar novamente.";
             }
@@ -65,6 +67,7 @@ namespace SGPPC.Data
             }
             return mensagem;
         }
+
 
         private bool CPFJaExiste(string cnpj)
         {

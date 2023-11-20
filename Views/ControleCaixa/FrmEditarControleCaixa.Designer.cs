@@ -33,7 +33,6 @@
             this.lblValor = new System.Windows.Forms.Label();
             this.txbValorEditar = new System.Windows.Forms.TextBox();
             this.lblDescricao = new System.Windows.Forms.Label();
-            this.txbTipoOperadcaoEditar = new System.Windows.Forms.TextBox();
             this.btnCancelar = new System.Windows.Forms.Button();
             this.btnLimpar = new System.Windows.Forms.Button();
             this.btnEditar = new System.Windows.Forms.Button();
@@ -41,14 +40,16 @@
             this.txbMotivoEditar = new System.Windows.Forms.TextBox();
             this.panel2 = new System.Windows.Forms.Panel();
             this.lblControleCaixa = new System.Windows.Forms.Label();
-            this.txbId = new System.Windows.Forms.TextBox();
+            this.txbIdEdit = new System.Windows.Forms.TextBox();
+            this.cbbTipoOperadcaoEditar = new System.Windows.Forms.ComboBox();
+            this.txbIdTipoOperacao = new System.Windows.Forms.TextBox();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // lblData
             // 
             this.lblData.AutoSize = true;
-            this.lblData.Location = new System.Drawing.Point(320, 142);
+            this.lblData.Location = new System.Drawing.Point(319, 134);
             this.lblData.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblData.Name = "lblData";
             this.lblData.Size = new System.Drawing.Size(83, 20);
@@ -57,7 +58,7 @@
             // 
             // maskDataHoraEditar
             // 
-            this.maskDataHoraEditar.Location = new System.Drawing.Point(324, 166);
+            this.maskDataHoraEditar.Location = new System.Drawing.Point(323, 158);
             this.maskDataHoraEditar.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.maskDataHoraEditar.Mask = "00/00/0000 90:00";
             this.maskDataHoraEditar.Name = "maskDataHoraEditar";
@@ -69,7 +70,7 @@
             // lblValor
             // 
             this.lblValor.AutoSize = true;
-            this.lblValor.Location = new System.Drawing.Point(16, 142);
+            this.lblValor.Location = new System.Drawing.Point(15, 134);
             this.lblValor.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblValor.Name = "lblValor";
             this.lblValor.Size = new System.Drawing.Size(52, 20);
@@ -78,7 +79,7 @@
             // 
             // txbValorEditar
             // 
-            this.txbValorEditar.Location = new System.Drawing.Point(21, 166);
+            this.txbValorEditar.Location = new System.Drawing.Point(20, 158);
             this.txbValorEditar.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txbValorEditar.Name = "txbValorEditar";
             this.txbValorEditar.Size = new System.Drawing.Size(283, 26);
@@ -87,25 +88,16 @@
             // lblDescricao
             // 
             this.lblDescricao.AutoSize = true;
-            this.lblDescricao.Location = new System.Drawing.Point(320, 77);
+            this.lblDescricao.Location = new System.Drawing.Point(319, 69);
             this.lblDescricao.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblDescricao.Name = "lblDescricao";
             this.lblDescricao.Size = new System.Drawing.Size(141, 20);
             this.lblDescricao.TabIndex = 81;
             this.lblDescricao.Text = "*Tipo de Operação";
             // 
-            // txbTipoOperadcaoEditar
-            // 
-            this.txbTipoOperadcaoEditar.Location = new System.Drawing.Point(324, 102);
-            this.txbTipoOperadcaoEditar.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.txbTipoOperadcaoEditar.Multiline = true;
-            this.txbTipoOperadcaoEditar.Name = "txbTipoOperadcaoEditar";
-            this.txbTipoOperadcaoEditar.Size = new System.Drawing.Size(288, 33);
-            this.txbTipoOperadcaoEditar.TabIndex = 80;
-            // 
             // btnCancelar
             // 
-            this.btnCancelar.Location = new System.Drawing.Point(279, 488);
+            this.btnCancelar.Location = new System.Drawing.Point(278, 480);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(118, 42);
             this.btnCancelar.TabIndex = 79;
@@ -115,7 +107,7 @@
             // 
             // btnLimpar
             // 
-            this.btnLimpar.Location = new System.Drawing.Point(146, 488);
+            this.btnLimpar.Location = new System.Drawing.Point(145, 480);
             this.btnLimpar.Name = "btnLimpar";
             this.btnLimpar.Size = new System.Drawing.Size(118, 42);
             this.btnLimpar.TabIndex = 78;
@@ -125,7 +117,7 @@
             // 
             // btnEditar
             // 
-            this.btnEditar.Location = new System.Drawing.Point(14, 488);
+            this.btnEditar.Location = new System.Drawing.Point(13, 480);
             this.btnEditar.Name = "btnEditar";
             this.btnEditar.Size = new System.Drawing.Size(118, 42);
             this.btnEditar.TabIndex = 77;
@@ -136,7 +128,7 @@
             // lblMotivo
             // 
             this.lblMotivo.AutoSize = true;
-            this.lblMotivo.Location = new System.Drawing.Point(16, 77);
+            this.lblMotivo.Location = new System.Drawing.Point(15, 69);
             this.lblMotivo.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblMotivo.Name = "lblMotivo";
             this.lblMotivo.Size = new System.Drawing.Size(61, 20);
@@ -145,7 +137,7 @@
             // 
             // txbMotivoEditar
             // 
-            this.txbMotivoEditar.Location = new System.Drawing.Point(16, 102);
+            this.txbMotivoEditar.Location = new System.Drawing.Point(15, 94);
             this.txbMotivoEditar.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txbMotivoEditar.Multiline = true;
             this.txbMotivoEditar.Name = "txbMotivoEditar";
@@ -176,27 +168,47 @@
             this.lblControleCaixa.Text = "Controle de Caixa";
             this.lblControleCaixa.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // txbId
+            // txbIdEdit
             // 
-            this.txbId.Location = new System.Drawing.Point(550, 496);
-            this.txbId.Name = "txbId";
-            this.txbId.ReadOnly = true;
-            this.txbId.Size = new System.Drawing.Size(62, 26);
-            this.txbId.TabIndex = 86;
-            this.txbId.Visible = false;
+            this.txbIdEdit.Location = new System.Drawing.Point(550, 496);
+            this.txbIdEdit.Name = "txbIdEdit";
+            this.txbIdEdit.ReadOnly = true;
+            this.txbIdEdit.Size = new System.Drawing.Size(62, 26);
+            this.txbIdEdit.TabIndex = 86;
+            this.txbIdEdit.Visible = false;
+            // 
+            // cbbTipoOperadcaoEditar
+            // 
+            this.cbbTipoOperadcaoEditar.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbbTipoOperadcaoEditar.FormattingEnabled = true;
+            this.cbbTipoOperadcaoEditar.Location = new System.Drawing.Point(323, 94);
+            this.cbbTipoOperadcaoEditar.Name = "cbbTipoOperadcaoEditar";
+            this.cbbTipoOperadcaoEditar.Size = new System.Drawing.Size(288, 33);
+            this.cbbTipoOperadcaoEditar.TabIndex = 87;
+            this.cbbTipoOperadcaoEditar.SelectedIndexChanged += new System.EventHandler(this.txbTipoOperadcaoEditar_SelectedIndexChanged);
+            // 
+            // txbIdTipoOperacao
+            // 
+            this.txbIdTipoOperacao.Location = new System.Drawing.Point(550, 464);
+            this.txbIdTipoOperacao.Name = "txbIdTipoOperacao";
+            this.txbIdTipoOperacao.ReadOnly = true;
+            this.txbIdTipoOperacao.Size = new System.Drawing.Size(62, 26);
+            this.txbIdTipoOperacao.TabIndex = 88;
+            this.txbIdTipoOperacao.Visible = false;
             // 
             // FrmEditarControleCaixa
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(632, 534);
-            this.Controls.Add(this.txbId);
+            this.Controls.Add(this.txbIdTipoOperacao);
+            this.Controls.Add(this.cbbTipoOperadcaoEditar);
+            this.Controls.Add(this.txbIdEdit);
             this.Controls.Add(this.lblData);
             this.Controls.Add(this.maskDataHoraEditar);
             this.Controls.Add(this.lblValor);
             this.Controls.Add(this.txbValorEditar);
             this.Controls.Add(this.lblDescricao);
-            this.Controls.Add(this.txbTipoOperadcaoEditar);
             this.Controls.Add(this.btnCancelar);
             this.Controls.Add(this.btnLimpar);
             this.Controls.Add(this.btnEditar);
@@ -224,7 +236,6 @@
         private System.Windows.Forms.Label lblValor;
         private System.Windows.Forms.TextBox txbValorEditar;
         private System.Windows.Forms.Label lblDescricao;
-        private System.Windows.Forms.TextBox txbTipoOperadcaoEditar;
         private System.Windows.Forms.Button btnCancelar;
         private System.Windows.Forms.Button btnLimpar;
         private System.Windows.Forms.Button btnEditar;
@@ -232,6 +243,8 @@
         private System.Windows.Forms.TextBox txbMotivoEditar;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Label lblControleCaixa;
-        private System.Windows.Forms.TextBox txbId;
+        private System.Windows.Forms.TextBox txbIdEdit;
+        private System.Windows.Forms.ComboBox cbbTipoOperadcaoEditar;
+        private System.Windows.Forms.TextBox txbIdTipoOperacao;
     }
 }

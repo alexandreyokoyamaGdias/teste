@@ -1,0 +1,77 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="SGPPCDataSet3Venda" targetNamespace="http://tempuri.org/SGPPCDataSet3Venda.xsd" xmlns:mstns="http://tempuri.org/SGPPCDataSet3Venda.xsd" xmlns="http://tempuri.org/SGPPCDataSet3Venda.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+          <Connection AppSettingsObjectName="Settings" AppSettingsPropertyName="SGPPCConnectionString" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="SGPPCConnectionString (Settings)" ParameterPrefix="@" PropertyReference="ApplicationSettings.SGPPC.Properties.Settings.GlobalReference.Default.SGPPCConnectionString" Provider="System.Data.SqlClient" />
+        </Connections>
+        <Tables>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="PedidoTableAdapter" GeneratorDataComponentClassName="PedidoTableAdapter" Name="Pedido" UserDataComponentName="PedidoTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="SGPPCConnectionString (Settings)" DbObjectName="SGPPC.dbo.Pedido" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>SELECT Nome_Cliente, Data_Hora_Pedido FROM dbo.Pedido</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="Nome_Cliente" DataSetColumn="Nome_Cliente" />
+              <Mapping SourceColumn="Data_Hora_Pedido" DataSetColumn="Data_Hora_Pedido" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="Pedido_ItemTableAdapter" GeneratorDataComponentClassName="Pedido_ItemTableAdapter" Name="Pedido_Item" UserDataComponentName="Pedido_ItemTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="SGPPCConnectionString (Settings)" DbObjectName="SGPPC.dbo.Pedido_Item" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>SELECT Quantidade, Valor FROM dbo.Pedido_Item</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="Quantidade" DataSetColumn="Quantidade" />
+              <Mapping SourceColumn="Valor" DataSetColumn="Valor" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+        </Tables>
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="SGPPCDataSet3Venda" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="True" msprop:Generator_UserDSName="SGPPCDataSet3Venda" msprop:Generator_DataSetName="SGPPCDataSet3Venda">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="Pedido" msprop:Generator_RowEvHandlerName="PedidoRowChangeEventHandler" msprop:Generator_RowDeletedName="PedidoRowDeleted" msprop:Generator_RowDeletingName="PedidoRowDeleting" msprop:Generator_RowEvArgName="PedidoRowChangeEvent" msprop:Generator_TablePropName="Pedido" msprop:Generator_RowChangedName="PedidoRowChanged" msprop:Generator_RowChangingName="PedidoRowChanging" msprop:Generator_TableClassName="PedidoDataTable" msprop:Generator_RowClassName="PedidoRow" msprop:Generator_TableVarName="tablePedido" msprop:Generator_UserTableName="Pedido">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Nome_Cliente" msprop:Generator_ColumnPropNameInRow="Nome_Cliente" msprop:Generator_ColumnPropNameInTable="Nome_ClienteColumn" msprop:Generator_ColumnVarNameInTable="columnNome_Cliente" msprop:Generator_UserColumnName="Nome_Cliente">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Data_Hora_Pedido" msprop:Generator_ColumnPropNameInRow="Data_Hora_Pedido" msprop:Generator_ColumnPropNameInTable="Data_Hora_PedidoColumn" msprop:Generator_ColumnVarNameInTable="columnData_Hora_Pedido" msprop:Generator_UserColumnName="Data_Hora_Pedido" type="xs:dateTime" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="Pedido_Item" msprop:Generator_RowEvHandlerName="Pedido_ItemRowChangeEventHandler" msprop:Generator_RowDeletedName="Pedido_ItemRowDeleted" msprop:Generator_RowDeletingName="Pedido_ItemRowDeleting" msprop:Generator_RowEvArgName="Pedido_ItemRowChangeEvent" msprop:Generator_TablePropName="Pedido_Item" msprop:Generator_RowChangedName="Pedido_ItemRowChanged" msprop:Generator_RowChangingName="Pedido_ItemRowChanging" msprop:Generator_TableClassName="Pedido_ItemDataTable" msprop:Generator_RowClassName="Pedido_ItemRow" msprop:Generator_TableVarName="tablePedido_Item" msprop:Generator_UserTableName="Pedido_Item">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Quantidade" msprop:Generator_ColumnPropNameInRow="Quantidade" msprop:Generator_ColumnPropNameInTable="QuantidadeColumn" msprop:Generator_ColumnVarNameInTable="columnQuantidade" msprop:Generator_UserColumnName="Quantidade" type="xs:int" />
+              <xs:element name="Valor" msprop:Generator_ColumnPropNameInRow="Valor" msprop:Generator_ColumnPropNameInTable="ValorColumn" msprop:Generator_ColumnVarNameInTable="columnValor" msprop:Generator_UserColumnName="Valor" type="xs:decimal" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

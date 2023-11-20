@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             this.lblDescricao = new System.Windows.Forms.Label();
-            this.txbTipoOperadcao = new System.Windows.Forms.TextBox();
             this.btnCancelar = new System.Windows.Forms.Button();
             this.btnLimpar = new System.Windows.Forms.Button();
             this.btnCadastrar = new System.Windows.Forms.Button();
@@ -41,6 +40,8 @@
             this.lblValor = new System.Windows.Forms.Label();
             this.maskDataHoras = new System.Windows.Forms.MaskedTextBox();
             this.lblData = new System.Windows.Forms.Label();
+            this.cbbTipoOperacao = new System.Windows.Forms.ComboBox();
+            this.txbIdTipoOperacao = new System.Windows.Forms.TextBox();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -53,15 +54,6 @@
             this.lblDescricao.Size = new System.Drawing.Size(141, 20);
             this.lblDescricao.TabIndex = 69;
             this.lblDescricao.Text = "*Tipo de Operação";
-            // 
-            // txbTipoOperadcao
-            // 
-            this.txbTipoOperadcao.Location = new System.Drawing.Point(324, 97);
-            this.txbTipoOperadcao.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.txbTipoOperadcao.Multiline = true;
-            this.txbTipoOperadcao.Name = "txbTipoOperadcao";
-            this.txbTipoOperadcao.Size = new System.Drawing.Size(288, 33);
-            this.txbTipoOperadcao.TabIndex = 68;
             // 
             // btnCancelar
             // 
@@ -175,17 +167,37 @@
             this.lblData.TabIndex = 73;
             this.lblData.Text = "Data/Hora";
             // 
+            // cbbTipoOperacao
+            // 
+            this.cbbTipoOperacao.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbbTipoOperacao.FormattingEnabled = true;
+            this.cbbTipoOperacao.Location = new System.Drawing.Point(324, 95);
+            this.cbbTipoOperacao.Name = "cbbTipoOperacao";
+            this.cbbTipoOperacao.Size = new System.Drawing.Size(288, 33);
+            this.cbbTipoOperacao.TabIndex = 74;
+            this.cbbTipoOperacao.SelectedIndexChanged += new System.EventHandler(this.cbbTipoOperacao_SelectedIndexChanged);
+            // 
+            // txbIdTipoOperacao
+            // 
+            this.txbIdTipoOperacao.Location = new System.Drawing.Point(547, 496);
+            this.txbIdTipoOperacao.Name = "txbIdTipoOperacao";
+            this.txbIdTipoOperacao.ReadOnly = true;
+            this.txbIdTipoOperacao.Size = new System.Drawing.Size(65, 26);
+            this.txbIdTipoOperacao.TabIndex = 75;
+            this.txbIdTipoOperacao.Visible = false;
+            // 
             // FrmControleCaixa
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(632, 534);
+            this.Controls.Add(this.txbIdTipoOperacao);
+            this.Controls.Add(this.cbbTipoOperacao);
             this.Controls.Add(this.lblData);
             this.Controls.Add(this.maskDataHoras);
             this.Controls.Add(this.lblValor);
             this.Controls.Add(this.txbValor);
             this.Controls.Add(this.lblDescricao);
-            this.Controls.Add(this.txbTipoOperadcao);
             this.Controls.Add(this.btnCancelar);
             this.Controls.Add(this.btnLimpar);
             this.Controls.Add(this.btnCadastrar);
@@ -209,7 +221,6 @@
         #endregion
 
         private System.Windows.Forms.Label lblDescricao;
-        private System.Windows.Forms.TextBox txbTipoOperadcao;
         private System.Windows.Forms.Button btnCancelar;
         private System.Windows.Forms.Button btnLimpar;
         private System.Windows.Forms.Button btnCadastrar;
@@ -221,5 +232,7 @@
         private System.Windows.Forms.Label lblValor;
         private System.Windows.Forms.MaskedTextBox maskDataHoras;
         private System.Windows.Forms.Label lblData;
+        private System.Windows.Forms.ComboBox cbbTipoOperacao;
+        private System.Windows.Forms.TextBox txbIdTipoOperacao;
     }
 }

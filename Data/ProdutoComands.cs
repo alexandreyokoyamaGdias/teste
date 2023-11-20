@@ -24,7 +24,7 @@ namespace SGPPC.Data
             return new string(input.Where(char.IsDigit).ToArray());
         }
 
-        public String CadastrarProd(string nome, string descricao, string valor, string data, string idFornecedor, string idSabor)
+        public String CadastrarProd(string notaFiscal, string preco, string quantidade, string fornecedor, string produto, string data)
         {
             tem = false;
 
@@ -33,12 +33,13 @@ namespace SGPPC.Data
             cmd.CommandText = "INSERT INTO Produto (Nome_Produto, Descricao, Valor, Data_Validade, Id_Fornecedor, Id_Sabor) " +
                               "VALUES (@Nome, @Descricao, @Valor, @Data, @IdFornecedor, @IdSabor);";
             
-            cmd.Parameters.AddWithValue("@Nome", nome);
-            cmd.Parameters.AddWithValue("@Descricao", descricao);
-            cmd.Parameters.AddWithValue("@Valor", valor);
+            cmd.Parameters.AddWithValue("@Nome", notaFiscal);
+            cmd.Parameters.AddWithValue("@Descricao", preco);
+            cmd.Parameters.AddWithValue("@Valor", quantidade);
             cmd.Parameters.AddWithValue("@Data", data);
-            cmd.Parameters.AddWithValue("@IdFornecedor", idFornecedor);
-            cmd.Parameters.AddWithValue("@IdSabor", idSabor);
+            cmd.Parameters.AddWithValue("@IdFornecedor", fornecedor);
+            cmd.Parameters.AddWithValue("@IdSabor", produto);
+            cmd.Parameters.AddWithValue("@IdSabor", data);
 
             try
             {

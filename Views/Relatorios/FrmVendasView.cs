@@ -25,7 +25,7 @@ namespace SGPPC.Views.Relatorios
         {
             this.reportViewer1.LocalReport.DataSources.Clear();
             this.reportViewer1.LocalReport.DataSources.Add(new
-                Microsoft.Reporting.WinForms.ReportDataSource("DataVendas", dt));
+                Microsoft.Reporting.WinForms.ReportDataSource("DataSetVendas", dt));
 
             this.reportViewer1.RefreshReport();
         }

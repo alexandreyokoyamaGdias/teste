@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Runtime.CompilerServices;
@@ -60,12 +61,82 @@ namespace SGPPC.Views.ControleCaixa
             bindingSource.DataSource = consulta.LocalizarControleCaixa(pesquisa, pesquisa, pesquisa, pesquisa);
 
             dgControleCaixa.DataSource = bindingSource;
+
+            AtualizarTotalDebitos();
+
+            AtualizarTotalCreditos();
+        }
+
+        private void AtualizarTotalDebitos()
+        {
+            decimal totalDebitos = 0;
+
+            SqlConnection con = new SqlConnection();
+
+            string connectionString = "Data Source=ACF014\\SQLEXPRESS;Initial Catalog=SGPPC;Integrated Security=True";
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                connection.Open();
+
+                string query = "SELECT SUM(Valor) AS TotalDebitos FROM Controle_Caixa_Pedido WHERE Tipo_Operacao = 'Débito'";
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    object result = command.ExecuteScalar();
+
+                    if (result != null && decimal.TryParse(result.ToString(), out decimal valorConvertido))
+                    {
+                        totalDebitos = valorConvertido;
+                    }
+                    else
+                    {
+                        lblValorTotal.Text = "Nenhum débito encontrado.";
+                        return;
+                    }
+                }
+            }
+
+            lblValorTotal.Text = $"Total de Débitos: {totalDebitos:C2}";
+        }
+
+        private void AtualizarTotalCreditos()
+        {
+            decimal totalCreditos = 0;
+
+            SqlConnection con = new SqlConnection();
+
+            string connectionString = "Data Source=ACF014\\SQLEXPRESS;Initial Catalog=SGPPC;Integrated Security=True";
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                connection.Open();
+
+                string query = "SELECT SUM(Valor) AS TotalCreditos FROM Controle_Caixa_Pedido WHERE Tipo_Operacao = 'Crédito'";
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    object result = command.ExecuteScalar();
+
+                    if (result != null && decimal.TryParse(result.ToString(), out decimal valorConvertido))
+                    {
+                        totalCreditos = valorConvertido;
+                    }
+                    else
+                    {
+                        lblCredito.Text = "Nenhum crédito encontrado.";
+                        return;
+                    }
+                }
+            }
+
+            lblCredito.Text = $"Total de Créditos: {totalCreditos:C2}";
         }
 
         private void FrmConsultaControleCaixa_Load(object sender, EventArgs e)
         {
             comboBoxPesquisarControleCaixa.SelectedIndex = 0;
-        }
+
+            AtualizarTotalDebitos();
+
+            AtualizarTotalCreditos();
+        }       
 
         private void dgFornecedor_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -92,8 +163,6 @@ namespace SGPPC.Views.ControleCaixa
             {
                 frm.ShowDialog();
             }
-            //InserirLogs logs = new InserirLogs(DateTime.Now, "Relatório FluxoCaixa", "Gerar Relatório", $"Data{DateTime.Now} Usuario{idDoUsuario}", "Gerar Relatorio");
-
         }
 
         private DataTable GerarDadosRelatorioFluxoCaixa()

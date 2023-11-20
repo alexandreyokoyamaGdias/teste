@@ -63,20 +63,42 @@ namespace SGPPC.Views.Relatorios
         {
             var dt = new DataTable();
             dt.Columns.Add("Id");
-            dt.Columns.Add("NomeProduto");
+            dt.Columns.Add("Nome_Produto");
             dt.Columns.Add("Descricao");
-            dt.Columns.Add("PrecoUnitario");
+            dt.Columns.Add("Preco_Unitario");
             dt.Columns.Add("Quantidade");
-            dt.Columns.Add("NomeFornecedor");
-            dt.Columns.Add("DataHoraEntrada");
+            dt.Columns.Add("Id_Fornecedor");
+            dt.Columns.Add("Data_Hora_Entrada");
 
             foreach (DataGridViewRow item in dgEstoque.Rows)
             {
-                dt.Rows.Add(item.Cells["Id"].Value.ToString(), item.Cells["NomeProduto"].Value.ToString(), item.Cells["Descricao"].Value.ToString(),
-                    item.Cells["PrecoUnitario"].Value.ToString(), item.Cells["Quantidade"].Value.ToString(), item.Cells["NomeFornecedor"].Value.ToString(), item.Cells["DataHoraEntrada"].Value.ToString());
+                dt.Rows.Add(item.Cells["Id"].Value.ToString(), item.Cells["Nome_Produto"].Value.ToString(), item.Cells["Descricao"].Value.ToString(),
+                    item.Cells["Preco_Unitario"].Value.ToString(), item.Cells["Quantidade"].Value.ToString(), item.Cells["Id_Fornecedor"].Value.ToString(), item.Cells["Data_Hora_Entrada"].Value.ToString());
             }
 
             return dt;
+        }
+
+
+
+        private void dgEstoque_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void txtPesquisaEstoque_TextChanged(object sender, EventArgs e)
+        {
+            string filterColumn = comboBoxPesquisarEstoque.Text;
+            string filterValue = txtPesquisaEstoque.Text;
+
+            if (string.IsNullOrEmpty(filterValue))
+            {
+                bindingSource.RemoveFilter();
+            }
+            else
+            {
+                bindingSource.Filter = string.Format("{0} LIKE '%{1}%'", filterColumn, filterValue);
+            }
         }
     }
 }

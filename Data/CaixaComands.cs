@@ -30,7 +30,6 @@ namespace SGPPC.Data
 
             data = RemoverCaracteresNaoNumericos(data);
 
-            //cmd.CommandText = "INSERT INTO Controle_Caixa_Pedido (Motivo, Tipo_Operacao, Valor, Data_Hora) VALUES (@Motivo, @Tipo_Operacao, @Valor, @Data_Hora);";
             cmd.CommandText = "INSERT INTO Controle_Caixa_Pedido (Motivo, Tipo_Operacao, Valor, Data_Hora) " +
                               "VALUES (@Motivo, @Tipo_Operacao, @Valor, @Data_Hora);";
 

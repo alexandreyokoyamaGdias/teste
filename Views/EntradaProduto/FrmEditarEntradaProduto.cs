@@ -12,6 +12,10 @@ namespace SGPPC.Views.EntradaProduto
 {
     public partial class FrmEditarEntradaProduto : Form
     {
+        private string descricaoOrignalPreco;
+
+        private string descricaoOriginalQuantidade;
+
         public FrmEditarEntradaProduto()
         {
             InitializeComponent();
@@ -29,6 +33,13 @@ namespace SGPPC.Views.EntradaProduto
         private void btnCancelar_Click(object sender, EventArgs e)
         {
             Close();
+        }
+
+        private void FrmEditarEntradaProduto_Load(object sender, EventArgs e)
+        {
+            descricaoOrignalPreco = txbPreco.Text;
+                
+            descricaoOriginalQuantidade = txbQuantidade.Text;
         }
     }
 }

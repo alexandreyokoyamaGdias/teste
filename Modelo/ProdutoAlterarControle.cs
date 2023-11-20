@@ -1,4 +1,5 @@
-﻿using SGPPC.Data;
+﻿using SGPPC.Class;
+using SGPPC.Data;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,10 +14,10 @@ namespace SGPPC.Modelo
 
         public String mensagem = "";
 
-        public String AlterarProd(Int32 id,String nome, String descricao, decimal valor, String data)
+        public String AlterarProd(Int32 id, string nome, string descricao, decimal valor, string idFornecedor, string idSabor, string data)
         {
             ProdutoAlterarComands loginDal = new ProdutoAlterarComands();
-            this.mensagem = loginDal.AlterarProd(id, nome, descricao, valor, data);
+            this.mensagem = loginDal.AlterarProd(id, nome, descricao, valor, idFornecedor, idSabor, data);
 
             if (loginDal.tem)
             {

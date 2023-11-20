@@ -29,7 +29,7 @@ namespace SGPPC.Views.Relatorios
         {
             this.reportViewerEstoque.LocalReport.DataSources.Clear();
             this.reportViewerEstoque.LocalReport.DataSources.Add(new
-                Microsoft.Reporting.WinForms.ReportDataSource("DataEstoque", dt));
+                Microsoft.Reporting.WinForms.ReportDataSource("DataSet33", dt));
 
             this.reportViewerEstoque.RefreshReport();
         }

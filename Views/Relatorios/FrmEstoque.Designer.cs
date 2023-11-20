@@ -43,10 +43,9 @@
             // 
             // btnGerarRelatorio
             // 
-            this.btnGerarRelatorio.Location = new System.Drawing.Point(287, 579);
-            this.btnGerarRelatorio.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btnGerarRelatorio.Location = new System.Drawing.Point(191, 376);
             this.btnGerarRelatorio.Name = "btnGerarRelatorio";
-            this.btnGerarRelatorio.Size = new System.Drawing.Size(130, 42);
+            this.btnGerarRelatorio.Size = new System.Drawing.Size(87, 27);
             this.btnGerarRelatorio.TabIndex = 31;
             this.btnGerarRelatorio.Text = "Gerar Relatório";
             this.btnGerarRelatorio.UseVisualStyleBackColor = true;
@@ -54,9 +53,10 @@
             // 
             // btnConsultar
             // 
-            this.btnConsultar.Location = new System.Drawing.Point(12, 580);
+            this.btnConsultar.Location = new System.Drawing.Point(8, 377);
+            this.btnConsultar.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnConsultar.Name = "btnConsultar";
-            this.btnConsultar.Size = new System.Drawing.Size(118, 42);
+            this.btnConsultar.Size = new System.Drawing.Size(79, 27);
             this.btnConsultar.TabIndex = 30;
             this.btnConsultar.Text = "Consultar";
             this.btnConsultar.UseVisualStyleBackColor = true;
@@ -64,9 +64,10 @@
             // 
             // btnCancelar
             // 
-            this.btnCancelar.Location = new System.Drawing.Point(149, 580);
+            this.btnCancelar.Location = new System.Drawing.Point(99, 377);
+            this.btnCancelar.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnCancelar.Name = "btnCancelar";
-            this.btnCancelar.Size = new System.Drawing.Size(118, 42);
+            this.btnCancelar.Size = new System.Drawing.Size(79, 27);
             this.btnCancelar.TabIndex = 29;
             this.btnCancelar.Text = "Cancelar";
             this.btnCancelar.UseVisualStyleBackColor = true;
@@ -75,9 +76,10 @@
             // lblPesquisar
             // 
             this.lblPesquisar.AutoSize = true;
-            this.lblPesquisar.Location = new System.Drawing.Point(8, 65);
+            this.lblPesquisar.Location = new System.Drawing.Point(5, 42);
+            this.lblPesquisar.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblPesquisar.Name = "lblPesquisar";
-            this.lblPesquisar.Size = new System.Drawing.Size(79, 20);
+            this.lblPesquisar.Size = new System.Drawing.Size(53, 13);
             this.lblPesquisar.TabIndex = 28;
             this.lblPesquisar.Text = "Pesquisar";
             // 
@@ -87,33 +89,38 @@
             this.comboBoxPesquisarEstoque.FormattingEnabled = true;
             this.comboBoxPesquisarEstoque.Items.AddRange(new object[] {
             "Nome_Produto"});
-            this.comboBoxPesquisarEstoque.Location = new System.Drawing.Point(750, 88);
+            this.comboBoxPesquisarEstoque.Location = new System.Drawing.Point(500, 57);
+            this.comboBoxPesquisarEstoque.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.comboBoxPesquisarEstoque.Name = "comboBoxPesquisarEstoque";
-            this.comboBoxPesquisarEstoque.Size = new System.Drawing.Size(346, 34);
+            this.comboBoxPesquisarEstoque.Size = new System.Drawing.Size(232, 26);
             this.comboBoxPesquisarEstoque.TabIndex = 27;
             // 
             // txtPesquisaEstoque
             // 
             this.txtPesquisaEstoque.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtPesquisaEstoque.Location = new System.Drawing.Point(12, 88);
+            this.txtPesquisaEstoque.Location = new System.Drawing.Point(8, 57);
+            this.txtPesquisaEstoque.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txtPesquisaEstoque.Multiline = true;
             this.txtPesquisaEstoque.Name = "txtPesquisaEstoque";
-            this.txtPesquisaEstoque.Size = new System.Drawing.Size(730, 38);
+            this.txtPesquisaEstoque.Size = new System.Drawing.Size(488, 26);
             this.txtPesquisaEstoque.TabIndex = 26;
+            this.txtPesquisaEstoque.TextChanged += new System.EventHandler(this.txtPesquisaEstoque_TextChanged);
             // 
             // dgEstoque
             // 
             this.dgEstoque.AllowUserToAddRows = false;
             this.dgEstoque.AllowUserToDeleteRows = false;
             this.dgEstoque.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgEstoque.Location = new System.Drawing.Point(12, 156);
+            this.dgEstoque.Location = new System.Drawing.Point(8, 101);
+            this.dgEstoque.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.dgEstoque.Name = "dgEstoque";
             this.dgEstoque.ReadOnly = true;
             this.dgEstoque.RowHeadersWidth = 62;
             this.dgEstoque.RowTemplate.Height = 28;
             this.dgEstoque.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgEstoque.Size = new System.Drawing.Size(1086, 409);
+            this.dgEstoque.Size = new System.Drawing.Size(724, 266);
             this.dgEstoque.TabIndex = 25;
+            this.dgEstoque.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgEstoque_CellContentClick);
             // 
             // panelEstoque
             // 
@@ -121,9 +128,10 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panelEstoque.BackColor = System.Drawing.Color.Orange;
             this.panelEstoque.Controls.Add(this.lblEstoque);
-            this.panelEstoque.Location = new System.Drawing.Point(2, 2);
+            this.panelEstoque.Location = new System.Drawing.Point(1, 1);
+            this.panelEstoque.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.panelEstoque.Name = "panelEstoque";
-            this.panelEstoque.Size = new System.Drawing.Size(1108, 51);
+            this.panelEstoque.Size = new System.Drawing.Size(739, 33);
             this.panelEstoque.TabIndex = 32;
             // 
             // lblEstoque
@@ -131,19 +139,18 @@
             this.lblEstoque.AutoSize = true;
             this.lblEstoque.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblEstoque.ForeColor = System.Drawing.Color.White;
-            this.lblEstoque.Location = new System.Drawing.Point(4, 8);
-            this.lblEstoque.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblEstoque.Location = new System.Drawing.Point(3, 5);
             this.lblEstoque.Name = "lblEstoque";
-            this.lblEstoque.Size = new System.Drawing.Size(105, 32);
+            this.lblEstoque.Size = new System.Drawing.Size(71, 21);
             this.lblEstoque.TabIndex = 1;
             this.lblEstoque.Text = "Estoque";
             this.lblEstoque.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // FrmEstoque
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1108, 635);
+            this.ClientSize = new System.Drawing.Size(739, 413);
             this.Controls.Add(this.panelEstoque);
             this.Controls.Add(this.btnGerarRelatorio);
             this.Controls.Add(this.btnConsultar);
@@ -153,6 +160,7 @@
             this.Controls.Add(this.txtPesquisaEstoque);
             this.Controls.Add(this.dgEstoque);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.MaximizeBox = false;
             this.Name = "FrmEstoque";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

@@ -19,6 +19,20 @@ namespace SGPPC.Views.Fornecedor
 {
     public partial class FrmAlterarFornecedor : Form
     {
+        private string descricaoOriginalCNPJ;
+
+        private string descricaoOrignalNome;
+
+        private string descricaoOriginalPais;
+
+        private string descricaoOriginalCidade;
+            
+        private string descricaoOriginalEstado;
+
+        private string descricaoOriginalAtivo;
+
+        private string descricaoOriginalInativo;
+
         public int UserID { get; private set; }
 
         public FrmAlterarFornecedor()
@@ -109,13 +123,42 @@ namespace SGPPC.Views.Fornecedor
                         string status = radioAtivo.Checked ? "Ativo" : "Inativo";
                         String mensagem = fornecedorEditarControle.AlterarForn(id, txbCNPJ.Text.Trim(), txbNome.Text.Trim(), txbPais.Text.Trim(), txbCidade.Text.Trim(), txbEstado.Text.Trim(), status);
 
-                        int userId = principalForm.UserID; // Obtenha o UserID da instância de FrmPrincipal
+                        int userId = principalForm.UserID;
                         if (fornecedorEditarControle.tem)
                         {
                             string tabelaAfetada = "Fornecedor";
                             DateTime dataHora = DateTime.Now;
                             string acao = "button1_Click";
-                            string descricao = "Alteração de Fornecedor bem-sucedido";
+                            string descricao = "Alteração: ";
+
+                            if (descricaoOriginalCNPJ != txbCNPJ.Text)
+                            {
+                                descricao += "O 'CNPJ' foi alterado de " + "'" + descricaoOriginalCNPJ + "'" + " para " + "'" + txbCNPJ.Text + "'.";
+                            }
+                            else if (descricaoOrignalNome != txbNome.Text)
+                            {
+                                descricao += "O 'Nome' foi alterado de " + "'" + descricaoOrignalNome + "'" + " para " + "'" + txbNome.Text + "'.";
+                            }
+                            else if (descricaoOriginalPais != txbPais.Text)
+                            {
+                                descricao += "O 'País' foi alterado de " + "'" + descricaoOriginalPais + "'" + " para " + "'" + txbPais.Text + "'.";
+                            }
+                            else if (descricaoOriginalCidade != txbCidade.Text)
+                            {
+                                descricao += "A 'Cidade' foi alterada de " + "'" + descricaoOriginalCidade + "'" + " para " + "'" + txbCidade.Text + "'.";
+                            }
+                            else if (descricaoOriginalEstado != txbEstado.Text)
+                            {
+                                descricao += "O 'Estado' foi alterado de " + "'" + descricaoOriginalEstado + "'" + " para " + "'" + txbEstado.Text + "'.";
+                            }
+                            else if (descricaoOriginalAtivo != radioAtivo.Text)
+                            {
+                                descricao += "O 'Status' foi alterado de " + "'" + descricaoOriginalAtivo + "'" + " para " + "'" + radioAtivo.Text + "'.";
+                            }
+                            else if (descricaoOriginalInativo != radioInativo.Text)
+                            {
+                                descricao += "O 'Status' foi alterado de " + "'" + descricaoOriginalInativo + "'" + " para " + "'" + radioInativo.Text + "'.";
+                            }
 
                             InserirLogsComands inserirLogs = new InserirLogsComands(tabelaAfetada, dataHora, acao, descricao, userId);
 
@@ -124,6 +167,41 @@ namespace SGPPC.Views.Fornecedor
                         }
                         else
                         {
+                            string tabelaAfetada = "Fornecedor";
+                            DateTime dataHora = DateTime.Now;
+                            string acao = "button1_Click";
+                            string descricao = "Erro na alteração: ";
+
+                            if (descricaoOriginalCNPJ != txbCNPJ.Text)
+                            {
+                                descricao += "O 'CNPJ' não pode ser alterado de " + "'" + descricaoOriginalCNPJ + "'" + " para " + "'" + txbCNPJ.Text + "'.";
+                            }
+                            else if (descricaoOrignalNome != txbNome.Text)
+                            {
+                                descricao += "O 'Nome' não pode ser alterado de " + "'" + descricaoOrignalNome + "'" + " para " + "'" + txbNome.Text + "'.";
+                            }
+                            else if (descricaoOriginalPais != txbPais.Text)
+                            {
+                                descricao += "O 'País' não pode ser alterado de " + "'" + descricaoOriginalPais + "'" + " para " + "'" + txbPais.Text + "'.";
+                            }
+                            else if (descricaoOriginalCidade != txbCidade.Text)
+                            {
+                                descricao += "A 'Cidade' não pode ser alterada de " + "'" + descricaoOriginalCidade + "'" + " para " + "'" + txbCidade.Text + "'.";
+                            }
+                            else if (descricaoOriginalEstado != txbEstado.Text)
+                            {
+                                descricao += "O 'Estado' não pode ser alterado de " + "'" + descricaoOriginalEstado + "'" + " para " + "'" + txbEstado.Text + "'.";
+                            }
+                            else if (descricaoOriginalAtivo != radioAtivo.Text)
+                            {
+                                descricao += "O 'Status' não pode ser alterado de " + "'" + descricaoOriginalAtivo + "'" + " para " + "'" + radioAtivo.Text + "'.";
+                            }
+                            else if (descricaoOriginalInativo != radioInativo.Text)
+                            {
+                                descricao += "O 'Status' não pode ser alterado de " + "'" + descricaoOriginalInativo + "'" + " para " + "'" + radioInativo.Text + "'.";
+                            }
+
+                            InserirLogsComands inserirLogs = new InserirLogsComands(tabelaAfetada, dataHora, acao, descricao, userId);
                             MessageBox.Show(fornecedorEditarControle.mensagem);
                         }
                     }
@@ -135,6 +213,23 @@ namespace SGPPC.Views.Fornecedor
                     txbId.Focus();
                 }
             }
+        }
+
+        private void FrmAlterarFornecedor_Load(object sender, EventArgs e)
+        {
+            descricaoOriginalCNPJ = txbCNPJ.Text;
+            
+            descricaoOrignalNome = txbNome.Text;
+            
+            descricaoOriginalPais = txbPais.Text;
+            
+            descricaoOriginalCidade = txbCidade.Text;
+            
+            descricaoOriginalEstado = txbEstado.Text;
+
+            descricaoOriginalAtivo = radioAtivo.Text;
+
+            descricaoOriginalInativo = radioInativo.Text;
         }
     }
 }

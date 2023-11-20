@@ -14,10 +14,10 @@ namespace SGPPC.Modelo
 
         public String mensagem = "";
 
-        public String CadastrarEntProd(string precoUnitario, string quantidade, string data, string id)
+        public String CadastrarEntProd(string notaFiscal, Decimal preco, Int32 quantidade, Int32 fornecedor, string produto,  DateTime data)
         {
             EntradaProdutoComands loginDal = new EntradaProdutoComands();
-            this.mensagem = loginDal.CadastrarEntProd(precoUnitario, quantidade, data, id);
+            this.mensagem = loginDal.CadastrarEntProd(notaFiscal, preco, quantidade, fornecedor, produto, data);
 
             if (loginDal.tem)
             {
