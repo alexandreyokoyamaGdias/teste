@@ -111,7 +111,48 @@ namespace SGPPC.Views.Produto
             }
         }
 
-        private void FrmCadastroProduto_Load(object sender, EventArgs e)
+        //private void FrmCadastroProduto_Load(object sender, EventArgs e)
+        //{
+        //    string connectionString = "Data Source=ACF014\\SQLEXPRESS;Initial Catalog=SGPPC;Integrated Security=True";
+
+        //    using (SqlConnection connection = new SqlConnection(connectionString))
+        //    {
+        //        connection.Open();
+
+        //        string query = "SELECT Id, Nome FROM Fornecedor";
+        //        string query2 = "SELECT Id, Descricao FROM Sabor";
+                
+        //        SqlCommand cmd2 = new SqlCommand(query2, connection);
+        //        SqlCommand cmd = new SqlCommand(query, connection);
+
+        //        using (SqlDataReader reader = cmd.ExecuteReader())
+        //        {
+        //            cbFornecedorProdCadastro.Items.Clear();
+
+        //            while (reader.Read())
+        //            {
+        //                int fornecedorID = Convert.ToInt32(reader["Id"]);
+        //                string fornecedorNome = reader["Nome"].ToString();
+        //                cbFornecedorProdCadastro.Items.Add(new KeyValuePair<int, string>(fornecedorID, fornecedorNome));
+        //            }
+        //        }
+
+        //        using (SqlDataReader reader2 = cmd2.ExecuteReader())
+        //        {
+        //            cmbSaborCadastro.Items.Clear();
+
+        //            while (reader2.Read())
+        //            {
+        //                int produtoID = Convert.ToInt32(reader2["Id"]);
+        //                string produtoDescricao = reader2["Descricao"].ToString();
+
+        //                cmbSaborCadastro.Items.Add(new KeyValuePair<int, string>(produtoID, produtoDescricao));
+        //            }
+        //        }
+        //    }
+        //}
+
+        private void FrmCadastroProduto_Load_1(object sender, EventArgs e)
         {
             string connectionString = "Data Source=ACF014\\SQLEXPRESS;Initial Catalog=SGPPC;Integrated Security=True";
 
@@ -121,7 +162,7 @@ namespace SGPPC.Views.Produto
 
                 string query = "SELECT Id, Nome FROM Fornecedor";
                 string query2 = "SELECT Id, Descricao FROM Sabor";
-                
+
                 SqlCommand cmd2 = new SqlCommand(query2, connection);
                 SqlCommand cmd = new SqlCommand(query, connection);
 
@@ -152,11 +193,6 @@ namespace SGPPC.Views.Produto
             }
         }
 
-        private void FrmCadastroProduto_Load_1(object sender, EventArgs e)
-        {
-
-        }
-
         private void cbFornecedorProdCadastro_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (cbFornecedorProdCadastro.SelectedIndex != -1)
@@ -182,6 +218,16 @@ namespace SGPPC.Views.Produto
         private void btnCadastro_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void btnCancelar_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
+
+        private void btnLimpar_Click(object sender, EventArgs e)
+        {
+            LimparFormulario.LimparForm(this);
         }
     }
 }
